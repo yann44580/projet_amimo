@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ToolCategories{% endblock %}
+
+{% block body %}
+    <h1>ToolCategories</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tool_category.id }}</td>
+            </tr>
+            <tr>
+                <th>Tool_category_name</th>
+                <td>{{ tool_category.toolCategoryName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_tool_categories_index') }}">back to list</a>
+
+    <a href="{{ path('admin_tool_categories_edit', {'id': tool_category.id}) }}">edit</a>
+
+    {{ include('admin/tool_categories/_delete_form.html.twig') }}
+{% endblock %}

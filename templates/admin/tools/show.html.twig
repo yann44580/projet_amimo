@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tools{% endblock %}
+
+{% block body %}
+    <h1>Tools</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tool.id }}</td>
+            </tr>
+            <tr>
+                <th>Tool_title</th>
+                <td>{{ tool.toolTitle }}</td>
+            </tr>
+            <tr>
+                <th>Tool_content</th>
+                <td>{{ tool.toolContent }}</td>
+            </tr>
+            <tr>
+                <th>Tool_picture</th>
+                <td>{{ tool.toolPicture }}</td>
+            </tr>
+            <tr>
+                <th>Tool_publication_date</th>
+                <td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tool_author</th>
+                <td>{{ tool.toolAuthor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_tools_index') }}">back to list</a>
+
+    <a href="{{ path('admin_tools_edit', {'id': tool.id}) }}">edit</a>
+
+    {{ include('admin/tools/_delete_form.html.twig') }}
+{% endblock %}

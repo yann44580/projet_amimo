@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ToolCategories{% endblock %}
+
+{% block body %}
+    <h1>Create new ToolCategories</h1>
+
+    {{ include('admin/tool_categories/_form.html.twig') }}
+
+    <a href="{{ path('admin_tool_categories_index') }}">back to list</a>
+{% endblock %}
