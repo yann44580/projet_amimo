@@ -1,6 +1,8 @@
 .base nav {
   position: absolute;
-  top: 55vh;
+  top: 5vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#b8ffa4), to(#977d66));
+  background: linear-gradient(#b8ffa4, #977d66);
 }
 
 .base nav .nav-wrapper ul li .top {
