@@ -1,46 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block title %}Associations{% endblock %}
+{% block title %}Associations
+{% endblock %}
 
 {% block body %}
-    <h1>Associations</h1>
+	<div class="container">
+		<h1>Associations</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ association.id }}</td>
-            </tr>
-            <tr>
-                <th>Association_name</th>
-                <td>{{ association.associationName }}</td>
-            </tr>
-            <tr>
-                <th>Association_address</th>
-                <td>{{ association.associationAddress }}</td>
-            </tr>
-            <tr>
-                <th>Association_city</th>
-                <td>{{ association.associationCity }}</td>
-            </tr>
-            <tr>
-                <th>Association_mail</th>
-                <td>{{ association.associationMail }}</td>
-            </tr>
-            <tr>
-                <th>Association_phone</th>
-                <td>{{ association.associationPhone }}</td>
-            </tr>
-            <tr>
-                <th>Association_content</th>
-                <td>{{ association.associationContent }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ association.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ association.associationName }}</td>
+				</tr>
+				<tr>
+					<th>Adresse</th>
+					<td>{{ association.associationAddress }}</td>
+				</tr>
+				<tr>
+					<th>Ville</th>
+					<td>{{ association.associationCity }}</td>
+				</tr>
+				<tr>
+					<th>Mail</th>
+					<td>{{ association.associationMail }}</td>
+				</tr>
+				<tr>
+					<th>Téléphone</th>
+					<td>{{ association.associationPhone }}</td>
+				</tr>
+				<tr>
+					<th>Présentation</th>
+					<td>{{ association.associationContent }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_associations_index') }}">back to list</a>
+		<a href="{{ path('admin_associations_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('admin_associations_edit', {'id': association.id}) }}">edit</a>
+		<a href="{{ path('admin_associations_edit', {'id': association.id}) }}">Modifier</a>
 
-    {{ include('admin/associations/_delete_form.html.twig') }}
+		{{ include('admin/associations/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

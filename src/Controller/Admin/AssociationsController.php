@@ -12,12 +12,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/associations")
+ * @Route("/admin/associations", name="admin_associations_")
  */
 class AssociationsController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_associations_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(AssociationsRepository $associationsRepository): Response
     {
@@ -27,7 +27,7 @@ class AssociationsController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="admin_associations_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -49,7 +49,7 @@ class AssociationsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_associations_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Associations $association): Response
     {
@@ -59,7 +59,7 @@ class AssociationsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="admin_associations_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Associations $association, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +79,7 @@ class AssociationsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_associations_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, Associations $association, EntityManagerInterface $entityManager): Response
     {

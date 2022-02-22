@@ -59,9 +59,15 @@ class Tools
      */
     private $category_tool;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Populations::class, mappedBy="tool")
+     */
+    private $populations;
+
     public function __construct()
     {
         $this->animal_category = new ArrayCollection();
+        $this->populations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -173,6 +179,33 @@ class Tools
     public function setCategoryTool(?ToolCategories $category_tool): self
     {
         $this->category_tool = $category_tool;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Populations>
+     */
+    public function getPopulations(): Collection
+    {
+        return $this->populations;
+    }
+
+    public function addPopulation(Populations $population): self
+    {
+        if (!$this->populations->contains($population)) {
+            $this->populations[] = $population;
+            $population->addTool($this);
+        }
+
+        return $this;
+    }
+
+    public function removePopulation(Populations $population): self
+    {
+        if ($this->populations->removeElement($population)) {
+            $population->removeTool($this);
+        }
 
         return $this;
     }

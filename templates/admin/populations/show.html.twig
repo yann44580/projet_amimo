@@ -1,0 +1,26 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Populations{% endblock %}
+
+{% block body %}
+    <h1>Populations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ population.id }}</td>
+            </tr>
+            <tr>
+                <th>Population_name</th>
+                <td>{{ population.populationName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_populations_index') }}">back to list</a>
+
+    <a href="{{ path('admin_populations_edit', {'id': population.id}) }}">edit</a>
+
+    {{ include('admin/populations/_delete_form.html.twig') }}
+{% endblock %}

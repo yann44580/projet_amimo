@@ -22,17 +22,56 @@
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Admin
 			{% endblock %}
 		</title>
 
 
 	</head>
-	<body>
-		<a href="#" data-target="slide-out" class="sidenav-trigger">
-			<i class="material-icons">menu</i>
-		</a>
+	<body class="admin">
+
+		<ul id="dropdown1" class="dropdown-content drop_left">
+			<li>
+				<a href="#!">Catégories</a>
+			</li>
+			<li>
+				<a href="#!">Outils</a>
+			</li>
+		</ul>
+		<ul id="dropdown2" class="dropdown-content drop_left">
+			<li>
+				<a href="#!">Catégories</a>
+			</li>
+			<li>
+				<a href="#!">Animaux</a>
+			</li>
+		</ul>
+		<ul id="dropdown3" class="dropdown-content drop_left">
+			<li>
+				<a href="#!">Catégories</a>
+			</li>
+			<li>
+				<a href="#!">Articles</a>
+			</li>
+		</ul>
 		<nav>
+			<div class="nav-wrapper">
+				<a href="#" data-target="slide-out" class="sidenav-trigger">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li>
+						<a href="sass.html">Sass</a>
+					</li>
+					<li>
+						<a href="badges.html">Components</a>
+					</li>
+					<li>
+						<a href="{{path('home')}}">Retour au site</a>
+					</li>
+				</ul>
+			</div>
+
 			<!-- navbar content here  -->
 		</nav>
 
@@ -52,34 +91,44 @@
 				</div>
 			</li>
 			<li>
-				<a href="#!">
-					<i class="material-icons">cloud</i>Association</a>
+				<a href="{{path('admin_associations_index')}}">Association</a>
 			</li>
 			<li>
-				<a href="#!">Outils</a>
-			</li>
-			{# <li>
-										<div class="divider"></div>
-									</li> #}
-			<li>
-				<a class="waves-effect">Animaux</a>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown1">
+					Outils
+					<i class="material-icons right">arrow_drop_down</i>
+				</a>
 			</li>
 			<li>
-				<a class="waves-effect" href="#!">Blog</a>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown2">
+					Animaux
+					<i class="material-icons right">arrow_drop_down</i>
+				</a>
 			</li>
 			<li>
-				<a class="waves-effect" href="#!">Contact</a>
+				<a class="waves-effect" href="{{path('admin_populations_index')}}">Public</a>
 			</li>
 			<li>
-				<a class="waves-effect" href="#!">Partenaires</a>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown3">
+					Blog
+					<i class="material-icons right">arrow_drop_down</i>
+				</a>
 			</li>
 			<li>
-				<a class="waves-effect" href="#!">Utilisateurs</a>
+				<a class="waves-effect" href="{{path('admin_contacts_index')}}">Contact</a>
 			</li>
-		</ul>
+			<li>
+				<a class="waves-effect" href="{{path('admin_partners_index')}}">Partenaires</a>
+			</li>
+			<li>
+				<a class="waves-effect" href="{{path('admin_users_index')}}">Utilisateurs</a>
+			</li>
 
-		{% block body %}{% endblock %}
+		</ul>
+		{% block body %}
+		{% endblock %}
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 	</body>
 </html>

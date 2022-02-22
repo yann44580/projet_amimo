@@ -1,1 +1,39 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.base nav {
+  position: absolute;
+  top: 55vh;
+}
+
+.base nav .nav-wrapper ul li .top {
+  top: -65px;
+}
+
+.admin nav .nav-wrapper a {
+  display: block;
+}
+
+.admin ul li .drop_nav {
+  width: 200px;
+}
+
+.admin ul li .drop_left {
+  left: -150px;
+}
+
+.img_nav {
+  width: 100vw;
+}
+
+.citation {
+  height: 40vh;
+  background-color: antiquewhite;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=style.css.map */

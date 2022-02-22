@@ -1,0 +1,35 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Populations index{% endblock %}
+
+{% block body %}
+    <h1>Populations index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Population_name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for population in populations %}
+            <tr>
+                <td>{{ population.id }}</td>
+                <td>{{ population.populationName }}</td>
+                <td>
+                    <a href="{{ path('admin_populations_show', {'id': population.id}) }}">show</a>
+                    <a href="{{ path('admin_populations_edit', {'id': population.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_populations_new') }}">Create new</a>
+{% endblock %}

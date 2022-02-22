@@ -1,0 +1,57 @@
+// 1. BASE
+// 2. ADMIN
+// 3. MAIN_INDEX
+
+// 1. BASE ============================================
+.base {
+    nav {
+        position: absolute;
+        top: 55vh;
+
+        .nav-wrapper {
+            ul {
+                li {
+                    .top {
+                        top: -65px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 2.ADMIN
+.admin {
+    nav{
+        .nav-wrapper{
+            a{
+                display: block;
+            }
+        }
+    }
+    ul {
+        li {
+            .drop_nav {
+                width: 200px;
+            }
+
+            .drop_left {
+                left: -150px;
+            }
+        }
+    }
+}
+
+// 3.MAIN_INDEX
+.img_nav {
+    width: 100vw;
+
+}
+
+.citation {
+    height: 40vh;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

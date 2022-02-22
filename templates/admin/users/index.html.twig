@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Users index
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Les adhérents</h1>
+
+		<a href="{{ path('admin_users_new') }}">Un nouvel utilisateur</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Nom de famille</th>
+					<th>Prénom</th>
+					<th>Anniversaire</th>
+					<th>Adresse</th>
+					<th>Ville</th>
+					<th>Photo</th>
+					<th>Presentation</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+						<td>{{ user.lastname }}</td>
+						<td>{{ user.firstname }}</td>
+						<td>{{ user.birthdayDate ? user.birthdayDate|date('Y-m-d') : '' }}</td>
+						<td>{{ user.address }}</td>
+						<td>{{ user.city }}</td>
+						<td>{{ user.picture }}</td>
+						<td>{{ user.presentation }}</td>
+						<td>
+							<a href="{{ path('admin_users_show', {'id': user.id}) }}">Voir</a>
+							<a href="{{ path('admin_users_edit', {'id': user.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="12">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}
