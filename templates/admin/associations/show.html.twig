@@ -34,8 +34,19 @@
 					<td>{{ association.associationPhone }}</td>
 				</tr>
 				<tr>
+					<th>Photo(s)</th>
+					<td>
+						{% for image in association.picturesAssociations %}
+							<div>
+								<img
+								src="{{ asset('/uploads/'~image.pictureassociationname) }}" alt="" width="150">
+							</div>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
 					<th>Présentation</th>
-					<td>{{ association.associationContent }}</td>
+					<td>{{ association.associationContent|raw }}</td>
 				</tr>
 			</tbody>
 		</table>

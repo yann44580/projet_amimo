@@ -2,19 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\AssociationsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(AssociationsRepository $associationsRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+            'associations' => $associationsRepository->findAll(),
+        ]);
+    }
+
+    public function menuhead(AssociationsRepository $associationsRepository): Response
+    {
+        return $this->render('main/photo.html.twig', [
+            'associations' => $associationsRepository->findAll(),
         ]);
     }
 }

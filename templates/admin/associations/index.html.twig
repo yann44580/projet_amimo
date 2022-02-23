@@ -29,7 +29,7 @@
 						<td>{{ association.associationCity }}</td>
 						<td>{{ association.associationMail }}</td>
 						<td>{{ association.associationPhone }}</td>
-						<td>{{ association.associationContent }}</td>
+						<td>{{ association.associationContent|raw }}</td>
 						<td>
 							<a href="{{ path('admin_associations_show', {'id': association.id}) }}">Voir</a>
 							<a href="{{ path('admin_associations_edit', {'id': association.id}) }}">Modifier</a>

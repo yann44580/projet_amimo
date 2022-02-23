@@ -1,0 +1,6 @@
+
+{% for association in associations %}
+	{% for image in association.picturesAssociations %}	
+			<img src="{{ asset('/uploads/'~image.pictureassociationname) }}" alt="" width="80">
+	{% endfor %}
+{% endfor %} 

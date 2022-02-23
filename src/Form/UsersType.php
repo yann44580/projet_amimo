@@ -4,10 +4,14 @@ namespace App\Form;
 
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class UsersType extends AbstractType
 {
@@ -31,11 +35,19 @@ class UsersType extends AbstractType
             ->add('firstname', TextType::class, [
                 'label' => 'prénom'
             ])
-            ->add('birthday_date')
-            ->add('address')
-            ->add('city')
-            ->add('picture')
-            ->add('presentation')
+            ->add('birthday_date', DateType::class, [
+                'widget' => 'single_text',
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'adresse'
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'ville'
+            ])
+            ->add('picture', FileType::class, [
+                'label' => 'Photo'
+            ])
+            ->add('presentation', CKEditorType::class)
         ;
     }
 

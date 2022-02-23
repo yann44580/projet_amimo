@@ -50,7 +50,7 @@ class Associations
     private $association_content;
 
     /**
-     * @ORM\OneToMany(targetEntity=PicturesAssociation::class, mappedBy="association")
+     * @ORM\OneToMany(targetEntity=PicturesAssociation::class, mappedBy="association",cascade={"persist"})
      */
     private $picturesAssociations;
 
