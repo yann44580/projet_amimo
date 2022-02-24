@@ -1,13 +1,16 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Edit Blogs{% endblock %}
+{% block title %}Modifier l'article
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Blogs</h1>
+	<div class="container">
+		<h1>Modifier l'article</h1>
 
-    {{ include('admin/blogs/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('admin/blogs/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_blogs_index') }}">back to list</a>
+		<a href="{{ path('admin_blogs_index') }}">Revenir à la liste</a>
 
-    {{ include('admin/blogs/_delete_form.html.twig') }}
+		{{ include('admin/blogs/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

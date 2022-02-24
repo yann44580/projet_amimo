@@ -1,4 +1,23 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="input-field">
+	{{ form_label(form.animal_name) }}
+	{{ form_widget(form.animal_name) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.animal_content) }}
+	{# {{ form_widget(form.animal_content) }} #}
+</div>
+<div class="input-field">
+	{{ form_row(form.animal_category) }}
+</div>
+<div class="file-field input-field">
+	<div class="btn">
+		{{ form_label(form.animal_picture) }}
+		{{ form_widget(form.animal_picture) }}
+	</div>
+	<div class="file-path-wrapper">
+		<input class="file-path validate" type="text" placeholder="Upload file"/>
+	</div>
+</div>
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

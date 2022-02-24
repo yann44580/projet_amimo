@@ -1,15 +1,16 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}AnimalsCategories index{% endblock %}
+{% block title %}Categories d'animaux{% endblock %}
 
 {% block body %}
-    <h1>AnimalsCategories index</h1>
+<div class="container">
+    <h1>Categories d'animaux</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Animal_category_name</th>
+                <th>Nom de la catégorie</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,8 +20,8 @@
                 <td>{{ animals_category.id }}</td>
                 <td>{{ animals_category.animalCategoryName }}</td>
                 <td>
-                    <a href="{{ path('admin_animals_categories_show', {'id': animals_category.id}) }}">show</a>
-                    <a href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}">edit</a>
+                    <a href="{{ path('admin_animals_categories_show', {'id': animals_category.id}) }}">Voir</a>
+                    <a href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +32,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_animals_categories_new') }}">Create new</a>
+    <a href="{{ path('admin_animals_categories_new') }}">Créer un nouvelle catégorie</a>
+</div>
 {% endblock %}

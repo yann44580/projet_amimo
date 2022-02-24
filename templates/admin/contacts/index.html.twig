@@ -1,45 +1,46 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Contacts index{% endblock %}
+{% block title %}Contacts index
+{% endblock %}
 
 {% block body %}
-    <h1>Contacts index</h1>
+	<div class="container">
+		<h1>Les messages</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Contact_content</th>
-                <th>Contact_subject</th>
-                <th>Contact_date</th>
-                <th>Contact_email</th>
-                <th>Contact_fullname</th>
-                <th>Contact_firstname</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.id }}</td>
-                <td>{{ contact.contactContent }}</td>
-                <td>{{ contact.contactSubject }}</td>
-                <td>{{ contact.contactDate ? contact.contactDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ contact.contactEmail }}</td>
-                <td>{{ contact.contactFullname }}</td>
-                <td>{{ contact.contactFirstname }}</td>
-                <td>
-                    <a href="{{ path('admin_contacts_show', {'id': contact.id}) }}">show</a>
-                    <a href="{{ path('admin_contacts_edit', {'id': contact.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin_contacts_new') }}">Create new</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom de famille</th>
+					<th>Prénom</th>
+					<th>Mail</th>
+					<th>Sujet</th>
+					<th>Message</th>
+					<th>Date</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for contact in contacts %}
+					<tr>
+						<td>{{ contact.id }}</td>
+						<td>{{ contact.contactSubject }}</td>
+						<td>{{ contact.contactContent|raw }}</td>
+						<td>{{ contact.contactDate ? contact.contactDate|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ contact.contactEmail }}</td>
+						<td>{{ contact.contactFullname }}</td>
+						<td>{{ contact.contactFirstname }}</td>
+						<td>
+							<a href="{{ path('admin_contacts_show', {'id': contact.id}) }}">Voir</a>
+							<a href="{{ path('admin_contacts_edit', {'id': contact.id}) }}"></a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

@@ -1,26 +1,29 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}AnimalsCategories{% endblock %}
+{% block title %}AnimalsCategories
+{% endblock %}
 
 {% block body %}
-    <h1>AnimalsCategories</h1>
+	<div class="container">
+		<h1>Categories d'animaux</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ animals_category.id }}</td>
-            </tr>
-            <tr>
-                <th>Animal_category_name</th>
-                <td>{{ animals_category.animalCategoryName }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ animals_category.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom de la catégorie</th>
+					<td>{{ animals_category.animalCategoryName }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_animals_categories_index') }}">back to list</a>
+		<a href="{{ path('admin_animals_categories_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}">edit</a>
+		<a href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}">modifier</a>
 
-    {{ include('admin/animals_categories/_delete_form.html.twig') }}
+		{{ include('admin/animals_categories/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

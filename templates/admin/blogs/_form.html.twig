@@ -1,4 +1,47 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="input-field">
+	{{ form_label(form.blog_title) }}
+	{{ form_widget(form.blog_title) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.blog_subtitle) }}
+	{{ form_widget(form.blog_subtitle) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.blog_content) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.blog_author) }}
+	{{ form_widget(form.blog_author) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.blog_publication_date) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.blog_category) }}
+</div>
+<div class="file-field input-field">
+	<div class="btn">
+		{{ form_label(form.picturesBlogs) }}
+		{{ form_widget(form.picturesBlogs) }}
+	</div>
+	<div class="file-path-wrapper">
+		<input class="file-path validate" type="text" placeholder="Upload file"/>
+	</div>
+</div>
+{# Si la route est "annonces_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'admin_blogs_edit' %}
+	<h2>Images</h2>
+	{% for image in blog.picturesBlogs %}
+		<div>
+			<img
+			src="{{ asset('/uploads/'~image.pictureblogname) }}" alt="" width="150">
+
+			{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+			<a href="{{ path('admin_blog_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+		</div>
+	{% endfor %}
+{% endif %}
+
+<button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

@@ -1,11 +1,14 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}New Partners{% endblock %}
+{% block title %}Nouveau partenaire
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Partners</h1>
+	<div class="container">
+		<h1>Création d'un nouveau partenaire</h1>
 
-    {{ include('admin/partners/_form.html.twig') }}
+		{{ include('admin/partners/_form.html.twig') }}
 
-    <a href="{{ path('admin_partners_index') }}">back to list</a>
+		<a href="{{ path('admin_partners_index') }}">Revenir à la liste</a>
+	</div>
 {% endblock %}

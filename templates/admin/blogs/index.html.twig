@@ -1,43 +1,46 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Blogs index{% endblock %}
+{% block title %}Ariticles du Blog
+{% endblock %}
 
 {% block body %}
-    <h1>Blogs index</h1>
+	<div class="container">
+		<h1>Articles du blog</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Blog_title</th>
-                <th>Blog_subtitle</th>
-                <th>Blog_content</th>
-                <th>Blog_author</th>
-                <th>Blog_publication_date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blog in blogs %}
-            <tr>
-                <td>{{ blog.id }}</td>
-                <td>{{ blog.blogTitle }}</td>
-                <td>{{ blog.blogSubtitle }}</td>
-                <td>{{ blog.blogContent }}</td>
-                <td>{{ blog.blogAuthor }}</td>
-                <td>{{ blog.blogPublicationDate ? blog.blogPublicationDate|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('admin_blogs_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('admin_blogs_edit', {'id': blog.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<a href="{{ path('admin_blogs_new') }}">Créer un nouvel article</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Sous-titre</th>
+					<th>Contenu</th>
+					<th>Auteur</th>
+					<th>Date de publication</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for blog in blogs %}
+					<tr>
+						<td>{{ blog.id }}</td>
+						<td>{{ blog.blogTitle }}</td>
+						<td>{{ blog.blogSubtitle }}</td>
+						<td>{{ blog.blogContent|raw }}</td>
+						<td>{{ blog.blogAuthor }}</td>
+						<td>{{ blog.blogPublicationDate ? blog.blogPublicationDate|date('Y-m-d') : '' }}</td>
+						<td>
+							<a href="{{ path('admin_blogs_show', {'id': blog.id}) }}">Voir</a>
+							<a href="{{ path('admin_blogs_edit', {'id': blog.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_blogs_new') }}">Create new</a>
+	</div>
 {% endblock %}

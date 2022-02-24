@@ -1,13 +1,15 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Edit Animals{% endblock %}
+{% block title %}Modifications{% endblock %}
 
 {% block body %}
-    <h1>Edit Animals</h1>
+<div class="container">
+    <h1>Modifications</h1>
 
     {{ include('admin/animals/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_animals_index') }}">back to list</a>
+    <a href="{{ path('admin_animals_index') }}">Revenir à la liste</a>
 
     {{ include('admin/animals/_delete_form.html.twig') }}
+</div>
 {% endblock %}

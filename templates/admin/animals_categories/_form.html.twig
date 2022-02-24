@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="input-field">
+	{{ form_label(form.animal_category_name) }}
+	{{ form_widget(form.animal_category_name) }}
+</div>
+{# <div class="input-field">
+	{{ form_row(form.tools) }}
+</div> #}
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

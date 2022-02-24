@@ -1,13 +1,16 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Edit AnimalsCategories{% endblock %}
+{% block title %}Modifier les Categories d'animaux
+{% endblock %}
 
 {% block body %}
-    <h1>Edit AnimalsCategories</h1>
+	<div class="container">
+		<h1>Modifier les catégories d'animaux</h1>
 
-    {{ include('admin/animals_categories/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('admin/animals_categories/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_animals_categories_index') }}">back to list</a>
+		<a href="{{ path('admin_animals_categories_index') }}">Revenir à la liste</a>
 
-    {{ include('admin/animals_categories/_delete_form.html.twig') }}
+		{{ include('admin/animals_categories/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

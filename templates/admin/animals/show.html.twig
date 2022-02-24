@@ -1,34 +1,37 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Animals{% endblock %}
+{% block title %}Animals
+{% endblock %}
 
 {% block body %}
-    <h1>Animals</h1>
+	<div class="container">
+		<h1>Nos animaux</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ animal.id }}</td>
-            </tr>
-            <tr>
-                <th>Animal_name</th>
-                <td>{{ animal.animalName }}</td>
-            </tr>
-            <tr>
-                <th>Animal_picture</th>
-                <td>{{ animal.animalPicture }}</td>
-            </tr>
-            <tr>
-                <th>Animal_content</th>
-                <td>{{ animal.animalContent }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ animal.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ animal.animalName }}</td>
+				</tr>
+				<tr>
+					<th>Photo</th>
+					<td>{{ animal.animalPicture }}</td>
+				</tr>
+				<tr>
+					<th>Présentation</th>
+					<td>{{ animal.animalContent }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_animals_index') }}">back to list</a>
+		<a href="{{ path('admin_animals_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('admin_animals_edit', {'id': animal.id}) }}">edit</a>
+		<a href="{{ path('admin_animals_edit', {'id': animal.id}) }}">Modifier</a>
 
-    {{ include('admin/animals/_delete_form.html.twig') }}
+		{{ include('admin/animals/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

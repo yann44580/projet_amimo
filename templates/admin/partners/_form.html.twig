@@ -1,4 +1,44 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="input-field">
+	{{ form_label(form.partner_name) }}
+	{{ form_widget(form.partner_name) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.partner_address) }}
+	{{ form_widget(form.partner_address) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.partner_city) }}
+	{{ form_widget(form.partner_city) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.partner_mail) }}
+	{{ form_widget(form.partner_mail) }}
+</div>
+<div class="input-field">
+	{{ form_label(form.partner_phone) }}
+	{{ form_widget(form.partner_phone) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.partner_content) }}
+</div>
+<div class="input-field">
+{{ form_label(form.partner_web_link) }}
+{{ form_widget(form.partner_web_link) }}
+</div>
+<div class="input-field">
+{{ form_label(form.partner_referent) }}
+{{ form_widget(form.partner_referent) }}
+</div>
+<div class="file-field input-field">
+	<div class="btn">
+		{{ form_label(form.partner_picture) }}
+        {{ form_widget(form.partner_picture) }}
+	</div>
+    <div class = "file-path-wrapper">
+         <input class = "file-path validate" type = "text"
+                        placeholder = "Upload file" /> 
+    </div>
+</div>
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

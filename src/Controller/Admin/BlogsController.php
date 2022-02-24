@@ -4,12 +4,14 @@ namespace App\Controller\Admin;
 
 use App\Entity\Blogs;
 use App\Form\BlogsType;
+use App\Entity\PicturesBlog;
 use App\Repository\BlogsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/blogs")
@@ -36,6 +38,25 @@ class BlogsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmises
+            $picturesBlogs = $form->get('picturesBlogs')->getData();
+
+            // On boucle sur les images
+            foreach ($picturesBlogs as $image) {
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+                // On crée l'image dans la base de données
+                $img = new PicturesBlog();
+                $img->setPictureBlogName($fichier);
+                $blog->addPicturesBlog($img);
+            }
             $entityManager->persist($blog);
             $entityManager->flush();
 
@@ -67,6 +88,25 @@ class BlogsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmises
+            $picturesBlogs = $form->get('picturesBlogs')->getData();
+
+            // On boucle sur les images
+            foreach ($picturesBlogs as $image) {
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+
+                // On crée l'image dans la base de données
+                $img = new PicturesBlog();
+                $img->setPictureBlogName($fichier);
+                $blog->addPicturesBlog($img);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_blogs_index', [], Response::HTTP_SEE_OTHER);
@@ -83,11 +123,35 @@ class BlogsController extends AbstractController
      */
     public function delete(Request $request, Blogs $blog, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$blog->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $blog->getId(), $request->request->get('_token'))) {
             $entityManager->remove($blog);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('admin_blogs_index', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/supprime/image/{id}", name="admin_blog_delete_image", methods={"DELETE"})
+     */
+    public function deleteImage(EntityManagerInterface $entityManager, PicturesBlog $picturesBlog, Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if ($this->isCsrfTokenValid('delete' . $picturesBlog->getId(), $data['_token'])) {
+            // On récupère le nom de l'image
+            $nom = $picturesBlog->getPictureBlogName();
+            // On supprime le fichier
+            unlink($this->getParameter('images_directory') . '/' . $nom);
+
+            // On supprime l'entrée de la base
+            $entityManager->remove($picturesBlog);
+            $entityManager->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 }

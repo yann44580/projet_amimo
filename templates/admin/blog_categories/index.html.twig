@@ -1,35 +1,38 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}BlogCategories index{% endblock %}
+{% block title %}Les catégories du blog
+{% endblock %}
 
 {% block body %}
-    <h1>BlogCategories index</h1>
+	<div class="container">
+		<h1>Les catégories du blog</h1>
+		<a href="{{ path('admin_blog_categories_new') }}">Créer une nouvelle catégorie</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Blog_category_name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blog_category in blog_categories %}
-            <tr>
-                <td>{{ blog_category.id }}</td>
-                <td>{{ blog_category.blogCategoryName }}</td>
-                <td>
-                    <a href="{{ path('admin_blog_categories_show', {'id': blog_category.id}) }}">show</a>
-                    <a href="{{ path('admin_blog_categories_edit', {'id': blog_category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom de la catégorie</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for blog_category in blog_categories %}
+					<tr>
+						<td>{{ blog_category.id }}</td>
+						<td>{{ blog_category.blogCategoryName }}</td>
+						<td>
+							<a href="{{ path('admin_blog_categories_show', {'id': blog_category.id}) }}">Voir</a>
+							<a href="{{ path('admin_blog_categories_edit', {'id': blog_category.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_blog_categories_new') }}">Create new</a>
+	</div>
 {% endblock %}

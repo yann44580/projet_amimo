@@ -3,15 +3,16 @@
 {% block title %}Animals index{% endblock %}
 
 {% block body %}
-    <h1>Animals index</h1>
+<div class="container">
+    <h1>Nos animaux</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Animal_name</th>
-                <th>Animal_picture</th>
-                <th>Animal_content</th>
+                <th>Nom</th>
+                <th>Photo</th>
+                <th>Présentation</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,10 +22,10 @@
                 <td>{{ animal.id }}</td>
                 <td>{{ animal.animalName }}</td>
                 <td>{{ animal.animalPicture }}</td>
-                <td>{{ animal.animalContent }}</td>
+                <td>{{ animal.animalContent|raw }}</td>
                 <td>
-                    <a href="{{ path('admin_animals_show', {'id': animal.id}) }}">show</a>
-                    <a href="{{ path('admin_animals_edit', {'id': animal.id}) }}">edit</a>
+                    <a href="{{ path('admin_animals_show', {'id': animal.id}) }}">Voir</a>
+                    <a href="{{ path('admin_animals_edit', {'id': animal.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +36,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_animals_new') }}">Create new</a>
+    <a href="{{ path('admin_animals_new') }}">Un nouveau animal</a>
+</div>
 {% endblock %}

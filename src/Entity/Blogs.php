@@ -45,7 +45,7 @@ class Blogs
     private $blog_publication_date;
 
     /**
-     * @ORM\OneToMany(targetEntity=PicturesBlog::class, mappedBy="blog")
+     * @ORM\OneToMany(targetEntity=PicturesBlog::class, mappedBy="blog",cascade={"persist"})
      */
     private $picturesBlogs;
 
