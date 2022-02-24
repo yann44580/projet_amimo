@@ -22,6 +22,15 @@
 <div class="input-field">
 	{{ form_row(form.association_content) }}
 </div>
+<div class="file-field input-field">
+	<div class="btn">
+		{{ form_label(form.picturesAssociations) }}
+		{{ form_widget(form.picturesAssociations) }}
+	</div>
+	<div class="file-path-wrapper">
+		<input class="file-path validate" type="text" placeholder="Upload file"/>
+	</div>
+</div>
 {# Si la route est "annonces_edit on affiche les images #}
 {% if app.request.attributes.get('_route') == 'admin_associations_edit' %}
 	<h2>Images</h2>

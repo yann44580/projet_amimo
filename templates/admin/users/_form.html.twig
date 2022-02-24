@@ -22,9 +22,14 @@
 <div class="input-field">
 	{{ form_row(form.birthday_date) }}
 </div>
-<div class="input-field">
-    
-    {{ form_row(form.picture) }}
+<div class="file-field input-field">
+	<div class="btn">
+		{{ form_label(form.picture) }}
+		{{ form_widget(form.picture) }}
+	</div>
+	<div class="file-path-wrapper">
+		<input class="file-path validate" type="text" placeholder="Upload file"/>
+	</div>
 </div>
 <div class="input-field">
 	{{ form_row(form.presentation) }}

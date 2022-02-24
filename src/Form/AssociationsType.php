@@ -24,7 +24,7 @@ class AssociationsType extends AbstractType
             ->add('association_phone', TelType::class)
             ->add('association_content', CKEditorType::class)
             ->add('picturesAssociations', FileType::class, [
-                'label' => false,
+                'label' => 'Photos',
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false
