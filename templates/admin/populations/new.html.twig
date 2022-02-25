@@ -1,11 +1,14 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}New Populations{% endblock %}
+{% block title %}Nouveau public
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Populations</h1>
+	<div class="container">
+		<h1>Nouveau public</h1>
 
-    {{ include('admin/populations/_form.html.twig') }}
+		{{ include('admin/populations/_form.html.twig') }}
 
-    <a href="{{ path('admin_populations_index') }}">back to list</a>
+		<a href="{{ path('admin_populations_index') }}">Revenir à la liste</a>
+	</div>
 {% endblock %}

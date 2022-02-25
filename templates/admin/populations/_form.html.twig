@@ -1,4 +1,7 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="input-field">
+	{{ form_label(form.population_name) }}
+	{{ form_widget(form.population_name) }}
+</div>
+<button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

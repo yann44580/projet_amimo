@@ -1,43 +1,46 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Tools index{% endblock %}
+{% block title %}Les outils
+{% endblock %}
 
 {% block body %}
-    <h1>Tools index</h1>
+	<div class="container">
+		<h1>Les outils</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Tool_title</th>
-                <th>Tool_content</th>
-                <th>Tool_picture</th>
-                <th>Tool_publication_date</th>
-                <th>Tool_author</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tool in tools %}
-            <tr>
-                <td>{{ tool.id }}</td>
-                <td>{{ tool.toolTitle }}</td>
-                <td>{{ tool.toolContent }}</td>
-                <td>{{ tool.toolPicture }}</td>
-                <td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
-                <td>{{ tool.toolAuthor }}</td>
-                <td>
-                    <a href="{{ path('admin_tools_show', {'id': tool.id}) }}">show</a>
-                    <a href="{{ path('admin_tools_edit', {'id': tool.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<a href="{{ path('admin_tools_new') }}">Nouvel outil</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Contenu</th>
+					<th>Photo(s)</th>
+					<th>Date de publication</th>
+					<th>Auteur</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for tool in tools %}
+					<tr>
+						<td>{{ tool.id }}</td>
+						<td>{{ tool.toolTitle }}</td>
+						<td>{{ tool.toolContent }}</td>
+						<td>{{ tool.toolPicture }}</td>
+						<td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
+						<td>{{ tool.toolAuthor }}</td>
+						<td>
+							<a href="{{ path('admin_tools_show', {'id': tool.id}) }}">Voir</a>
+							<a href="{{ path('admin_tools_edit', {'id': tool.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_tools_new') }}">Create new</a>
+	</div>
 {% endblock %}

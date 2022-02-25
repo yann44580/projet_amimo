@@ -1,13 +1,16 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Edit ToolCategories{% endblock %}
+{% block title %}Modifier la catégorie
+{% endblock %}
 
 {% block body %}
-    <h1>Edit ToolCategories</h1>
+	<div class="container">
+		<h1>Modifier la catégorie</h1>
 
-    {{ include('admin/tool_categories/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('admin/tool_categories/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_tool_categories_index') }}">back to list</a>
+		<a href="{{ path('admin_tool_categories_index') }}">Revenir à la liste</a>
 
-    {{ include('admin/tool_categories/_delete_form.html.twig') }}
+		{{ include('admin/tool_categories/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

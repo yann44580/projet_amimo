@@ -1,35 +1,38 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Populations index{% endblock %}
+{% block title %}Population
+{% endblock %}
 
 {% block body %}
-    <h1>Populations index</h1>
+	<div class="container">
+		<h1>Type de public</h1>
+		<a href="{{ path('admin_populations_new') }}">Rentrer un nouveau public</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Population_name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for population in populations %}
-            <tr>
-                <td>{{ population.id }}</td>
-                <td>{{ population.populationName }}</td>
-                <td>
-                    <a href="{{ path('admin_populations_show', {'id': population.id}) }}">show</a>
-                    <a href="{{ path('admin_populations_edit', {'id': population.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom du public</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for population in populations %}
+					<tr>
+						<td>{{ population.id }}</td>
+						<td>{{ population.populationName }}</td>
+						<td>
+							<a href="{{ path('admin_populations_show', {'id': population.id}) }}">Voir</a>
+							<a href="{{ path('admin_populations_edit', {'id': population.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_populations_new') }}">Create new</a>
+	</div>
 {% endblock %}

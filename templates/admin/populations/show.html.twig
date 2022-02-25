@@ -1,26 +1,29 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Populations{% endblock %}
+{% block title %}Public
+{% endblock %}
 
 {% block body %}
-    <h1>Populations</h1>
+	<div class="container">
+		<h1>Public</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ population.id }}</td>
-            </tr>
-            <tr>
-                <th>Population_name</th>
-                <td>{{ population.populationName }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ population.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom du public</th>
+					<td>{{ population.populationName }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-    <a href="{{ path('admin_populations_index') }}">back to list</a>
+		<a href="{{ path('admin_populations_index') }}">Revenir à la liste</a>
 
-    <a href="{{ path('admin_populations_edit', {'id': population.id}) }}">edit</a>
+		<a href="{{ path('admin_populations_edit', {'id': population.id}) }}">Modifier</a>
 
-    {{ include('admin/populations/_delete_form.html.twig') }}
+		{{ include('admin/populations/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

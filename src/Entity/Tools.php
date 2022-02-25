@@ -64,10 +64,16 @@ class Tools
      */
     private $populations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool")
+     */
+    private $picturesTools;
+
     public function __construct()
     {
         $this->animal_category = new ArrayCollection();
         $this->populations = new ArrayCollection();
+        $this->picturesTools = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,6 +211,36 @@ class Tools
     {
         if ($this->populations->removeElement($population)) {
             $population->removeTool($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PicturesTools>
+     */
+    public function getPicturesTools(): Collection
+    {
+        return $this->picturesTools;
+    }
+
+    public function addPicturesTool(PicturesTools $picturesTool): self
+    {
+        if (!$this->picturesTools->contains($picturesTool)) {
+            $this->picturesTools[] = $picturesTool;
+            $picturesTool->setTool($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicturesTool(PicturesTools $picturesTool): self
+    {
+        if ($this->picturesTools->removeElement($picturesTool)) {
+            // set the owning side to null (unless already changed)
+            if ($picturesTool->getTool() === $this) {
+                $picturesTool->setTool(null);
+            }
         }
 
         return $this;
