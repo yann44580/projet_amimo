@@ -25,8 +25,14 @@
 					<tr>
 						<td>{{ tool.id }}</td>
 						<td>{{ tool.toolTitle }}</td>
-						<td>{{ tool.toolContent }}</td>
-						<td>{{ tool.toolPicture }}</td>
+						<td>{{ tool.toolContent|raw }}</td>
+						<td>
+							{% for image in tool.picturesTools %}
+								<div>
+									<img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+								</div>
+							{% endfor %}
+						</td>
 						<td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
 						<td>{{ tool.toolAuthor }}</td>
 						<td>

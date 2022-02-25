@@ -29,10 +29,6 @@ class Tools
      */
     private $tool_content;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tool_picture;
 
     /**
      * @ORM\Column(type="date")
@@ -65,7 +61,7 @@ class Tools
     private $populations;
 
     /**
-     * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool")
+     * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool",cascade={"persist"})
      */
     private $picturesTools;
 
@@ -105,17 +101,6 @@ class Tools
         return $this;
     }
 
-    public function getToolPicture(): ?string
-    {
-        return $this->tool_picture;
-    }
-
-    public function setToolPicture(string $tool_picture): self
-    {
-        $this->tool_picture = $tool_picture;
-
-        return $this;
-    }
 
     public function getToolPublicationDate(): ?\DateTimeInterface
     {

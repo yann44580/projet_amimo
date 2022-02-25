@@ -1,4 +1,48 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="input-field">
+{{ form_label(form.tool_title) }}
+{{ form_widget(form.tool_title) }}
+</div>
+<div class="input-field">
+{{ form_row(form.tool_content) }}
+</div>
+<div class="input-field">
+{{ form_row(form.tool_publication_date) }}
+</div>
+<div class="input-field">
+{{ form_label(form.tool_author) }}
+{{ form_widget(form.tool_author) }}
+</div>
+<div class="input-field">
+{{ form_row(form.animal_category) }}
+</div>
+<div class="input-field">
+{{ form_row(form.category_tool) }}
+</div>
+<div class="input-field">
+{{ form_row(form.populations) }}
+</div>
+<div class="file-field input-field">
+<div class="btn">
+    {{ form_label(form.picturesTools) }}
+    {{ form_widget(form.picturesTools) }}
+</div>
+<div class="file-path-wrapper">
+    <input class="file-path validate" type="text" placeholder="Upload file"/>
+</div>
+</div>
+{# Si la route est "annonces_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'admin_tools_edit' %}
+<h2>Images</h2>
+{% for image in tool.picturesTools %}
+    <div>
+        <img
+        src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+
+        {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+        <a href="{{ path('admin_tools_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+    </div>
+{% endfor %}
+{% endif %}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
