@@ -3,15 +3,29 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
-<img class="img_nav" src="{{asset("uploads/pictures/helena1.jpg")}}" alt="un_chien_et_une_femme">
-<section class="citation">
-<div class="container">
-<div class="citation1">
-<p>- Qu'est ce que signifie << apprivoiser >> ? </br> - C'est une chose trop oubliée, </br> dit le renard. Ca signifie << créer des liens>>.</p>
-</div>
-<div class="citation_img"><img src="{{asset("uploads/pictures/petit_prince.png")}}" alt="renard et petit prince">
-</div>
-</div>
-</section>
+<header>
+    <div class="picture_menu">
+        <div class="icone">
+    <a href="{{ path('app_login') }}"><i class="fas fa-user"></i><div class="title">S'incrire ou s'identifier</div> </a>
+        </div>
+        <div class="picture">
+            <img class="img_nav" src="{{asset("uploads/pictures/helena1.jpg")}}" alt="un_chien_et_une_femme"
+                id="presentation_picture">
+        </div>
+    </div>
+</header>
+<main>
+    <section class="citation">
+        <div class="container">
+            <div class="citation1">
+                <p>- Qu'est ce que signifie << apprivoiser>> ? </br> - C'est une chose trop oubliée, </br> dit le
+                        renard. Ca signifie << créer des liens>>.</p>
+            </div>
+            <div class="citation_img"><img src="{{asset("uploads/pictures/petit_prince.png")}}"
+                    alt="renard et petit prince">
+            </div>
+        </div>
+    </section>
+</main>
 
 {% endblock %}

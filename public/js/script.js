@@ -4,4 +4,5 @@ $(document).ready(function () {
   $('.collapsible').collapsible();
   $('select').formSelect();
   $('.datepicker').datepicker();
+  $('#presentation_picture').fadeIn(3600);
 });

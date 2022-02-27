@@ -1,16 +1,17 @@
 .base nav {
   position: absolute;
-  top: 60vh;
+  top: 65vh;
   background-color: #fb8128;
-  height: 69px;
+  height: 50px;
+  z-index: 1;
 }
 
 .base nav .nav-wrapper .brand-logo {
-  top: -8px;
+  top: -17px;
 }
 
 .base nav .nav-wrapper .menu {
-  height: 69px;
+  height: 50px;
   width: 90vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,8 +24,12 @@
           align-items: center;
 }
 
+.base nav .nav-wrapper .menu li a {
+  font-size: 1.3rem;
+}
+
 .base nav .nav-wrapper .menu li .top {
-  top: -65px;
+  top: -58px;
 }
 
 .admin nav .nav-wrapper a {
@@ -39,17 +44,9 @@
   left: -150px;
 }
 
-.img_nav {
+.login {
   width: 100vw;
-}
-
-.citation {
-  background-color: antiquewhite;
-}
-
-.citation .container {
-  height: 35vh;
-  width: 100%;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -59,24 +56,106 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #eeaf90;
 }
 
-.citation .container .citation1 p {
+.login .login_user {
+  border: #fb8128 1px solid;
+  border-radius: 15px;
+  width: 50vw;
+  height: 50vh;
+  background-color: gray;
+}
+
+.login .login_user img {
+  width: 80px;
+  height: 80px;
+}
+
+header {
+  min-height: 70vh;
+}
+
+header .picture_menu {
   position: relative;
+}
+
+header .picture_menu .icone {
+  position: absolute;
   z-index: 1;
+  width: 100%;
+}
+
+header .picture_menu .icone i {
+  float: right;
+  font-size: 1.5rem;
+  margin: 10px 10px;
+  color: #019a93;
+}
+
+header .picture_menu .icone .title {
+  display: none;
+  float: right;
+  margin-top: 15px;
+  width: 155px;
+  border: #019a93 1px solid;
+  border-radius: 15px;
+}
+
+header .picture_menu .icone a:hover .title {
+  display: initial;
+}
+
+header .picture_menu .picture {
+  position: absolute;
+}
+
+header .picture_menu .picture .img_nav {
+  width: 100vw;
+  display: none;
+}
+
+Main .citation {
+  background-color: antiquewhite;
+}
+
+Main .citation .container {
+  height: 35vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+Main .citation .container .citation1 {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+Main .citation .container .citation1 p {
   display: block;
-  border: brown solid 1.5px;
-  width: 70vw;
-  font-family: 'Rouge Script', cursive;
+  border: #eeaf90 solid 2.5px;
+  width: 50vw;
+  font-family: 'Clicker Script', cursive;
   font-size: 3rem;
   text-align: center;
 }
 
-.citation .container .citation_img img {
-  position: relative;
+Main .citation .container .citation_img {
+  padding-left: 70%;
+}
+
+Main .citation .container .citation_img img {
   display: block;
-  width: 33vw;
-  height: 25vh;
-  opacity: 0.5;
+  width: 21vw;
+  height: 18vh;
+  opacity: 0.9;
 }
 /*# sourceMappingURL=style.css.map */
