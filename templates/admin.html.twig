@@ -30,9 +30,7 @@
 
 	</head>
 	<body class="admin">
-	<pre>
-		{{ dump(app.user) }}
-	</pre>
+
 
 		<ul id="dropdown1" class="dropdown-content drop_left">
 			<li>
@@ -83,9 +81,11 @@
 			<li>
 				<div class="user-view">
 					<div class="background">
-						<img src="images/office.jpg">
-					</div>
-					<a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+				</div>
+			<a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+	
+				{{ app.user.lastname }}	{{ app.user.firstname }}
+
 					<a href="#name">
 						<span class="white-text name">John Doe</span>
 					</a>
