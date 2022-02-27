@@ -6,13 +6,16 @@
 .base {
     nav {
         position: absolute;
-        top: 5vh;
-        background: linear-gradient(#b8ffa4, #977d66);
-        height: 90px;
+        top: 60vh;
+        background-color:#fb8128;
+        height: 69px;
 
         .nav-wrapper {
+            .brand-logo{
+                top: -8px;
+            }
             .menu {
-                height: 90px;
+                height: 69px;
                 width: 90vw;
                 display: flex;
                 justify-content: space-evenly;
@@ -58,9 +61,36 @@
 }
 
 .citation {
-    height: 40vh;
     background-color: antiquewhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .container{
+        height: 35vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .citation1{
+
+            p{
+                position: relative;
+                z-index: 1;
+                display: block;
+                border: brown solid 1.5px;
+                width: 70vw;
+                font-family: 'Rouge Script', cursive;
+                font-size: 3rem;
+                text-align: center;
+            }
+        }
+        .citation_img{
+            
+            img{
+                position: relative;
+                display: block;
+                width: 33vw;
+                height: 25vh;
+                opacity: 0.5;
+            }
+        }
+    
+    }
 }

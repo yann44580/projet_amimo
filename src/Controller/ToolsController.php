@@ -6,10 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+ /**
+     * @Route("/tools", name="tools_")
+     */
+
 class ToolsController extends AbstractController
 {
     /**
-     * @Route("/tools", name="tools")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
@@ -19,7 +23,7 @@ class ToolsController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="tools_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
