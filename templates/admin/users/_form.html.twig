@@ -31,6 +31,19 @@
 		<input class="file-path validate" type="text" placeholder="Upload file"/>
 	</div>
 </div>
+{# Si la route est "annonces_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'admin_users_edit' %}
+	<h2>Images</h2>
+	{# {% for image in users.picture %} #}
+		<div>
+			<img
+			src="{{ asset('/uploads/'~user.picture) }}" alt="" width="150">
+
+			{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+		<a href="{{ path('admin_users_delete_image')}}" data-delete data-token="{{ csrf_token('delete' ~ user.picture) }}">Supprimer</a>
+		</div>
+	{# {% endfor %} #}
+{% endif %}
 <div class="input-field">
 	{{ form_row(form.presentation) }}
 </div>
@@ -39,4 +52,4 @@
 </div> 
 
 <button class="btn">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
+{{ form_end(form) }} 

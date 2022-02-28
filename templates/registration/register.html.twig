@@ -24,42 +24,53 @@
 
 
 		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/> {% block title %}{% endblock %}
 
-{% block title %}{% endblock %}
+		{% block body %}
+			<div class="login">
+				<div class="login_user register">
+					<div class="logo_login">
+						<img src="{{asset("uploads/d786b9fc71d768bb901a0924feeb3bf3.jpg")}}" alt="">
+					</div>
+					<div class="form">
+						<h1>Nouvel adhérent</h1>
 
-{% block body %}
-<div class="container">
-    <h1>Nouvel adhérent</h1>
-
-    {{ form_start(registrationForm) }}
-    <div class="input-field">
-	{{ form_label(registrationForm.lastname) }}
-	{{ form_widget(registrationForm.lastname) }}
-</div>
-<div class="input-field">
-{{ form_label(registrationForm.firstname) }}
-{{ form_widget(registrationForm.firstname) }}
-</div>
-<div class="input-field">
-{{ form_label(registrationForm.address) }}
-{{ form_widget(registrationForm.address) }}
-</div>
-<div class="input-field">
-{{ form_label(registrationForm.city) }}
-{{ form_widget(registrationForm.city) }}
-</div>
-<div class="input-field">
-{{ form_label(registrationForm.email) }}
-{{ form_widget(registrationForm.email) }}
-</div>
-<div class="input-field">
-{{ form_label(registrationForm.plainPassword) }}
-{{ form_widget(registrationForm.plainPassword) }}
-</div>
-
-        <button type="submit" class="btn">Enregistrer</button>
-    {{ form_end(registrationForm) }}
-</div>
-{% endblock %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script></body></html>
+						{{ form_start(registrationForm) }}
+						<div class="input-field">
+							{{ form_label(registrationForm.lastname) }}
+							{{ form_widget(registrationForm.lastname) }}
+						</div>
+						<div class="input-field">
+							{{ form_label(registrationForm.firstname) }}
+							{{ form_widget(registrationForm.firstname) }}
+						</div>
+						<div class="input-field">
+							{{ form_label(registrationForm.address) }}
+							{{ form_widget(registrationForm.address) }}
+						</div>
+						<div class="input-field">
+							{{ form_label(registrationForm.city) }}
+							{{ form_widget(registrationForm.city) }}
+						</div>
+						<div class="input-field">
+							{{ form_label(registrationForm.email) }}
+							{{ form_widget(registrationForm.email) }}
+						</div>
+						<div class="input-field">
+							{{ form_label(registrationForm.plainPassword) }}
+							{{ form_widget(registrationForm.plainPassword) }}
+						</div>
+						<div class="button">
+							<button type="submit" class="btn">Enregistrer</button>
+							<a href="{{path('home')}}">
+								<but class="btn">Retour au site</but>
+							</a>
+						</div>
+						{{ form_end(registrationForm) }}
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	</head>
+</html>

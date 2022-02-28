@@ -1,6 +1,50 @@
+.base .picture_menu {
+  position: relative;
+  height: 75vh;
+}
+
+.base .picture_menu .icone {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+
+.base .picture_menu .icone i {
+  float: right;
+  font-size: 1.5rem;
+  margin: 10px 10px;
+  color: #019a93;
+}
+
+.base .picture_menu .icone .title {
+  display: none;
+  float: right;
+  margin-top: 15px;
+  width: 155px;
+  border: #019a93 1px solid;
+  border-radius: 15px;
+}
+
+.base .picture_menu .icone a:hover .title {
+  display: initial;
+}
+
+.base .picture_menu .picture {
+  position: absolute;
+}
+
+.base .picture_menu .picture .img_nav {
+  width: 100vw;
+  height: 75vh;
+  display: none;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
 .base nav {
   position: absolute;
-  top: 65vh;
   background-color: #fb8128;
   height: 50px;
   z-index: 1;
@@ -42,6 +86,17 @@
 
 .admin ul li .drop_left {
   left: -150px;
+}
+
+.admin ul li .identification_admin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 2rem;
 }
 
 .login {
@@ -107,51 +162,26 @@
   color: black;
 }
 
-.login .login_user .form .btn {
+.login .login_user .form .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 40%;
+}
+
+.login .login_user .form .button .btn {
   background-color: #019a93;
 }
 
-header {
-  min-height: 70vh;
+.login .login_user .form .button p {
+  margin: 0;
 }
 
-header .picture_menu {
-  position: relative;
-}
-
-header .picture_menu .icone {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-}
-
-header .picture_menu .icone i {
-  float: right;
-  font-size: 1.5rem;
-  margin: 10px 10px;
-  color: #019a93;
-}
-
-header .picture_menu .icone .title {
-  display: none;
-  float: right;
-  margin-top: 15px;
-  width: 155px;
-  border: #019a93 1px solid;
-  border-radius: 15px;
-}
-
-header .picture_menu .icone a:hover .title {
-  display: initial;
-}
-
-header .picture_menu .picture {
-  position: absolute;
-}
-
-header .picture_menu .picture .img_nav {
-  width: 100vw;
-  display: none;
+.login .register {
+  height: 90vh;
 }
 
 Main .citation {

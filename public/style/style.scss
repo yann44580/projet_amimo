@@ -1,13 +1,52 @@
 // 1. BASE
 // 2. ADMIN
-// 3. LOGIN
+// 3. LOGIN/REGISTER
 // 4. MAIN_INDEX
 
 // 1. BASE ============================================
 .base {
+    .picture_menu {
+        position: relative;
+        height: 75vh;
+        .icone{
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            i{
+                float: right;
+                font-size: 1.5rem;
+                margin: 10px 10px;
+                color: #019a93;
+            }
+            .title{
+                display: none;
+                float: right;
+                margin-top: 15px;
+                width: 155px;
+                border: #019a93 1px solid;
+                border-radius: 15px;
+              
+            }
+            a:hover .title{
+                display: initial;
+            }
+        }
+        .picture {
+            position: absolute;
+            .img_nav {
+                width: 100vw;
+                height: 75vh;
+                display: none;
+                object-fit: cover;
+                object-position: center;
+
+            }
+        }
+
+    }
     nav {
         position: absolute;
-        top: 65vh;
+        // top: 67vh;
         background-color: #fb8128;
         height: 50px;
         z-index: 1;
@@ -58,11 +97,16 @@
             .drop_left {
                 left: -150px;
             }
+            .identification_admin{
+                display: flex;
+                flex-direction: column;
+                font-size: 2rem;
+            }
         }
     }
 }
 
-// 3.LOGIN
+// 3.LOGIN/REGISTER
 .login{
     width: 100vw;
     height: 100vh;
@@ -103,52 +147,25 @@
             label{
                 color: black;
             }
-            .btn{
-                background-color: #019a93;
+            .button{
+                display: flex;
+                justify-content: space-between;
+                width: 40%;
+                .btn{
+                    background-color: #019a93;
+                }
+                p{
+                    margin: 0;
+                }
             }
         }
+    }
+    .register{
+        height: 90vh;
     }
 }
 
 // 4.MAIN_INDEX
-header {
-    min-height: 70vh;
-    .picture_menu {
-        position: relative;
-        .icone{
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            i{
-                float: right;
-                font-size: 1.5rem;
-                margin: 10px 10px;
-                color: #019a93;
-            }
-            .title{
-                display: none;
-                float: right;
-                margin-top: 15px;
-                width: 155px;
-                border: #019a93 1px solid;
-                border-radius: 15px;
-              
-            }
-            a:hover .title{
-                display: initial;
-            }
-        }
-        .picture {
-            position: absolute;
-            .img_nav {
-                width: 100vw;
-                display: none;
-
-            }
-        }
-
-    }
-}
 
 Main {
     .citation {

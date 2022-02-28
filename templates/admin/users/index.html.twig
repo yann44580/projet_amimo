@@ -7,7 +7,6 @@
 	<div class="container">
 		<h1>Les adhérents</h1>
 
-		<a href="{{ path('admin_users_new') }}">Un nouvel utilisateur</a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -35,7 +34,10 @@
 						<td>{{ user.birthdayDate ? user.birthdayDate|date('Y-m-d') : '' }}</td>
 						<td>{{ user.address }}</td>
 						<td>{{ user.city }}</td>
-						<td>{{ user.picture }}</td>
+						{# <td>{{ user.picture }}</td> #}
+						<td>
+							<img src="{{ asset('/uploads/'~user.picture) }}" alt="" width="150">
+						</td>
 						<td>{{ user.presentation|raw }}</td>
 						<td>
 							<a href="{{ path('admin_users_show', {'id': user.id}) }}">Voir</a>
