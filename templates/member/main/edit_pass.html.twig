@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifications de mes informations
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modification de mom mot de passe</h1>
+
+		<form method="post">
+			<div class="input-field col s6">
+				<input id="mdp" type="text" class="validate" name="pass">
+				<label for="mdp">Mot de passe</label>
+			</div>
+			<div class="input-field col s6">
+				<input id="mdp2" type="text" class="validate" name="pass2">
+				<label for="mdp2">Confirmer le mot de passe</label>
+			</div>
+			<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+		</form>
+	</div>
+{% endblock %}

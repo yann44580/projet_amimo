@@ -8,31 +8,37 @@
     .picture_menu {
         position: relative;
         height: 75vh;
-        .icone{
+
+        .icone {
             position: absolute;
             z-index: 1;
             width: 100%;
-            i{
+
+            i {
                 float: right;
                 font-size: 1.5rem;
                 margin: 10px 10px;
                 color: #019a93;
             }
-            .title{
+
+            .title {
                 display: none;
                 float: right;
                 margin-top: 15px;
                 width: 155px;
                 border: #019a93 1px solid;
                 border-radius: 15px;
-              
+
             }
-            a:hover .title{
+
+            a:hover .title {
                 display: initial;
             }
         }
+
         .picture {
             position: absolute;
+
             .img_nav {
                 width: 100vw;
                 height: 75vh;
@@ -44,9 +50,8 @@
         }
 
     }
+
     nav {
-        position: absolute;
-        // top: 67vh;
         background-color: #fb8128;
         height: 50px;
         z-index: 1;
@@ -78,6 +83,63 @@
     }
 }
 
+footer {
+    .contact {
+        display: flex;
+        width: 100%;
+        background-color: #022EB0;
+
+        .contact1 {
+            width: 33%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            i {
+                padding-right: 20px;
+                padding-bottom: 20px;
+                font-size: 2rem;
+            }
+        }
+
+        .divider {
+            width: 1px;
+            height: 60px;
+            margin-top: 25px;
+        }
+    }
+
+    .partner {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 190px;
+        background-color: #095499;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .partner1 {
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .copyright {
+        text-align: center;
+        background-color: #022EB0;
+
+        .img {
+            width: 15px;
+            height: 15px;
+            margin-top: 5px;
+        }
+    }
+}
+
 // 2.ADMIN
 .admin {
     nav {
@@ -97,7 +159,8 @@
             .drop_left {
                 left: -150px;
             }
-            .identification_admin{
+
+            .identification_admin {
                 display: flex;
                 flex-direction: column;
                 font-size: 2rem;
@@ -107,14 +170,15 @@
 }
 
 // 3.LOGIN/REGISTER
-.login{
+.login {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #eeaf90;
-    .login_user{
+
+    .login_user {
         width: 60vw;
         height: 60vh;
         // padding: 50px 50px;
@@ -122,21 +186,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         .logo_login {
             position: absolute;
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
-            img{
+
+            img {
                 width: 80px;
                 height: 80px;
                 z-index: 1;
                 border-radius: 15px;
-                
+
             }
         }
-        .form  {
+
+        .form {
             background-color: gray;
             border: #fb8128 1px solid;
             border-radius: 15px;
@@ -144,23 +211,28 @@
             width: 90%;
             height: 90%;
             padding: 20px 20px;
-            label{
+
+            label {
                 color: black;
             }
-            .button{
+
+            .button {
                 display: flex;
                 justify-content: space-between;
                 width: 40%;
-                .btn{
+
+                .btn {
                     background-color: #019a93;
                 }
-                p{
+
+                p {
                     margin: 0;
                 }
             }
         }
     }
-    .register{
+
+    .register {
         height: 90vh;
     }
 }
@@ -170,6 +242,10 @@
 Main {
     .citation {
         background-color: antiquewhite;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .container {
             height: 35vh;
@@ -211,3 +287,19 @@ Main {
         }
     }
 }
+
+@media screen and (max-width: 1160px) {
+    .base {
+        nav {
+            ul {
+                li:nth-child(6) {
+                    display: none;
+                }
+                a{
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+

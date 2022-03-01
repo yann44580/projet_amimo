@@ -44,7 +44,6 @@
 }
 
 .base nav {
-  position: absolute;
   background-color: #fb8128;
   height: 50px;
   z-index: 1;
@@ -74,6 +73,73 @@
 
 .base nav .nav-wrapper .menu li .top {
   top: -58px;
+}
+
+footer .contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: #022EB0;
+}
+
+footer .contact .contact1 {
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .contact .contact1 i {
+  padding-right: 20px;
+  padding-bottom: 20px;
+  font-size: 2rem;
+}
+
+footer .contact .divider {
+  width: 1px;
+  height: 60px;
+  margin-top: 25px;
+}
+
+footer .partner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 190px;
+  background-color: #095499;
+}
+
+footer .partner img {
+  width: 100px;
+  height: 100px;
+}
+
+footer .partner .partner1 a {
+  color: black;
+}
+
+footer .copyright {
+  text-align: center;
+  background-color: #022EB0;
+}
+
+footer .copyright .img {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
 }
 
 .admin nav .nav-wrapper a {
@@ -186,6 +252,16 @@
 
 Main .citation {
   background-color: antiquewhite;
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 Main .citation .container {
@@ -226,5 +302,14 @@ Main .citation .container .citation_img img {
   width: 21vw;
   height: 18vh;
   opacity: 0.9;
+}
+
+@media screen and (max-width: 1160px) {
+  .base nav ul li:nth-child(6) {
+    display: none;
+  }
+  .base nav ul a {
+    padding: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

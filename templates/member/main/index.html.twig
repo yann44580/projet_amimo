@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes données
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+    {% for message in app.flashes('message') %}
+        <div class="alert alert-success">{{message}}</div>
+    {% endfor %}
+		<h1>Mon profil</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+
+					<th>Email</th>
+					<th>Nom de famille</th>
+					<th>Prénom</th>
+					<th>Adresse</th>
+					<th>Ville</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+
+					<td>{{ app.user.email }}</td>
+					<td>{{ app.user.lastname }}</td>
+					<td>{{ app.user.firstname }}</td>
+					<td>{{ app.user.address }}</td>
+					<td>{{ app.user.city }}</td>
+
+					<td>
+						<a href="{{ path('member_main_edit_pass', {'id': app.user.id}) }}">modifier le mot de passe</a>
+						<a href="{{ path('member_main_edit', {'id': app.user.id}) }}">Modifier le profil</a>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<div class="tool">
+			<h1>Mes fiches</h1>
+		</div>
+		{# {% for tool in app.user.tools %}
+		<div>Titre :</div>
+		    <div>{{ toll.tooltitle }}</div>
+		    {% endfor %} #}
+
+	</div>
+{% endblock %}

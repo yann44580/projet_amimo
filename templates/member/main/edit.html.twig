@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifications de mes informations
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modification de mes informations</h1>
+
+		{{ include('member/main/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('member_main_index') }}">Revenir à ma page</a>
+
+		{{ include('member/main/_delete_form.html.twig') }}
+	</div>
+{% endblock %}
