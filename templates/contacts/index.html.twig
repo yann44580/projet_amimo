@@ -1,31 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactsController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
-<div class="form">
-<form method="post">
+<div class="container">
+    <h1>Messagerie</h1>
+
+    {{ include('contacts/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('home') }}">Retour</a>
+
    
-
-    <h1 class="h3 mb-3 font-weight-normal">Identifiez-vous</h1>
-    <div class="input-field">
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    </div>
-    <div class="input-field">
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    </div>
-    <div class="input-field">
-        <label for="inputPassword">Mot de passe</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-    </div>
-
-
-    <div class="button">
-        <button class="btn btn-lg btn-primary" type="submit">
-            Envoyer
-        </button>
-    </div>
-</form>
+</div>
 {% endblock %}
