@@ -1,129 +1,144 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	<meta charset="UTF-8">
-	<!--Style-->
-	<link rel="stylesheet" href="{{asset('style/style.css')}}">
-	<!--icone-->
-	<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
-	<!-- Jquery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!--JavaScript-->
-	<script src="{{asset('js/script.js')}}" defer></script>
-	<script src="{{ asset('js/images.js') }}" defer></script>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<head>
+		<meta
+		charset="UTF-8">
+		<!--Style-->
+		<link
+		rel="stylesheet" href="{{asset('style/style.css')}}">
+		<!--icone-->
+		<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
+		<!-- Jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!--JavaScript-->
+		<script src="{{asset('js/script.js')}}" defer></script>
+		<script src="{{ asset('js/images.js') }}" defer></script>
+		<!--Import Google Icon Font-->
+		<link
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Compiled and minified CSS -->
+		<link
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-	<!--Let browser know website is optimized for mobile-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>
-		{% block title %}Admin
-		{% endblock %}
-	</title>
+		<!--Let browser know website is optimized for mobile-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>
+			{% block title %}Admin
+			{% endblock %}
+		</title>
 
 
-</head>
+	</head>
 
-<body class="admin">
+	<body class="admin">
 
 
-	<ul id="dropdown1" class="dropdown-content drop_left">
-		<li>
-			<a href="{{ path('admin_tool_categories_index') }}">Catégories</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_tools_index') }}">Outils</a>
-		</li>
-	</ul>
-	<ul id="dropdown2" class="dropdown-content drop_left">
-		<li>
-			<a href="{{ path('admin_animals_categories_index') }}">Catégories</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_animals_index') }}">Animaux</a>
-		</li>
-	</ul>
-	<ul id="dropdown3" class="dropdown-content drop_left">
-		<li>
-			<a href="{{ path('admin_blog_categories_index') }}">Catégories</a>
-		</li>
-		<li>
-			<a href="{{ path('admin_blogs_index') }}">Articles</a>
-		</li>
-	</ul>
-	<nav>
-		<div class="nav-wrapper">
-			<a href="#" data-target="slide-out" class="sidenav-trigger">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li>
-					<a href="sass.html"></a>
-				</li>
-				<li>
-					<a href="badges.html"></a>
-				</li>
-				<li>
-					<a href="{{path('home')}}">Retour au site</a>
-				</li>
-			</ul>
-		</div>
-
-		<!-- navbar content here  -->
-	</nav>
-
-	<ul id="slide-out" class="sidenav">
-		<li>
-			<div class="user-view identification_admin">
-				{% if app.user %}
-				<img src="{{ asset('/uploads/'~app.user.picture) }}" alt="" width="150">
-				{{ app.user.lastname }} {{ app.user.firstname }}
-				{% endif %}
-
+		<ul id="dropdown1" class="dropdown-content drop_left">
+			<li>
+				<a href="{{ path('admin_tool_categories_index') }}">Catégories</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_tools_index') }}">Outils</a>
+			</li>
+		</ul>
+		<ul id="dropdown2" class="dropdown-content drop_left">
+			<li>
+				<a href="{{ path('admin_animals_categories_index') }}">Catégories</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_animals_index') }}">Animaux</a>
+			</li>
+		</ul>
+		<ul id="dropdown3" class="dropdown-content drop_left">
+			<li>
+				<a href="{{ path('admin_blog_categories_index') }}">Catégories</a>
+			</li>
+			<li>
+				<a href="{{ path('admin_blogs_index') }}">Articles</a>
+			</li>
+		</ul>
+		<ul id="dropdown4" class="dropdown-content drop_left">
+			<li>
+				<a href="{{ path('admin_blog_categories_index') }}">Catégories</a>
+			</li>
+			<li>
+				<a href="{{path('admin_populations_index')}}">Public</a>
+			</li>
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" data-target="slide-out" class="sidenav-trigger">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li>
+						<a href="sass.html"></a>
+					</li>
+					<li>
+						<a href="badges.html"></a>
+					</li>
+					<li>
+						<a href="{{path('home')}}">Retour au site</a>
+					</li>
+				</ul>
 			</div>
-		</li>
-		<li>
-			<a href="{{path('admin_associations_index')}}">Association</a>
-		</li>
-		<li>
-			<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown1">
-				Outils
-				<i class="material-icons right">play_arrow</i>
-			</a>
-		</li>
-		<li>
-			<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown2">
-				Animaux
-				<i class="material-icons right">play_arrow</i>
-			</a>
-		</li>
-		<li>
-			<a class="waves-effect" href="{{path('admin_populations_index')}}">Public</a>
-		</li>
-		<li>
-			<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown3">
-				Blog
-				<i class="material-icons right">play_arrow</i>
-			</a>
-		</li>
-		<li>
-			<a class="waves-effect" href="{{path('admin_contacts_index')}}">Contact</a>
-		</li>
-		<li>
-			<a class="waves-effect" href="{{path('admin_partners_index')}}">Partenaires</a>
-		</li>
-		<li>
-			<a class="waves-effect" href="{{path('admin_users_index')}}">Utilisateurs</a>
-		</li>
 
-	</ul>
-	{% block body %}{% endblock %}
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+			<!-- navbar content here  -->
+		</nav>
 
-</body>
+		<ul id="slide-out" class="sidenav">
+			<li>
+				<div class="user-view identification_admin">
+					{% if app.user %}
+						<img src="{{ asset('/uploads/'~app.user.picture) }}" alt="" width="150">
+						{{ app.user.lastname }}
+						{{ app.user.firstname }}
+					{% endif %}
+
+				</div>
+			</li>
+			<li>
+				<a href="{{path('admin_associations_index')}}">Association</a>
+			</li>
+			<li>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown1">
+					Outils
+					<i class="material-icons right">play_arrow</i>
+				</a>
+			</li>
+			<li>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown2">
+					Animaux
+					<i class="material-icons right">play_arrow</i>
+				</a>
+			</li>
+			<li>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown4">Public
+					<i class="material-icons right">play_arrow</i>
+				</a>
+			</li>
+			<li>
+				<a class="dropdown-trigger drop_nav" href="#!" data-target="dropdown3">
+					Blog
+					<i class="material-icons right">play_arrow</i>
+				</a>
+			</li>
+			<li>
+				<a class="waves-effect" href="{{path('admin_contacts_index')}}">Contact</a>
+			</li>
+			<li>
+				<a class="waves-effect" href="{{path('admin_partners_index')}}">Partenaires</a>
+			</li>
+			<li>
+				<a class="waves-effect" href="{{path('admin_users_index')}}">Utilisateurs</a>
+			</li>
+
+		</ul>
+		{% block body %}{% endblock %}
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	</body>
 
 </html>

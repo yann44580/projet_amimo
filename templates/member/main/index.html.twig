@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="container">
     {% for message in app.flashes('message') %}
-        <div class="alert alert-success">{{message}}</div>
+        <div class="card-panel green accent-3">{{message}}</div>
     {% endfor %}
 		<h1>Mon profil</h1>
 

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/member/main")
@@ -98,103 +99,40 @@ class MainController extends AbstractController
     /**
      * @Route("/{id}/edit_pass", name="member_main_edit_pass", methods={"GET", "POST"})
      */
-    // public function editPass(Request $request, Users $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
-    // {
-    //     if ($request->isMethod('POST')){
-
-    //         $user = $this->getUser();
-
-    //         // On vérifie si les 2 mots de passe sont identique
-    //         if($request->request->get('pass') == $request->request->get('pass2')){
-    //             $user->setPassword(
-    //                 $userPasswordHasher->hashPassword(
-    //                         $user,
-    //                         $request->request->get('pass'))
-    //                 );
-           
-
-    //             $entityManager->flush();
-    //             $this->addFlash('message', 'Mot de passe modifié'); 
-
-    //             return $this->redirectToRoute('member_main_index');
-    //         }else{
-    //             $this->addFlash('error', 'les deux mots de passe sont identique.');
-    //         }
-    //     }
-
-    //     return $this->renderForm('member/main/edit_pass.html.twig');
-    // }
-
-     /**
-     * @Route("/{id}/edit_pass", name="member_main_edit_pass", methods={"GET", "POST"})
-     */
-    public function editPass(Request $request, Users $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function editPass(Request $request, UserInterface $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
-      
+        if ($request->isMethod('POST')){
+            $plainPassword = $request->get('old_password');
+
             $user = $this->getUser();
-            
-    	    $form = $this->createForm(Users1Type::class, $user);
+            $checkPass = $userPasswordHasher->isPasswordValid($user, $plainPassword);
+            if($checkPass === true) {
 
-    	    $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            // $userPasswordHasher = $this->get('security.password_encoder');
-dump($request->request);die();
-            $oldPassword = $request->request->get('etiquettebundle_user')['oldPassword'];
-
-            // Si l'ancien mot de passe est bon
-
-            if ( $userPasswordHasher->isPasswordValid($user, $oldPassword)) {
-
-                $newEncodedPassword =  $userPasswordHasher->hashPassword($user, $user->getPassword());
-
-                $user->setPassword($newEncodedPassword);
-
-                
-
-                $entityManager->persist($user);
-
-                $entityManager->flush();
-
-                $this->addFlash('notice', 'Votre mot de passe à bien été changé !');
-
-                return $this->redirectToRoute('member_main_index');
-
-            } else {
-
-                $this->addFlash('error', "l'ancien mot de passe est incorrect");
-
+                // On vérifie si les 2 mots de passe sont identique
+                if($request->request->get('pass') == $request->request->get('pass2')){
+                    $user->setPassword(
+                        $userPasswordHasher->hashPassword(
+                                $user,
+                                $request->request->get('pass'))
+                        );
+               
+    
+                    $entityManager->flush();
+                    $this->addFlash('message', 'Mot de passe modifié'); 
+    
+                    return $this->redirectToRoute('member_main_index');
+                }else{
+                    $this->addFlash('error', 'les deux mots de passe ne sont pas identique.');
+                }
+            }else{
+                $this->addFlash('error', "le mot de passe actuel n'est pas correct.");
             }
 
         }
 
-    	
-
         return $this->renderForm('member/main/edit_pass.html.twig');
-
-    
-
     }
 
-    //         // On vérifie si les 2 mots de passe sont identique
-    //         if($request->request->get('pass') == $request->request->get('pass2')){
-    //             $user->setPassword(
-    //                 $userPasswordHasher->hashPassword(
-    //                         $user,
-    //                         $request->request->get('pass'))
-    //                 );
-           
+ 
 
-    //             $entityManager->flush();
-    //             $this->addFlash('message', 'Mot de passe modifié'); 
-
-    //             return $this->redirectToRoute('member_main_index');
-    //         }else{
-    //             $this->addFlash('error', 'les deux mots de passe sont identique.');
-    //         }
-    //     }
-
-    //     return $this->renderForm('member/main/edit_pass.html.twig');
-    // }
 }

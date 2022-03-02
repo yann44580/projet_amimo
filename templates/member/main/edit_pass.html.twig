@@ -7,23 +7,28 @@
 <div class="container">
 	<h1>Modification de mom mot de passe</h1>
 
+	{% for message in app.flashes('error') %}
+        <div class="card-panel red accent-4">{{message}}</div>
+    {% endfor %}
+
 	<form method="post">
 		<div class="input-field">
 			<label for="inputPassword">Mot de passe</label>
-			<input type="password" name="password" id="inputPassword" class="form-control"
+			<input type="text" name="old_password" id="inputPassword" class="form-control"
 				autocomplete="current-password" required>
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 		</div>
 		<div class="input-field col s6">
-			<input id="mdp" type="text" class="validate" name="pass">
+			<input id="mdp" type="text" class="validate" name="pass" required>
 			<label for="mdp">Mot de passe</label>
 		</div>
 		<div class="input-field col s6">
-			<input id="mdp2" type="text" class="validate" name="pass2">
+			<input id="mdp2" type="text" class="validate" name="pass2" required>
 			<label for="mdp2">Confirmer le mot de passe</label>
 		</div>
 		<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
 	</form>
+<a href="{{ path('member_main_index') }}">retour</a>
 </div>
 {% endblock %}

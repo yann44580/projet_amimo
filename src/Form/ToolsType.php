@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Tools;
 use App\Entity\Populations;
 use App\Entity\ToolCategories;
+use App\Entity\PopulationsType;
 use App\Entity\AnimalsCategories;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -14,6 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ToolsType extends AbstractType
 {
@@ -51,12 +53,29 @@ class ToolsType extends AbstractType
                 'choice_label' => 'population_name',
                 'multiple' => true,
                 'expanded' => false
+
             ])
             ->add('picturesTools', FileType::class, [
                 'label' => 'Photos',
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false
+            ])
+            ->add('population_type', EntityType::class, [
+                'class' => PopulationsType::class, 
+                'label' => "Catégories de public",
+                'choice_label' => 'population_type_name',
+                'multiple' => true,
+                'expanded' => false
+            ])
+            ->add('size_group', ChoiceType::class, [
+                'expanded' => false,
+                'multiple' => false,
+                'label' => 'Type de séance',
+                'choices' => [
+                    'Groupe' => 'Groupe',
+                    'Individuelle' => 'Individuelle'
+                ]
             ]);
     }
 

@@ -65,11 +65,22 @@ class Tools
      */
     private $picturesTools;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=PopulationsType::class, inversedBy="tools")
+     */
+    private $population_type;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $size_group;
+
     public function __construct()
     {
         $this->animal_category = new ArrayCollection();
         $this->populations = new ArrayCollection();
         $this->picturesTools = new ArrayCollection();
+        $this->population_type = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,6 +238,42 @@ class Tools
                 $picturesTool->setTool(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PopulationsType>
+     */
+    public function getPopulationType(): Collection
+    {
+        return $this->population_type;
+    }
+
+    public function addPopulationType(PopulationsType $populationType): self
+    {
+        if (!$this->population_type->contains($populationType)) {
+            $this->population_type[] = $populationType;
+        }
+
+        return $this;
+    }
+
+    public function removePopulationType(PopulationsType $populationType): self
+    {
+        $this->population_type->removeElement($populationType);
+
+        return $this;
+    }
+
+    public function getSizeGroup(): ?string
+    {
+        return $this->size_group;
+    }
+
+    public function setSizeGroup(string $size_group): self
+    {
+        $this->size_group = $size_group;
 
         return $this;
     }
