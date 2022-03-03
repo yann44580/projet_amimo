@@ -346,6 +346,11 @@ Main .citation .container .citation_img img {
   opacity: 0.9;
 }
 
+Main .partners .card {
+  width: 15vw;
+  height: 35vh;
+}
+
 @media screen and (max-width: 1160px) {
   .base nav ul li:nth-child(6) {
     display: none;
