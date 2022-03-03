@@ -1,0 +1,25 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Les flyers de l'association
+{% endblock %}
+
+{% block body %}
+
+	<main>
+		<section class="flyer">
+        <div class="container">
+        
+        {% for association in associations %}
+						{# <pre>
+						     {{ dump(associations) }}
+						 </pre> #}
+						{% for image in association.picturesassociations %}
+							<img src="{{ asset('uploads/' ~ image.pictureassociationname) }}" alt="" width="400" id="flyer">
+						{% endfor %}
+                    {% endfor %}
+                        
+                    </div>
+		</section>
+	</main>
+
+{% endblock %}

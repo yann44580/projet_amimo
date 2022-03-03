@@ -1,12 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Messagerie</h1>
+<div class="container contact">
+    <h1>Contact</h1>
 
-    {{ include('contacts/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('contacts/_form.html.twig', {'button_label': 'Envoyer'}) }}
 
     <a href="{{ path('home') }}">Retour</a>
 

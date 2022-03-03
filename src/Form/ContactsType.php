@@ -17,7 +17,8 @@ class ContactsType extends AbstractType
     {
         $builder
             ->add('contact_content', TextareaType::class, [
-                'label' => 'Votre message'
+                'label' => 'Votre message', 
+                'attr' => ['class' => 'test']
             ])
             ->add('contact_subject', TextType::class, [
                 'label' => 'sujet'

@@ -102,6 +102,11 @@ footer .contact .contact1 i {
   font-size: 2rem;
 }
 
+footer .contact .contact1 a {
+  color: black;
+  margin-bottom: 1em;
+}
+
 footer .contact .divider {
   width: 1px;
   height: 60px;
@@ -129,6 +134,7 @@ footer .partner img {
 
 footer .partner .partner1 a {
   color: black;
+  font-style: italic;
 }
 
 footer .copyright {
@@ -140,6 +146,42 @@ footer .copyright .img {
   width: 15px;
   height: 15px;
   margin-top: 5px;
+}
+
+.base1 nav {
+  margin-top: 20px;
+  height: 50px;
+  background-color: #1A60A1;
+}
+
+.base1 nav .nav-wrapper .brand-logo {
+  top: -17px;
+}
+
+.base1 nav .nav-wrapper .menu {
+  height: 50px;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.base1 nav .nav-wrapper .menu li a {
+  font-size: 1.3rem;
+}
+
+.base1 nav .nav-wrapper .menu li .top {
+  top: -58px;
+}
+
+.base1 .body {
+  min-height: 90vh;
 }
 
 .admin nav .nav-wrapper a {
@@ -311,5 +353,51 @@ Main .citation .container .citation_img img {
   .base nav ul a {
     padding: 0;
   }
+}
+
+.contact .input .test {
+  width: 68vw;
+  height: 25vh;
+}
+
+.contact .input label {
+  font-size: 1.1rem;
+}
+
+.contact .button {
+  text-align: center;
+}
+
+.contact a {
+  float: right;
+}
+
+.flyer {
+  background-color: antiquewhite;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flyer .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.flyer .container #flyer:nth-child(n) {
+  margin: 50px;
 }
 /*# sourceMappingURL=style.css.map */

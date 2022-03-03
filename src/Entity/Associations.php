@@ -43,7 +43,7 @@ class Associations
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\Regex("/^[0-9]{8,10}$/")
+     * @Assert\Regex("/0[1-9]\d{8}/")
      */
     private $association_phone;
     
@@ -54,9 +54,14 @@ class Associations
     private $association_content;
 
     /**
-     * @ORM\OneToMany(targetEntity=PicturesAssociation::class, mappedBy="association",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=PicturesAssociation::class, mappedBy="association",cascade={"persist"}, orphanRemoval=true)
      */
     private $picturesAssociations;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $association_logo;
 
     public function __construct()
     {
@@ -166,6 +171,18 @@ class Associations
                 $picturesAssociation->setAssociation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAssociationLogo(): ?string
+    {
+        return $this->association_logo;
+    }
+
+    public function setAssociationLogo(string $association_logo): self
+    {
+        $this->association_logo = $association_logo;
 
         return $this;
     }

@@ -1,7 +1,10 @@
 // 1. BASE
-// 2. ADMIN
-// 3. LOGIN/REGISTER
-// 4. MAIN_INDEX
+// 2. BASE1
+// 3. ADMIN
+// 4. LOGIN/REGISTER
+// 5. MAIN_INDEX
+// 6. CONTACT
+// 7. FLYER
 
 // 1. BASE ============================================
 .base {
@@ -100,6 +103,10 @@ footer {
                 padding-bottom: 20px;
                 font-size: 2rem;
             }
+            a{
+                color: black;
+                margin-bottom: 1em;
+            }
         }
 
         .divider {
@@ -124,6 +131,7 @@ footer {
         .partner1 {
             a {
                 color: black;
+                font-style: italic;
             }
         }
     }
@@ -140,7 +148,45 @@ footer {
     }
 }
 
-// 2.ADMIN
+// 2.BASE1 ===============================================================================
+
+.base1 {
+    nav {
+        margin-top: 20px;
+        height: 50px;
+        background-color: #1A60A1;
+
+        .nav-wrapper {
+            .brand-logo {
+                top: -17px;
+            }
+
+            .menu {
+                height: 50px;
+                width: 90vw;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+
+                li {
+                    a {
+                        font-size: 1.3rem;
+                    }
+
+                    .top {
+                        top: -58px;
+                    }
+                }
+            }
+        }
+    }
+
+    .body {
+        min-height: 90vh;
+    }
+}
+
+// 3.ADMIN =================================================================================
 .admin {
     nav {
         .nav-wrapper {
@@ -169,7 +215,7 @@ footer {
     }
 }
 
-// 3.LOGIN/REGISTER
+// 4.LOGIN/REGISTER ========================================================================
 .login {
     width: 100vw;
     height: 100vh;
@@ -237,7 +283,7 @@ footer {
     }
 }
 
-// 4.MAIN_INDEX
+// 5.MAIN_INDEX =============================================================================
 
 Main {
     .citation {
@@ -295,7 +341,8 @@ Main {
                 li:nth-child(6) {
                     display: none;
                 }
-                a{
+
+                a {
                     padding: 0;
                 }
             }
@@ -303,3 +350,41 @@ Main {
     }
 }
 
+// 6. CONTACT ===============================================================================
+
+.contact {
+    .input {
+        .test {
+            width: 68vw;
+            height: 25vh;
+        }
+
+        label {
+            font-size: 1.1rem;
+        }
+    }
+    .button{
+        text-align: center;
+    }
+    a {
+        float: right;
+    }
+}
+
+// 7. FLYER =================================================================
+.flyer{
+    background-color: antiquewhite;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        #flyer:nth-child(n){
+            margin: 50px;
+        }
+       
+    }
+}

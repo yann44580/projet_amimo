@@ -1,23 +1,25 @@
 {{ form_start(form) }}
 <div class="input-field">
-{{ form_label(form.contact_fullname) }}
-{{ form_widget(form.contact_fullname) }}
+	{{ form_label(form.contact_fullname) }}
+	{{ form_widget(form.contact_fullname) }}
 </div>
 <div class="input-field">
-{{ form_label(form.contact_firstname) }}
-{{ form_widget(form.contact_firstname) }}
+	{{ form_label(form.contact_firstname) }}
+	{{ form_widget(form.contact_firstname) }}
 </div>
 <div class="input-field">
-{{ form_label(form.contact_email) }}
-{{ form_widget(form.contact_email) }}
+	{{ form_label(form.contact_email) }}
+	{{ form_widget(form.contact_email) }}
 </div>
 <div class="input-field">
-{{ form_label(form.contact_subject) }}
-{{ form_widget(form.contact_subject) }}
+	{{ form_label(form.contact_subject) }}
+	{{ form_widget(form.contact_subject) }}
 </div>
-<div class="input-field">
-{{ form_row(form.contact_content) }}
-
+<div class="input">
+	{{ form_label(form.contact_content) }}
+	{{ form_widget(form.contact_content) }}
 </div>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="button">
+	<button class="btn">{{ button_label|default('Envoyer') }}</button>
+</div>
 {{ form_end(form) }}

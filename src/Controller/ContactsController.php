@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contacts;
+use Datetime;
 use App\Form\ContactsType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,8 +31,10 @@ class ContactsController extends AbstractController
         $contact = new Contacts();
         $form = $this->createForm(ContactsType::class, $contact);
         $form->handleRequest($request);
+        $date = new Datetime();
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setContactDate($date);
             $entityManager->persist($contact);
             $entityManager->flush();
 

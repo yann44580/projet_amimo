@@ -32,8 +32,8 @@
 
 </head>
 
-<body class="base">
-	<div class="picture_menu">
+<body class="base1">
+	{# <div class="picture_menu">
 		<div class="icone">
 			<a href="{{ path('app_login') }}">
 				<i class="fas fa-user"></i>
@@ -44,7 +44,7 @@
 			<img class="img_nav" src="{{asset("uploads/pictures/helena1.jpg")}}" alt="un_chien_et_une_femme"
 				id="presentation_picture">
 		</div>
-	</div>
+	</div> #}
 
 	<ul id="dropdown1" class="dropdown-content top">
 		<li>
@@ -177,10 +177,10 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">Partenaires</a>
+					<a href="sass.html">Partenaires</a>
 				</li>
 				<li>
-					<a href="{{path('flyer')}}">Brochures</a>
+					<a href="badges.html">Brochures</a>
 				</li>
 				<li>
 					{% if app.user %}
@@ -218,10 +218,10 @@
 		</a>
 	</li>
 	<li>
-		<a href="sass.html">Partenaires</a>
+		<a href="#">Partenaires</a>
 	</li>
 	<li>
-		<a href="badges.html">Brochures</a>
+		<a href="{{path('flyer')}}">Brochures</a>
 	</li>
 	<li>
 		{% if app.user %}
@@ -232,7 +232,9 @@
 		{% endif %}
 	</li>
 </ul>
+<div class="body">
 {% block body %}{% endblock %}
+</div>
 <footer>
 	<div class="contact">
 		<div class="contact1">

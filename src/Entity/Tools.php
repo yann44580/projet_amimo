@@ -61,7 +61,7 @@ class Tools
     private $populations;
 
     /**
-     * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool",cascade={"persist"}, orphanRemoval=true)
      */
     private $picturesTools;
 

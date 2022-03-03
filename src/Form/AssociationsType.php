@@ -30,6 +30,21 @@ class AssociationsType extends AbstractType
                 'mapped' => false,
                 'required' => false
             ])
+            ->add('association_logo', FileType::class, [
+                'label' => 'logo',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/*',
+                        ],
+
+                        'mimeTypesMessage' => 'Veuillez entrer un format de document valide',
+                    ])
+                ],
+            ])
         ;
     }
 

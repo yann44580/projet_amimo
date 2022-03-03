@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/admin/associations", name="admin_associations_")
@@ -31,13 +33,35 @@ class AssociationsController extends AbstractController
     /**
      * @Route("/new", name="new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,  SluggerInterface $slugger): Response
     {
         $association = new Associations();
         $form = $this->createForm(AssociationsType::class, $association);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('association_logo')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'association_logo' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $association->setAssociationLogo($newFilename);
+            }
+
+
             // On récupère les images transmises
             $picturesAssociations = $form->get('picturesAssociations')->getData();
 
@@ -82,12 +106,33 @@ class AssociationsController extends AbstractController
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Associations $association, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Associations $association, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(AssociationsType::class, $association);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('association_logo')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'associaion_logo' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $association->setAssociationLogo($newFilename);
+            }
+
             // On récupère les images transmises
             $picturesAssociations = $form->get('picturesAssociations')->getData();
 
