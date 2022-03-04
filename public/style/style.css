@@ -346,9 +346,25 @@ Main .citation .container .citation_img img {
   opacity: 0.9;
 }
 
-Main .partners .card {
+Main #partners {
+  min-height: 500px;
+}
+
+Main #partners .carousel {
+  height: 430px;
+}
+
+Main #partners .carousel .card {
   width: 15vw;
   height: 35vh;
+}
+
+Main #partners .carousel .card .card-image {
+  height: 60%;
+}
+
+Main #partners .carousel .card .card-image img {
+  max-height: 150px;
 }
 
 @media screen and (max-width: 1160px) {

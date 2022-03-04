@@ -16,7 +16,7 @@
             </div>
         </div>
     </section>
-    <section class="partners">
+    <section id="partners">
         <div class="carousel">
             {% for partner in partners %}
                 <div class="carousel-item">
@@ -24,13 +24,12 @@
                         <div class="card-image">
                             <img src="{{ asset('uploads/' ~ partner.partnerpicture) }}">
                             <span class="card-title">Card Title</span>
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons md1"  ></i></a>
                         </div>
                         <div class="card-content">
-                            <p>I am a very simple card.</p>
+                            <p>{{ partner.partnerContent|raw }}</p>
                         </div>
                         <div class="card-action">
-                            <a href="#">This is a link</a>
+                            <a href="{{ partner.partnerWebLink }}" target="_blank">Allez voir le site!</a>
                         </div>
                         {# <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>

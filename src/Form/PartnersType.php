@@ -6,6 +6,7 @@ use App\Entity\Partners;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -28,7 +29,9 @@ class PartnersType extends AbstractType
                 'label' => 'Ville'
             ])
             ->add('partner_mail',EmailType::class, [
-                'label' => 'mail'
+                'label' => 'mail',
+                'required' => false,
+                'empty_data' => '',
             ])
             ->add('partner_phone', TelType::class, [
                 'label' => 'Téléphone'
@@ -37,13 +40,29 @@ class PartnersType extends AbstractType
                 'label' => 'Présentation'
             ])
             ->add('partner_picture', FileType::class, [
-                'label' => 'Télécharger'
+                'label' => 'Télécharger',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/*',
+                        ],
+
+                        'mimeTypesMessage' => 'Veuillez entrer un format de document valide',
+                    ])
+                ],
             ])
             ->add('partner_web_link', TextType::class, [
-                'label' => 'Lien internet'
+                'label' => 'Lien internet',
+                'required' => false,
+                'empty_data' => '',
             ])
             ->add('partner_referent', TextType::class, [
-            'label' => 'personne référente'
+            'label' => 'personne référente',
+            'required' => false, 
+            'empty_data' => '',
             ])
         ;
     }
