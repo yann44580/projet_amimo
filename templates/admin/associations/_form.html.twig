@@ -54,5 +54,8 @@
 		</div>
 	{% endfor %}
 {% endif %}
-<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+<div class="confirm_select">
+<a href="{{ path('admin_associations_index') }}"><p>Retour à la liste</p><button class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></button></a>
+
+<a href=""><p>Enregistrer les modifications</p><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
 {{ form_end(form) }}

@@ -6,6 +6,7 @@
 <div class="container">
     <h1>Categories d'animaux</h1>
 
+    <a href="{{ path('admin_animals_categories_new') }}">Créer un nouvelle catégorie</a>
     <table class="table">
         <thead>
             <tr>
@@ -15,23 +16,27 @@
             </tr>
         </thead>
         <tbody>
-        {% for animals_category in animals_categories %}
+            {% for animals_category in animals_categories %}
             <tr>
                 <td>{{ animals_category.id }}</td>
                 <td>{{ animals_category.animalCategoryName }}</td>
                 <td>
-                    <a href="{{ path('admin_animals_categories_show', {'id': animals_category.id}) }}">Voir</a>
-                    <a href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}">Modifier</a>
+                  
+                    <div class="confirm">
+                    <button class="btn"><a
+                    href="{{ path('admin_animals_categories_edit', {'id': animals_category.id}) }}"><i
+                class="far fa-edit"></i></a></button>
+                {{ include('admin/animals_categories/_delete_form.html.twig') }}
+                            </div>
                 </td>
             </tr>
-        {% else %}
+            {% else %}
             <tr>
                 <td colspan="3">no records found</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_animals_categories_new') }}">Créer un nouvelle catégorie</a>
 </div>
 {% endblock %}

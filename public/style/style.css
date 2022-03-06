@@ -1,6 +1,6 @@
 .base .picture_menu {
   position: relative;
-  height: 75vh;
+  height: 60vh;
 }
 
 .base .picture_menu .icone {
@@ -35,7 +35,7 @@
 
 .base .picture_menu .picture .img_nav {
   width: 100vw;
-  height: 75vh;
+  height: 60vh;
   display: none;
   -o-object-fit: cover;
      object-fit: cover;
@@ -184,19 +184,30 @@ footer .copyright .img {
   min-height: 90vh;
 }
 
+.admin nav {
+  background-color: #1767ff;
+}
+
 .admin nav .nav-wrapper a {
   display: block;
 }
 
-.admin ul li .drop_nav {
+.admin .sidenav {
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #526184), color-stop(50%, rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, #526184 50%, rgba(0, 0, 0, 0) 50%);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.admin .sidenav li .drop_nav {
   width: 200px;
 }
 
-.admin ul li .drop_left {
+.admin .sidenav li .drop_left {
   left: -150px;
 }
 
-.admin ul li .identification_admin {
+.admin .sidenav li .identification_admin {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -205,6 +216,72 @@ footer .copyright .img {
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: 2rem;
+}
+
+.admin .sidenav li ul li {
+  background-color: #4864B5;
+}
+
+.admin .confirm_select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 150px;
+}
+
+.admin .confirm_select img {
+  width: 40px;
+  height: 40px;
+}
+
+.admin .confirm_select button {
+  width: 80px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.admin .confirm_select button i {
+  color: black;
+}
+
+.admin .confirm_select p {
+  opacity: 0;
+}
+
+.admin .confirm_select a:hover p {
+  opacity: 1;
+}
+
+.admin .confirm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 200px;
+}
+
+.admin .confirm p {
+  display: none;
+}
+
+.admin i {
+  color: black;
 }
 
 .login {
@@ -294,7 +371,7 @@ footer .copyright .img {
 
 Main .citation {
   background-color: antiquewhite;
-  height: 50vh;
+  height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,6 +421,10 @@ Main .citation .container .citation_img img {
   width: 21vw;
   height: 18vh;
   opacity: 0.9;
+}
+
+Main .blog {
+  min-height: 100vh;
 }
 
 Main #partners {
