@@ -43,5 +43,10 @@
 	{% endfor %}
 {% endif %}
 
-<button class="btn">{{ button_label|default('Save') }}</button>
+<div class="confirm_select">
+<a href="{{ path('admin_blogs_index') }}"><p>Retour à la liste</p><div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></div></a>
+
+<a href=""><p>Enregistrer les modifications</p><button class="btn teal lighten-1"><img src="{{ asset('/uploads/icone/save1.png') }}" alt=""></button></a>
+
+{# <button class="btn">{{ button_label|default('Save') }}</button> #}
 {{ form_end(form) }}

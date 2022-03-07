@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		<h1>Notre association</h1>
-
+<div class="container">
+<h1>Notre association</h1>
+	
+<a href="{{ path('admin_associations_new') }}">Nouvelle association</a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -30,7 +31,7 @@
 						<td>{{ association.associationMail }}</td>
 						<td>{{ association.associationPhone }}</td>
 						<td>{{ association.associationContent|raw }}</td>
-						<td>
+						<td class="confirm">
 							<a href="{{ path('admin_associations_show', {'id': association.id}) }}"><button class="btn  blue-grey darken-1"><i class="fas fa-eye"></i></button></a>
 							<a href="{{ path('admin_associations_edit', {'id': association.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
 						</td>
@@ -43,6 +44,5 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('admin_associations_new') }}">Nouvelle association</a>
 	</div>
 {% endblock %}

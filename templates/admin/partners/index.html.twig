@@ -33,13 +33,14 @@
 						<td>{{ partner.partnerCity }}</td>
 						<td>{{ partner.partnerMail }}</td>
 						<td>{{ partner.partnerPhone }}</td>
-						<td>{{ partner.partnerContent }}</td>
+						<td>{{ partner.partnerContent|raw }}</td>
 						<td>{{ partner.partnerPicture }}</td>
 						<td>{{ partner.partnerWebLink }}</td>
 						<td>{{ partner.partnerReferent }}</td>
-						<td>
-							<a href="{{ path('admin_partners_show', {'id': partner.id}) }}">Voir</a>
-							<a href="{{ path('admin_partners_edit', {'id': partner.id}) }}">Modifier</a>
+						<td class="confirm">
+							{# <a href="{{ path('admin_partners_show', {'id': partner.id}) }}">Voir</a> #}
+							<a href="{{ path('admin_partners_edit', {'id': partner.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/partners/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

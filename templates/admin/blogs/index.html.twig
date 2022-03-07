@@ -29,9 +29,10 @@
 						<td>{{ blog.blogContent|raw }}</td>
 						<td>{{ blog.blogAuthor }}</td>
 						<td>{{ blog.blogPublicationDate ? blog.blogPublicationDate|date('Y-m-d') : '' }}</td>
-						<td>
-							<a href="{{ path('admin_blogs_show', {'id': blog.id}) }}">Voir</a>
-							<a href="{{ path('admin_blogs_edit', {'id': blog.id}) }}">Modifier</a>
+						<td class="confirm">
+							{# <a href="{{ path('admin_blogs_show', {'id': blog.id}) }}">Voir</a> #}
+							<a href="{{ path('admin_blogs_edit', {'id': blog.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/blogs/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}
@@ -41,6 +42,10 @@
 				{% endfor %}
 			</tbody>
 		</table>
+		<div>
+		{% do blogs.setPageRange(2) %}
+		{{knp_pagination_render(blogs, 'admin/pagination.html.twig')}}
+		</div>
 
 	</div>
 {% endblock %}

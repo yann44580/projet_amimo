@@ -35,9 +35,10 @@
 						</td>
 						<td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
 						<td>{{ tool.toolAuthor }}</td>
-						<td>
-							<a href="{{ path('admin_tools_show', {'id': tool.id}) }}">Voir</a>
-							<a href="{{ path('admin_tools_edit', {'id': tool.id}) }}">Modifier</a>
+						<td class="confirm">
+							{# <a href="{{ path('admin_tools_show', {'id': tool.id}) }}">Voir</a> #}
+							<a href="{{ path('admin_tools_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/tools/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

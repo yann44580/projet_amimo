@@ -3,5 +3,8 @@
 	{{ form_label(form.population_name) }}
 	{{ form_widget(form.population_name) }}
 </div>
-<button class="btn">{{ button_label|default('Enregistrer') }}</button>
+<div class="confirm_select">
+<a href="{{ path('admin_populations_index') }}"><p>Retour à la liste</p><div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></div></a>
+
+<a href=""><p>Enregistrer les modifications</p><button class="btn teal lighten-1"><img src="{{ asset('/uploads/icone/save1.png') }}" alt=""></button></a>
 {{ form_end(form) }}

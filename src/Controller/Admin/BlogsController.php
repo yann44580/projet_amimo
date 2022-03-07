@@ -6,12 +6,15 @@ use App\Entity\Blogs;
 use App\Form\BlogsType;
 use App\Entity\PicturesBlog;
 use App\Repository\BlogsRepository;
+use ContainerMh75GxN\PaginatorInterface_82dac15;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/admin/blogs")
@@ -21,10 +24,20 @@ class BlogsController extends AbstractController
     /**
      * @Route("/", name="admin_blogs_index", methods={"GET"})
      */
-    public function index(BlogsRepository $blogsRepository): Response
+    public function index(
+        BlogsRepository $blogsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
     {
+        $data = $blogsRepository->findAll();
+
+        $blog = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1),2 
+        );        
         return $this->render('admin/blogs/index.html.twig', [
-            'blogs' => $blogsRepository->findAll(),
+            'blogs' => $blog,
         ]);
     }
 

@@ -30,9 +30,10 @@
 						<td>{{ contact.contactEmail }}</td>
 						<td>{{ contact.contactFullname }}</td>
 						<td>{{ contact.contactFirstname }}</td>
-						<td>
-							<a href="{{ path('admin_contacts_show', {'id': contact.id}) }}">Voir</a>
-							<a href="{{ path('admin_contacts_edit', {'id': contact.id}) }}"></a>
+						<td class="confirm">
+							<a href="{{ path('admin_contacts_show', {'id': contact.id}) }}"><button class="btn  blue-grey darken-1"><i class="fas fa-eye"></i></button></a>
+							{# <a href="{{ path('admin_contacts_edit', {'id': contact.id}) }}"></a> #}
+							{{ include('admin/contacts/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

@@ -21,9 +21,10 @@
 					<tr>
 						<td>{{ blog_category.id }}</td>
 						<td>{{ blog_category.blogCategoryName }}</td>
-						<td>
-							<a href="{{ path('admin_blog_categories_show', {'id': blog_category.id}) }}">Voir</a>
-							<a href="{{ path('admin_blog_categories_edit', {'id': blog_category.id}) }}">Modifier</a>
+						<td class ="confirm">
+							{# <a href="{{ path('admin_blog_categories_show', {'id': blog_category.id}) }}">Voir</a> #}
+							<a href="{{ path('admin_blog_categories_edit', {'id': blog_category.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/blog_categories/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

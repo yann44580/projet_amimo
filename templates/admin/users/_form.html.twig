@@ -50,6 +50,10 @@
 <div class="input-field">
 	{{ form_row(form.roles) }}
 </div> 
+<div class="confirm_select">
+<a href="{{ path('admin_users_index') }}"><p>Retour à la liste</p><button class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></button></a>
 
-<button class="btn">{{ button_label|default('Enregistrer') }}</button>
+<a href=""><p>Enregistrer les modifications</p><button class="btn teal lighten-1"><img src="{{ asset('/uploads/icone/save1.png') }}" alt=""></button></a>
+
+{# <button class="btn">{{ button_label|default('Enregistrer') }}</button> #}
 {{ form_end(form) }} 

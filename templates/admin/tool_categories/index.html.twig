@@ -21,9 +21,10 @@
 					<tr>
 						<td>{{ tool_category.id }}</td>
 						<td>{{ tool_category.toolCategoryName }}</td>
-						<td>
-							<a href="{{ path('admin_tool_categories_show', {'id': tool_category.id}) }}">voir</a>
-							<a href="{{ path('admin_tool_categories_edit', {'id': tool_category.id}) }}">modifier</a>
+						<td class="confirm">
+							{# <a href="{{ path('admin_tool_categories_show', {'id': tool_category.id}) }}"><button class="btn  blue-grey darken-1"><i class="fas fa-eye"></i></button></a> #}
+							<a href="{{ path('admin_tool_categories_edit', {'id': tool_category.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/tool_categories/_delete_form.html.twig') }}
 						</td>
 					</tr>
 				{% else %}

@@ -242,6 +242,13 @@ footer {
                 color: black;
             }
         }
+        .btn{
+            width: 80px;
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         p{
             opacity: 0;
         }

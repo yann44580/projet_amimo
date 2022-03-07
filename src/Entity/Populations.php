@@ -29,15 +29,10 @@ class Populations
      */
     private $tool;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=PopulationsType::class, mappedBy="population")
-     */
-    private $populationsTypes;
 
     public function __construct()
     {
         $this->tool = new ArrayCollection();
-        $this->populationsTypes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,30 +76,4 @@ class Populations
         return $this;
     }
 
-    /**
-     * @return Collection<int, PopulationsType>
-     */
-    public function getPopulationsTypes(): Collection
-    {
-        return $this->populationsTypes;
-    }
-
-    public function addPopulationsType(PopulationsType $populationsType): self
-    {
-        if (!$this->populationsTypes->contains($populationsType)) {
-            $this->populationsTypes[] = $populationsType;
-            $populationsType->addPopulation($this);
-        }
-
-        return $this;
-    }
-
-    public function removePopulationsType(PopulationsType $populationsType): self
-    {
-        if ($this->populationsTypes->removeElement($populationsType)) {
-            $populationsType->removePopulation($this);
-        }
-
-        return $this;
-    }
 }
