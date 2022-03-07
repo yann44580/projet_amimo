@@ -38,7 +38,7 @@
 						<td>
 							<img src="{{ asset('/uploads/'~user.picture) }}" alt="" width="150">
 						</td>
-						<td>{{ user.presentation|raw }}</td>
+						<td>{{ user.presentation|length >100 ? user.presentation|raw|slice(0,100) : user.presentation|raw }}</td>
 						<td class="confirm">
 							{# <a href="{{ path('admin_users_show', {'id': user.id}) }}">Voir</a> #}
 							<a href="{{ path('admin_users_edit', {'id': user.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button</a>

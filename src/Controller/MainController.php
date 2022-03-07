@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UsersRepository;
 use App\Repository\PartnersRepository;
 use App\Repository\AssociationsRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +42,17 @@ class MainController extends AbstractController
     {
         return $this->render('flyer/index.html.twig', [
             'associations' => $associationsRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/equipe", name="equipe")
+     */
+
+    public function team(UsersRepository $usersRepository): Response
+    {
+        return $this->render('equipe/index.html.twig', [
+            'users' => $usersRepository->findAll(),
         ]);
     }
 }
