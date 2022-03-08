@@ -1,0 +1,26 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}L'équipe
+{% endblock %}
+
+{% block body %}
+
+<main>
+	<section class="team">
+		<div class="container">
+
+
+		{% for association in associations %}
+			<div class="presentation">
+				<p>{{association.associationcontent|raw}}</p>
+					{# <pre>
+						{{ dump(association) }}
+					</pre> #}
+			</div>
+			{% endfor %}
+
+		</div>
+	</section>
+</main>
+
+{% endblock %}

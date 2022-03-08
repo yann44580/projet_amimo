@@ -49,7 +49,7 @@ class ToolsController extends AbstractController
 
                 // On copie le fichier dans le dossier uploads
                 $image->move(
-                    $this->getParameter('images_directory'),
+                    $this->getParameter('images_directory_tools'),
                     $fichier
                 );
 
@@ -99,7 +99,7 @@ class ToolsController extends AbstractController
  
                  // On copie le fichier dans le dossier uploads
                  $image->move(
-                     $this->getParameter('images_directory'),
+                     $this->getParameter('images_directory_tools'),
                      $fichier
                  );
  
@@ -145,7 +145,7 @@ class ToolsController extends AbstractController
             // On récupère le nom de l'image
             $nom = $picturesTools->getPictureToolName();
             // On supprime le fichier
-            unlink($this->getParameter('images_directory') . '/' . $nom);
+            unlink($this->getParameter('images_directory_tools') . '/' . $nom);
 
             // On supprime l'entrée de la base
             $entityManager->remove($picturesTools);

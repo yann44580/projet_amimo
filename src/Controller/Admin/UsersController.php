@@ -62,7 +62,7 @@ class UsersController extends AbstractController
                 // Déplacez le fichier dans le répertoire où les brochures sont stockées
                 try {
                     $user_picture->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('images_directory_users'),
                         $newFilename
                     );
                 } catch (FileException $e) {
@@ -107,7 +107,7 @@ class UsersController extends AbstractController
             // On récupère le nom de l'image
             $nom = $picturesBlog->getPictureBlogName();
             // On supprime le fichier
-            unlink($this->getParameter('images_directory') . '/' . $nom);
+            unlink($this->getParameter('images_directory_users') . '/' . $nom);
 
             // On supprime l'entrée de la base
             $entityManager->remove($picturesBlog);

@@ -32,6 +32,9 @@
 <div class="input-field">
 	{{ form_row(form.association_content) }}
 </div>
+<div class="input-field">
+	{{ form_row(form.association_statut) }}
+</div>
 <div class="file-field input-field">
 	<div class="btn">
 		{{ form_label(form.picturesAssociations) }}
@@ -44,8 +47,9 @@
 {# Si la route est "annonces_edit on affiche les images #}
 {% if app.request.attributes.get('_route') == 'admin_associations_edit' %}
 	<h2>Images</h2>
-	{% for image in association.picturesAssociations %}
-		<div>
+		<div class="raw">
+		{% for image in association.picturesAssociations %}
+		<div class="col s2">
 			<img
 			src="{{ asset('/uploads/'~image.pictureassociationname) }}" alt="" width="150">
 
@@ -53,6 +57,7 @@
 			<a href="{{ path('admin_associations_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
 		</div>
 	{% endfor %}
+	</div>
 {% endif %}
 <div class="confirm_select">
 <a href="{{ path('admin_associations_index') }}"><p>Retour à la liste</p><div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></div></a>

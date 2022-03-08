@@ -72,7 +72,7 @@ class AssociationsController extends AbstractController
 
                 // On copie le fichier dans le dossier uploads
                 $image->move(
-                    $this->getParameter('images_directory'),
+                    $this->getParameter('images_directory_asso'),
                     $fichier
                 );
 
@@ -143,7 +143,7 @@ class AssociationsController extends AbstractController
 
                 // On copie le fichier dans le dossier uploads
                 $image->move(
-                    $this->getParameter('images_directory'),
+                    $this->getParameter('images_directory_asso'),
                     $fichier
                 );
 
@@ -188,7 +188,7 @@ class AssociationsController extends AbstractController
             // On récupère le nom de l'image
             $nom = $picturesAssociation->getPictureAssociationName();
             // On supprime le fichier
-            unlink($this->getParameter('images_directory') . '/' . $nom);
+            unlink($this->getParameter('images_directory_asso') . '/' . $nom);
 
             // On supprime l'entrée de la base
             $entityManager->remove($picturesAssociation);

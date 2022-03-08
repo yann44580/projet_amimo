@@ -1,0 +1,26 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}L'équipe
+{% endblock %}
+
+{% block body %}
+
+<main>
+	<section class="mediation">
+		<div class="container">
+
+
+		{% for mediation in mediations %}
+			<div class="presentation">
+				<p>{{mediation.mediationhistory|raw}}</p>
+					{# <pre>
+						{{ dump(association) }}
+					</pre> #}
+			</div>
+			{% endfor %}
+
+		</div>
+	</section>
+</main>
+
+{% endblock %}

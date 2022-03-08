@@ -43,7 +43,7 @@ class AnimalsType extends AbstractType
                 'class' => AnimalsCategories::class,
                 'label' => 'Catégorie animal',
                 'choice_label' => 'animal_category_name',
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => false
             ])
         ;

@@ -63,6 +63,11 @@ class Associations
      */
     private $association_logo;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $association_statut;
+
     public function __construct()
     {
         $this->picturesAssociations = new ArrayCollection();
@@ -183,6 +188,18 @@ class Associations
     public function setAssociationLogo(string $association_logo): self
     {
         $this->association_logo = $association_logo;
+
+        return $this;
+    }
+
+    public function getAssociationStatut(): ?string
+    {
+        return $this->association_statut;
+    }
+
+    public function setAssociationStatut(string $association_statut): self
+    {
+        $this->association_statut = $association_statut;
 
         return $this;
     }

@@ -45,6 +45,7 @@ class AssociationsType extends AbstractType
                     ])
                 ],
             ])
+            ->add('association_statut', CKEditorType::class)
         ;
     }
 

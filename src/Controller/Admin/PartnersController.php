@@ -6,6 +6,7 @@ use App\Entity\Partners;
 use App\Form\PartnersType;
 use App\Repository\PartnersRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,10 +23,20 @@ class PartnersController extends AbstractController
     /**
      * @Route("/", name="index", methods={"GET"})
      */
-    public function index(PartnersRepository $partnersRepository): Response
+    public function index(
+        PartnersRepository $partnersRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
     {
+        $data = $partnersRepository->findAll();
+
+        $partners = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),4
+        );
         return $this->render('admin/partners/index.html.twig', [
-            'partners' => $partnersRepository->findAll(),
+            'partners' => $partners,
         ]);
     }
 
@@ -48,7 +59,7 @@ class PartnersController extends AbstractController
                 // Déplacez le fichier dans le répertoire où les brochures sont stockées
                 try {
                     $picture->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('images_directory_partners'),
                         $newFilename
                     );
                 } catch (FileException $e) {
@@ -99,7 +110,7 @@ class PartnersController extends AbstractController
                 // Déplacez le fichier dans le répertoire où les brochures sont stockées
                 try {
                     $picture->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('images_directory_partners'),
                         $newFilename
                     );
                 } catch (FileException $e) {

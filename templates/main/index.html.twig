@@ -26,11 +26,10 @@
                 <div class="carousel-item">
                     <div class="card sticky-action">
                         <div class="card-image">
-                            <img src="{{ asset('uploads/' ~ partner.partnerpicture) }}">
-                            <span class="card-title">Card Title</span>
+                            <img src="{{ asset('uploads/partners/' ~ partner.partnerpicture) }}">
                         </div>
                         <div class="card-content">
-                            <p>{{ partner.partnerContent|raw }}</p>
+                            <p>{{ partner.partnerContent|length > 30 ? partner.partnerContent|slice(0,30)|raw : partner.partnerContent|raw }}</p>
                         </div>
                         <div class="card-action">
                             <a href="{{ partner.partnerWebLink }}" target="_blank">Allez voir le site!</a>

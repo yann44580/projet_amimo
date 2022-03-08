@@ -47,7 +47,7 @@ class AnimalsController extends AbstractController
                 // Déplacez le fichier dans le répertoire où les brochures sont stockées
                 try {
                     $picture->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('images_directory_animals'),
                         $newFilename
                     );
                 } catch (FileException $e) {
@@ -97,7 +97,7 @@ class AnimalsController extends AbstractController
                 // Déplacez le fichier dans le répertoire où les brochures sont stockées
                 try {
                     $picture->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('images_directory_animals'),
                         $newFilename
                     );
                 } catch (FileException $e) {

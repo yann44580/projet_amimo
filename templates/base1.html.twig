@@ -48,10 +48,10 @@
 
 	<ul id="dropdown1" class="dropdown-content top">
 		<li>
-			<a href="#!">Un peu d'histoire</a>
+			<a href="{{ path('mediation_history') }}">Un peu d'histoire</a>
 		</li>
 		<li>
-			<a href="#!">C'est quoi?</a>
+			<a href="{{ path('mediation') }}">C'est quoi?</a>
 		</li>
 		<li>
 			<a href="#!">Chartre des bonnes pratiques</a>
@@ -59,10 +59,10 @@
 	</ul>
 	<ul id="dropdown2" class="dropdown-content">
 		<li>
-			<a href="#!">Un peu d'histoire</a>
+			<a href="{{ path('mediation_history') }}">Un peu d'histoire</a>
 		</li>
 		<li>
-			<a href="#!">C'est quoi?</a>
+			<a href="{{ path('mediation') }}">C'est quoi?</a>
 		</li>
 		<li>
 			<a href="#!">Chartre des bonnes pratiques</a>
@@ -70,24 +70,24 @@
 	</ul>
 	<ul id="dropdown3" class="dropdown-content top">
 		<li>
-			<a href="#!">Présentation</a>
+			<a href="{{ path('asso') }}">Présentation</a>
 		</li>
 		<li>
-			<a href="#!">Equipe</a>
+			<a href="{{ path('asso_team') }}">Equipe</a>
 		</li>
 		<li>
-			<a href="#!">Statuts</a>
+			<a href="{{ path('asso_statut') }}">Statuts</a>
 		</li>
 	</ul>
 	<ul id="dropdown4" class="dropdown-content">
 		<li>
-			<a href="#!">Présentation</a>
+			<a href="{{ path('asso') }}">Présentation</a>
 		</li>
 		<li>
-			<a href="#!">Equipe</a>
+			<a href="{{ path('asso_team') }}">Equipe</a>
 		</li>
 		<li>
-			<a href="#!">Statuts</a>
+			<a href="{{ path('asso_statut') }}">Statuts</a>
 		</li>
 	</ul>
 	<ul id="dropdown5" class="dropdown-content top">
@@ -180,7 +180,7 @@
 					<a href="{{path('home')}}#partners">Partenaires</a>
 				</li>
 				<li>
-					<a href="{{path('flyer')}}">Brochures</a>
+					<a href="{{path('asso_flyer')}}">Brochures</a>
 				</li>
 				<li>
 					{% if app.user %}
@@ -221,7 +221,7 @@
 		<a href="#partners">Partenaires</a>
 	</li>
 	<li>
-		<a href="{{path('flyer')}}">Brochures</a>
+		<a href="{{path('asso_flyer')}}">Brochures</a>
 	</li>
 	<li>
 		{% if app.user %}

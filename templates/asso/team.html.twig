@@ -1,0 +1,31 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}L'équipe
+{% endblock %}
+
+{% block body %}
+
+<main>
+	<section class="team">
+		<div class="container">
+
+
+			{% for user in users %}
+			<div class="presentation">
+				<p>{{user.presentation|raw}}</p>
+				<img src="{{ asset('/uploads/users/'~ user.picture) }}" alt="" width="150">
+			</div>
+			{% endfor %}
+
+			{% for animal in animals %} 
+			<div class="presentation">
+				<img src="{{ asset('/uploads/animals/'~ animal.animalpicture) }}" alt="" width="150">
+				<p>{{animal.animalcontent|raw}}</p>
+			</div>
+			{% endfor %}
+
+		</div>
+	</section>
+</main>
+
+{% endblock %}
