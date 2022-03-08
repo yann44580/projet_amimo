@@ -17,29 +17,34 @@
         </div>
     </section>
     <section class="blog">
-    <h2>Quoi de neuf!!</h2>
-        
-</section>
+        <h2>Quoi de neuf!!</h2>
+
+    </section>
     <section id="partners">
+        <div class="title">
+            <h2>Nos partenaires</h2>
+        </div>
         <div class="carousel">
             {% for partner in partners %}
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image">
-                            <img src="{{ asset('uploads/partners/' ~ partner.partnerpicture) }}">
-                        </div>
-                        <div class="card-content">
-                            <p>{{ partner.partnerContent|length > 30 ? partner.partnerContent|slice(0,30)|raw : partner.partnerContent|raw }}</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="{{ partner.partnerWebLink }}" target="_blank">Allez voir le site!</a>
-                        </div>
-                        {# <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        </div> #}
+            <div class="carousel-item">
+                <div class="card sticky-action">
+                    <div class="card-image">
+                        <img src="{{ asset('uploads/partners/' ~ partner.partnerpicture) }}">
                     </div>
+                    {# <div class="card-content">
+                        <p>{{ partner.partnerContent|length > 30 ? partner.partnerContent|slice(0,30)|raw :
+                            partner.partnerContent|raw }}</p>
+                    </div> #}
+                    <div class="card-action">
+                        <a href="{{ partner.partnerWebLink }}" target="_blank">Plus d'infos ici!</a>
+                    </div>
+                    {# <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i
+                                class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div> #}
                 </div>
+            </div>
             {% endfor %}
         </div>
     </section>

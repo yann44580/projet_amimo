@@ -75,6 +75,10 @@
   top: -58px;
 }
 
+footer {
+  margin-top: 50px;
+}
+
 footer .contact {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -445,21 +449,41 @@ Main #partners {
   min-height: 500px;
 }
 
+Main #partners .title {
+  text-align: center;
+}
+
 Main #partners .carousel {
   height: 430px;
 }
 
 Main #partners .carousel .card {
-  width: 15vw;
-  height: 35vh;
+  width: 13vw;
+  height: 25vh;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 Main #partners .carousel .card .card-image {
-  height: 60%;
+  height: 20vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 Main #partners .carousel .card .card-image img {
-  max-height: 150px;
+  max-height: 130px;
+}
+
+Main #partners .carousel .card .card-action {
+  height: 3vh;
+}
+
+Main #partners .carousel .card .card-action a {
+  text-transform: none;
 }
 
 @media screen and (max-width: 1160px) {

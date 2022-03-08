@@ -87,6 +87,7 @@
 }
 
 footer {
+    margin-top: 50px;
     .contact {
         display: flex;
         width: 100%;
@@ -392,16 +393,32 @@ Main {
 
     #partners {
         min-height: 500px;
+        .title{
+            text-align: center;
+        }
         .carousel{
             height: 430px;
             .card {
-                width: 15vw;
-                height: 35vh;
+                width: 13vw;
+                height: 25vh;
+                border: 1px solid black;
+                border-radius: 10px;
     
                 .card-image{
-                    height: 60%;
+                    height: 20vh;
+                    display: flex;
+                    align-items: center;
                     img {
-                        max-height: 150px;
+                        max-height: 130px;
+                    }
+                }
+                // .card-content{
+                //     height: 3vh;
+                // }
+                .card-action{
+                    height: 3vh;
+                    a{
+                        text-transform: none;
                     }
                 }
             }    
