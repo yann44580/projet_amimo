@@ -104,11 +104,20 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/", name="mentions_legales")
+     * @Route("/mentions", name="mentions_legales")
      */
 
     public function mentions_legales(): Response
     {
         return $this->render('main/mentions.html.twig');
+    }
+
+      /**
+     * @Route("/rgpd", name="rgpd")
+     */
+
+    public function rgpd(): Response
+    {
+        return $this->render('main/rgpd.html.twig');
     }
 }
