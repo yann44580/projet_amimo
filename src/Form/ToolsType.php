@@ -26,21 +26,18 @@ class ToolsType extends AbstractType
                 'label' => 'Titre'
             ])
             ->add('tool_content', CKEditorType::class, [
-                'label' => 'Contenu'
-            ])
-            ->add('tool_publication_date', DateType::class, [
-                'widget' => 'single_text'
+                'label' => '1er contact'
             ])
             ->add('tool_author', TextType::class, [
                 'label' => 'Auteur'
             ])
-            ->add('animal_category', EntityType::class, [
-                'class' => AnimalsCategories::class,
-                'label' => "Catégorie de l'animal",
-                'choice_label' => 'animal_category_name',
-                'multiple' => true,
-                'expanded' => false
-            ])
+            // ->add('animal_category', EntityType::class, [
+            //     'class' => AnimalsCategories::class,
+            //     'label' => "Catégorie de l'animal",
+            //     'choice_label' => 'animal_category_name',
+            //     'multiple' => true,
+            //     'expanded' => false
+            // ])
             // ->add('user')
             ->add('category_tool', EntityType::class, [
                 'class' => ToolCategories::class,
@@ -76,7 +73,14 @@ class ToolsType extends AbstractType
                     'Groupe' => 'Groupe',
                     'Individuelle' => 'Individuelle'
                 ]
-            ]);
+            ])
+            ->add('tool_content2', CKEditorType::class, [
+                'label' => 'Plein contact'
+            ])
+            ->add('tool_content3', CKEditorType::class, [
+                'label' => 'Séparation'
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,0 +1,53 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Les fiches créations
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Les fiches créations</h1>
+
+		<a href="{{ path('admin_tools_creation_new') }}">Nouvel outil</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Contenu</th>
+					<th>Photo(s)</th>
+					<th>Date de publication</th>
+					<th>Auteur</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for tool in tools %}
+					<tr>
+						<td>{{ tool.id }}</td>
+						<td>{{ tool.toolTitle }}</td>
+						<td>{{ tool.toolContent|raw }}</td>
+						<td>
+							{% for image in tool.picturesTools %}
+								<div>
+									<img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+								</div>
+							{% endfor %}
+						</td>
+						<td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
+						<td>{{ tool.toolAuthor }}</td>
+						<td class="confirm">
+							{# <a href="{{ path('admin_tools_show', {'id': tool.id}) }}">Voir</a> #}
+							<a href="{{ path('admin_tools_creation_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('admin/tools_creation/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}

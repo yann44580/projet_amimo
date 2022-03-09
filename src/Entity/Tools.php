@@ -42,6 +42,7 @@ class Tools
 
     /**
      * @ORM\ManyToMany(targetEntity=AnimalsCategories::class, inversedBy="tools")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $animal_category;
 
@@ -56,7 +57,7 @@ class Tools
     private $category_tool;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Populations::class, mappedBy="tool")
+     * @ORM\ManyToMany(targetEntity=Populations::class, inversedBy="tools")
      */
     private $populations;
 
@@ -75,6 +76,21 @@ class Tools
      */
     private $size_group;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tool_content2;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tool_content3;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $tool_item;
+
     public function __construct()
     {
         $this->animal_category = new ArrayCollection();
@@ -82,6 +98,8 @@ class Tools
         $this->picturesTools = new ArrayCollection();
         $this->population_type = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -185,6 +203,11 @@ class Tools
         return $this;
     }
 
+    // public function __toString()
+    // {
+    //     return $this->getCategoryTool();
+    // }
+
     /**
      * @return Collection<int, Populations>
      */
@@ -274,6 +297,42 @@ class Tools
     public function setSizeGroup(string $size_group): self
     {
         $this->size_group = $size_group;
+
+        return $this;
+    }
+
+    public function getToolContent2(): ?string
+    {
+        return $this->tool_content2;
+    }
+
+    public function setToolContent2(?string $tool_content2): self
+    {
+        $this->tool_content2 = $tool_content2;
+
+        return $this;
+    }
+
+    public function getToolContent3(): ?string
+    {
+        return $this->tool_content3;
+    }
+
+    public function setToolContent3(?string $tool_content3): self
+    {
+        $this->tool_content3 = $tool_content3;
+
+        return $this;
+    }
+
+    public function getToolItem(): ?string
+    {
+        return $this->tool_item;
+    }
+
+    public function setToolItem(string $tool_item): self
+    {
+        $this->tool_item = $tool_item;
 
         return $this;
     }

@@ -25,7 +25,7 @@ class Populations
     private $population_name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Tools::class, inversedBy="populations")
+     * @ORM\ManyToMany(targetEntity=Tools::class, mappedBy="populations")
      */
     private $tool;
 

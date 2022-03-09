@@ -102,4 +102,13 @@ class MainController extends AbstractController
             'mediations' => $mediationsRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/", name="mentions_legales")
+     */
+
+    public function mentions_legales(): Response
+    {
+        return $this->render('main/mentions.html.twig');
+    }
 }

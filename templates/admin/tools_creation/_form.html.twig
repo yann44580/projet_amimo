@@ -1,0 +1,74 @@
+{{ form_start(form) }}
+<fieldset>
+<div class="input-field">
+{{ form_label(form.tool_title) }}
+{{ form_widget(form.tool_title) }}
+</div>
+<div class="divider"></div>
+<div class="row">
+    <div class="col s3">
+        <h5>Type de séance:</h5>
+    </div>
+    <div class="input-field col s4">
+        {{ form_row(form.category_tool) }}
+    </div>
+    <div class="input-field col s4">
+        {{ form_row(form.size_group) }}
+    </div>
+</div>
+<div class="divider"></div>
+<div class="row">
+    <div class="col s3">
+        <h5>Public ciblé:</h5>
+    </div>
+    <div class="input-field col s4">
+        {{ form_row(form.population_type) }}
+    </div>
+    <div class="input-field col s4">
+        {{ form_row(form.populations) }}
+    </div> 
+</div>
+<div class="divider"></div>
+<h5>Déroulé de la séance</h5>
+    <div class="input-field">
+        {{ form_row(form.tool_content) }}
+    </div>
+    <div class="input-field">
+        {{ form_row(form.tool_content2) }}
+    </div>
+    <div class="input-field">
+        {{ form_row(form.tool_content3) }}
+    </div>
+<div class="file-field input-field">
+<div class="btn">
+    {{ form_label(form.picturesTools) }}
+    {{ form_widget(form.picturesTools) }}
+</div>
+<div class="file-path-wrapper">
+    <input class="file-path validate" type="text" placeholder="Upload file"/>
+</div>
+</div>
+{# Si la route est "annonces_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'admin_tools_creation_edit' %}
+<h2>Images</h2>
+{% for image in tool.picturesTools %}
+    <div>
+        <img
+        src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+
+        {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+        <a href="{{ path('admin_tools_creation_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+    </div>
+{% endfor %}
+{% endif %}
+<div class="input-field">
+        {{ form_label(form.tool_author) }}
+        {{ form_widget(form.tool_author) }}
+    </div>
+</fieldset>
+<div class="confirm_select">
+<a href="{{ path('admin_tools_creation_index') }}"><p>Retour à la liste</p><div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}" alt="fleche retour"></div></a>
+
+<a href=""><p>Enregistrer les modifications</p><button class="btn teal lighten-1"><img src="{{ asset('/uploads/icone/save1.png') }}" alt=""></button></a>
+  
+{{ form_end(form) }}

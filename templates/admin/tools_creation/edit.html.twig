@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Les fiches créations
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Modifier la fiche création</h1>
+
+		{{ include('admin/tools_creation/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+		{{ include('admin/tools_creation/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}
