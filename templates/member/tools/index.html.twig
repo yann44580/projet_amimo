@@ -1,0 +1,60 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Fiche de séance
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>mes fiches</h1>
+			
+			{% for tool in tools %}
+			{% if tool.toolitem == 'session' %}
+
+		<a href="#">Nouvelle fiche</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titre</th>
+					<th>Contenu</th>
+					<th>public</th>
+					<th>Photo(s)</th>
+					<th>Date de publication</th>
+					<th>Auteur</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+					<tr>
+						<td>{{ tool.id }}</td>
+						<td>{{ tool.toolTitle }}</td>
+						<td>{{  tool.toolContent|length > 100 ?  tool.toolContent|slice(0,100)|raw  : tool.toolContent|raw }}
+							{{ tool.toolContent|length ? '...' : '' }}
+						</td>
+						<td>{{tool.categorytool.toolcategoryname }}</td>
+						<td>
+							{% for image in tool.picturesTools %}
+								<div>
+									<img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+								</div>
+							{% endfor %}
+						</td>
+						<td>{{ tool.toolPublicationDate ? tool.toolPublicationDate|date('Y-m-d') : '' }}</td>
+						<td>{{ tool.toolAuthor }}</td>
+						<td class="confirm">
+							{# <a href="{{ path('member_tools_show', {'id': tool.id}) }}"><button class="btn  blue-grey darken-1"><i class="fas fa-eye"></i></button></a>
+							<a href="{{ path('member_tools_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+							{{ include('member/tools/_delete_form.html.twig') }} #}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				</tbody>
+			{% endif %}
+		{% endfor %}
+			</table>
+
+	</div>
+{% endblock %}

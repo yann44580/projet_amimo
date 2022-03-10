@@ -5,27 +5,35 @@
 
 {% block body %}
 
-<main>
-	<section class="team">
-		<div class="container">
-
-
+<div class="asso">
+	<div class="team_humans">
+	
 			{% for user in users %}
-			<div class="presentation">
-				<p>{{user.presentation|raw}}</p>
-				<img src="{{ asset('/uploads/users/'~ user.picture) }}" alt="" width="150">
+			<div class="row humans">
+				<div class="col s1 picture"><img src="{{ asset('/uploads/users/'~ user.picture) }}" alt="" width="150">
+					<p>{{user.firstname}}</p>
+					<p>{{user.lastname}}</p>
+				</div>
+				<div class="col s8 box">
+					<div class="about">
+						<p>{{user.presentation|raw}}</p>
+					</div>
+					<div class="picture">
+
+					</div>
+				</div>
 			</div>
 			{% endfor %}
-
-			{% for animal in animals %} 
-			<div class="presentation">
-				<img src="{{ asset('/uploads/animals/'~ animal.animalpicture) }}" alt="" width="150">
-				<p>{{animal.animalcontent|raw}}</p>
-			</div>
-			{% endfor %}
-
+	</div>
+	<div class="container team_animals">
+		{% for animal in animals %}
+		<div class="animals">
+			<img src="{{ asset('/uploads/animals/'~ animal.animalpicture) }}" alt="" width="150">
+			<p>{{animal.animalcontent|raw}}</p>
 		</div>
-	</section>
-</main>
+		{% endfor %}
+	</div>
+
+</div>
 
 {% endblock %}

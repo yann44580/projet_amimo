@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Tools;
+use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -25,6 +26,20 @@ class ToolsRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('t')
             ->setParameter('session', $item)
             ->andWhere('t.tool_item = :session')
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByuser($userid)
+    {
+        
+        return $this->createQueryBuilder('t')
+            ->setParameter('userid', $userid)
+            // ->leftJoin('t.user', 'u')
+            // ->andWhere('u.id = :id')
+            ->andWhere('t.user = :userid')
             ->orderBy('t.id', 'ASC')
             ->getQuery()
             ->getResult()

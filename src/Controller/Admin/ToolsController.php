@@ -7,6 +7,7 @@ use Datetime;
 use App\Form\ToolsType;
 use App\Entity\PicturesTools;
 use App\Entity\PicturesAssociation;
+use App\Entity\Users;
 use App\Repository\ToolsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +35,7 @@ class ToolsController extends AbstractController
     /**
      * @Route("/admin/tools/creation/new", name="admin_tools_creation_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, Users $users ): Response
     {
         $tool = new Tools();
         $form = $this->createForm(ToolsType::class, $tool);
@@ -59,10 +60,12 @@ class ToolsController extends AbstractController
                 );
 
                 // On crée l'image dans la base de données
+                
                 $img = new PicturesTools();
                 $img->setPictureToolName($fichier);
                 $tool->addPicturesTool($img);
             }
+            $tool->setUser($this->getUser());
             $tool->setToolItem($item);
             $tool->setToolPublicationDate($date);
             $entityManager->persist($tool);
@@ -116,6 +119,7 @@ class ToolsController extends AbstractController
                  $img->setPictureToolName($fichier);
                  $tool->addPicturesTool($img);
              }
+             $tool->setUser($this->getUser());
             $tool->setToolPublicationDate($date);
             $entityManager->flush();
 
@@ -208,6 +212,7 @@ class ToolsController extends AbstractController
                 $img->setPictureToolName($fichier);
                 $tool->addPicturesTool($img);
             }
+            $tool->setUser($this->getUser());
             $tool->setToolItem($item);
             $tool->setToolPublicationDate($date);
             $entityManager->persist($tool);
@@ -261,6 +266,7 @@ class ToolsController extends AbstractController
                  $img->setPictureToolName($fichier);
                  $tool->addPicturesTool($img);
              }
+            $tool->setUser($this->getUser());
             $tool->setToolPublicationDate($date);
             $entityManager->flush();
 
@@ -310,4 +316,5 @@ class ToolsController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
+
 }

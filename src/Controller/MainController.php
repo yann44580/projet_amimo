@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use App\Repository\AnimalsRepository;
+use App\Repository\ToolsRepository;
 use App\Repository\UsersRepository;
+use App\Repository\AnimalsRepository;
 use App\Repository\PartnersRepository;
-use App\Repository\AssociationsRepository;
 use App\Repository\MediationsRepository;
+use App\Repository\AssociationsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -119,5 +120,25 @@ class MainController extends AbstractController
     public function rgpd(): Response
     {
         return $this->render('main/rgpd.html.twig');
+    }
+
+    /**
+     * @Route("/tools/session", name="tools_session", methods={"GET"})
+     */
+    public function tool_session(ToolsRepository $toolsRepository): Response
+    {
+        return $this->render('main/tools_session.html.twig', [
+            'tools' => $toolsRepository->findBysession('session'),
+        ]);
+    }
+
+     /**
+     * @Route("/tools/creation", name="tools_creation", methods={"GET"})
+     */
+    public function tool_creation(ToolsRepository $toolsRepository): Response
+    {
+        return $this->render('main/tools_creation.html.twig', [
+            'tools' => $toolsRepository->findBysession('creation'),
+        ]);
     }
 }
