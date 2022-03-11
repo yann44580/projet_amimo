@@ -53,7 +53,7 @@
     <h2>Images</h2>
     {% for image in tool.picturesTools %}
     <div>
-        <img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="150">
+        <img src="{{ asset('/uploads/tools/'~image.picturetoolname) }}" alt="" width="150">
 
         {# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
         <a href="{{ path('admin_tools_session_delete_image', {id: image.id})}}" data-delete

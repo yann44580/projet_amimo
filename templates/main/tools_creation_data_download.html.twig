@@ -1,10 +1,13 @@
-{% extends 'admin.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}Fiche séance{% endblock %}
 
 {% block body %}
-<h1>Fiche séance</h1>
+<main>
+<div class="tool">
 <div class="container">
+<h1>Fiche séance</h1>
+{% for tool in tools %}
     <fielset>
         <h2>{{ tool.toolTitle }}</h2>
         <div class="divider"></div>
@@ -51,12 +54,9 @@
                 {{ tool.toolcontent3|raw }}
             </div>
         </div>
-        <div class="col s12">
-        {% for image in tool.picturesTools %}
-   
-            <img src="{{ asset('/uploads/tools/'~image.picturetoolname) }}" alt="" width="150">
-        {% endfor %}
-        </div>
+            <!-- <th>Tool_picture</th>
+    <td></td>
+    </tr> -->
         <div class="divider"></div>
         <div class="row">
             <div class="col s4">
@@ -70,14 +70,10 @@
         </div>
 
     </fielset>
+{% endfor %}
 </div>
 
-<div class="confirm1">
-<a href="{{ path('admin_tools_session_index') }}"><div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}"
-alt="fleche retour"></div></a>
 
-<a href="{{ path('admin_tools_session_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
-
-{{ include('admin/tools_session/_delete_form.html.twig') }}
 </div>
+</main>
 {% endblock %}

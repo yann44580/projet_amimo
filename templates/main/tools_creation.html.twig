@@ -67,6 +67,7 @@
                 <h6>Date de publication</h6>
                 {{ tool.toolPublicationDate|date('Y-m-d') }}
             </div>
+        <div><a href="{{ path('tools_creation_data', {'id': tool.id }) }}"><div class="btn green lighten-3">Télécharger le doc</div></a></div>
         </div>
 
     </fielset>

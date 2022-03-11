@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Tools;
 use App\Repository\ToolsRepository;
 use App\Repository\UsersRepository;
 use App\Repository\AnimalsRepository;
@@ -11,6 +12,8 @@ use App\Repository\AssociationsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/")
@@ -132,6 +135,65 @@ class MainController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/tools/session/data/{id}", name="tools_session_data", methods={"GET"})
+     */
+    public function tool_pdf(Tools $tools): Response
+    {
+        return $this->render('main/tools_session_data.html.twig', [
+            'tools' => $tools,
+            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+            
+        ]);
+    }
+
+     /**
+     * @Route("/tools/session/data/{id}/download", name="tools_session_data_download", methods={"GET"})
+     */
+    public function tool_pdf_download(Tools $tools): Response
+    {
+        $_dompdf_show_warnings = true;
+        $_dompdf_warnings = [];
+        
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        //  police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+        $pdfOptions->setDebugKeepTemp(true);
+        $pdfOptions->setIsHtml5ParserEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+            ]);
+            $dompdf->setHttpContext($context);
+
+        // On génére le HTML
+        $html = $this->renderView('main/tools_session_data_download.html.twig', [
+            'tools' => $tools,
+            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','portrait');
+        $dompdf->render();
+
+        // On génére un nom de fichier
+        $fichier = 'fiche-data.pdf';
+
+        // on envoie le pdf au navigateur
+        $dompdf->stream($fichier, [
+            'attachment' => true
+        ]);
+
+        return new Response();
+    }
+
      /**
      * @Route("/tools/creation", name="tools_creation", methods={"GET"})
      */
@@ -141,4 +203,8 @@ class MainController extends AbstractController
             'tools' => $toolsRepository->findBysession('creation'),
         ]);
     }
+
+     
+
+
 }
