@@ -35,6 +35,12 @@
 <div class="input-field">
 	{{ form_row(form.association_statut) }}
 </div>
+<div class="input-field">
+	{{ form_row(form.associations_RGPD) }}
+</div>
+<div class="input-field">
+	{{ form_row(form.association_mentions_legales) }}
+</div>
 <div class="file-field input-field">
 	<div class="btn">
 		{{ form_label(form.picturesAssociations) }}
@@ -51,7 +57,7 @@
 		{% for image in association.picturesAssociations %}
 		<div class="col s2">
 			<img
-			src="{{ asset('/uploads/'~image.pictureassociationname) }}" alt="" width="150">
+			src="{{ asset('/uploads/asso/' ~ image.pictureassociationname) }}" alt="" width="150">
 
 			{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
 			<a href="{{ path('admin_associations_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>

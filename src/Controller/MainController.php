@@ -111,18 +111,22 @@ class MainController extends AbstractController
      * @Route("/mentions", name="mentions_legales")
      */
 
-    public function mentions_legales(): Response
+    public function mentions_legales(AssociationsRepository $associationsRepository): Response
     {
-        return $this->render('main/mentions.html.twig');
+        return $this->render('main/mentions.html.twig', [
+            'associations' => $associationsRepository->findAll(),
+        ]);
     }
 
       /**
      * @Route("/rgpd", name="rgpd")
      */
 
-    public function rgpd(): Response
+    public function rgpd(AssociationsRepository $associationsRepository): Response
     {
-        return $this->render('main/rgpd.html.twig');
+        return $this->render('main/rgpd.html.twig',  [
+            'associations' => $associationsRepository->findAll(),
+        ]);
     }
 
     /**
@@ -142,7 +146,6 @@ class MainController extends AbstractController
     {
         return $this->render('main/tools_session_data.html.twig', [
             'tools' => $tools,
-            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
             
         ]);
     }
@@ -203,6 +206,66 @@ class MainController extends AbstractController
             'tools' => $toolsRepository->findBysession('creation'),
         ]);
     }
+
+    /**
+     * @Route("/tools/creation/data/{id}", name="tools_creation_data", methods={"GET"})
+     */
+    public function toolcreation_pdf(Tools $tools): Response
+    {
+        return $this->render('main/tools_creation_data.html.twig', [
+            'tools' => $tools,
+            
+        ]);
+    }
+
+     /**
+     * @Route("/tools/creation/data/{id}/download", name="tools_creation_data_download", methods={"GET"})
+     */
+    public function toolcreation_pdf_download(Tools $tools): Response
+    {
+        $_dompdf_show_warnings = true;
+        $_dompdf_warnings = [];
+        
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        //  police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+        $pdfOptions->setDebugKeepTemp(true);
+        $pdfOptions->setIsHtml5ParserEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+            ]);
+            $dompdf->setHttpContext($context);
+
+        // On génére le HTML
+        $html = $this->renderView('main/tools_creation_data_download.html.twig', [
+            'tools' => $tools,
+            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+        ]);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4','portrait');
+        $dompdf->render();
+
+        // On génére un nom de fichier
+        $fichier = 'fiche-data.pdf';
+
+        // on envoie le pdf au navigateur
+        $dompdf->stream($fichier, [
+            'attachment' => true
+        ]);
+
+        return new Response();
+    }
+
+ 
 
      
 

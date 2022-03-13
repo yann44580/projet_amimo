@@ -72,7 +72,7 @@ class Tools
     private $population_type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $size_group;
 
@@ -90,6 +90,21 @@ class Tools
      * @ORM\Column(type="string", length=255)
      */
     private $tool_item;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $document_tool;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tool_content4;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $tool_content5;
 
     public function __construct()
     {
@@ -333,6 +348,42 @@ class Tools
     public function setToolItem(string $tool_item): self
     {
         $this->tool_item = $tool_item;
+
+        return $this;
+    }
+
+    public function getDocumentTool(): ?string
+    {
+        return $this->document_tool;
+    }
+
+    public function setDocumentTool(?string $document_tool): self
+    {
+        $this->document_tool = $document_tool;
+
+        return $this;
+    }
+
+    public function getToolContent4(): ?string
+    {
+        return $this->tool_content4;
+    }
+
+    public function setToolContent4(?string $tool_content4): self
+    {
+        $this->tool_content4 = $tool_content4;
+
+        return $this;
+    }
+
+    public function getToolContent5(): ?string
+    {
+        return $this->tool_content5;
+    }
+
+    public function setToolContent5(?string $tool_content5): self
+    {
+        $this->tool_content5 = $tool_content5;
 
         return $this;
     }

@@ -39,6 +39,8 @@ class AssociationsType extends AbstractType
                         'maxSize' => '1024k',
                         'mimeTypes' => [
                             'image/*',
+                            'application/pdf',
+                            'application/x-pdf',
                         ],
 
                         'mimeTypesMessage' => 'Veuillez entrer un format de document valide',
@@ -46,6 +48,8 @@ class AssociationsType extends AbstractType
                 ],
             ])
             ->add('association_statut', CKEditorType::class)
+            ->add('associations_RGPD', CKEditorType::class)
+            ->add('association_mentions_legales', CKEditorType::class)
         ;
     }
 

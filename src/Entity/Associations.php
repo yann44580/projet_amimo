@@ -68,6 +68,16 @@ class Associations
      */
     private $association_statut;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $associations_RGPD;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $association_mentions_legales;
+
     public function __construct()
     {
         $this->picturesAssociations = new ArrayCollection();
@@ -200,6 +210,30 @@ class Associations
     public function setAssociationStatut(string $association_statut): self
     {
         $this->association_statut = $association_statut;
+
+        return $this;
+    }
+
+    public function getAssociationsRGPD(): ?string
+    {
+        return $this->associations_RGPD;
+    }
+
+    public function setAssociationsRGPD(string $associations_RGPD): self
+    {
+        $this->associations_RGPD = $associations_RGPD;
+
+        return $this;
+    }
+
+    public function getAssociationMentionsLegales(): ?string
+    {
+        return $this->association_mentions_legales;
+    }
+
+    public function setAssociationMentionsLegales(string $association_mentions_legales): self
+    {
+        $this->association_mentions_legales = $association_mentions_legales;
 
         return $this;
     }

@@ -2,19 +2,23 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Tools;
 use Datetime;
+use App\Entity\Tools;
+use App\Entity\Users;
 use App\Form\ToolsType;
 use App\Entity\PicturesTools;
+use App\Form\ToolcreationType;
 use App\Entity\PicturesAssociation;
-use App\Entity\Users;
 use App\Repository\ToolsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+
 
 
 class ToolsController extends AbstractController
@@ -35,16 +39,37 @@ class ToolsController extends AbstractController
     /**
      * @Route("/admin/tools/creation/new", name="admin_tools_creation_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager, Users $users ): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,  SluggerInterface $slugger ): Response
     {
         $tool = new Tools();
-        $form = $this->createForm(ToolsType::class, $tool);
+        $form = $this->createForm(ToolcreationType::class, $tool);
         $form->handleRequest($request);
         $date = new Datetime();
         // Insertion d'une valeur pour distinguer les deux types de fiches
         $item = "creation";
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
+
             // On récupère les images transmises
             $picturesTools = $form->get('picturesTools')->getData();
 
@@ -93,13 +118,34 @@ class ToolsController extends AbstractController
     /**
      * @Route("/admin/tools/creation/{id}/edit", name="admin_tools_creation_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Tools $tool, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Tools $tool, EntityManagerInterface $entityManager,  SluggerInterface $slugger): Response
     {
-        $form = $this->createForm(ToolsType::class, $tool);
+        $form = $this->createForm(ToolcreationType::class, $tool);
         $form->handleRequest($request);
         $date = new Datetime();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
+
              // On récupère les images transmises
              $picturesTools = $form->get('picturesTools')->getData();
 
