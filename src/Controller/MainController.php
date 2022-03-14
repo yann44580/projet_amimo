@@ -2,18 +2,25 @@
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\Entity\Tools;
+use App\Form\ToolsType;
+use App\Entity\PicturesTools;
+use App\Form\ToolcreationType;
 use App\Repository\ToolsRepository;
 use App\Repository\UsersRepository;
 use App\Repository\AnimalsRepository;
 use App\Repository\PartnersRepository;
 use App\Repository\MediationsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\AssociationsRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Dompdf\Dompdf;
-use Dompdf\Options;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 /**
  * @Route("/")
@@ -129,6 +136,8 @@ class MainController extends AbstractController
         ]);
     }
 
+    // TOOLS SESSION ==========================================================================================
+
     /**
      * @Route("/tools/session", name="tools_session", methods={"GET"})
      */
@@ -196,6 +205,10 @@ class MainController extends AbstractController
 
         return new Response();
     }
+
+   
+
+    // TOOL CREATION ======================================================================================
 
      /**
      * @Route("/tools/creation", name="tools_creation", methods={"GET"})

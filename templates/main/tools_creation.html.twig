@@ -25,10 +25,11 @@
                 <h5>Document pdf ou photo présentant la création</h5>
                 <div class="row">
                     <div class="col s12">
+                    {% if '.pdf' in tools.documenttool %}
                         <a href="{{ asset('/uploads/tools/'~tool.documenttool) }}" target="_blank">lien pour visualiser pdf</a>
-                        <!-- <src="http://docs.google.com/gview?url={{ asset('/uploads/tools/'~tool.documenttool) }}" embedded=true>Voir le pdf</a> -->
-                        <!-- <embed src="{{ asset('/uploads/tools/'~tool.documenttool) }}" alt="" width="300" height="260" type="application/pdf"> -->
+                       {% else %}
                         <img src="{{ asset('uploads/tools/' ~ tool.documenttool) }}" alt="" width="80">
+                    {% endif %}
                     </div>
                     <div class="col s12">
                         <h5>Objectif possible de séance</h5>
@@ -61,7 +62,7 @@
                     </div>
 
                     <div class="col s4"><a href="{{ path('tools_creation_data', {'id': tool.id }) }}">
-                            <div class="btn green lighten-3">Télécharger le doc</div>
+                            <div class="btn green lighten-3">Visualiser le doc</div>
                         </a></div>
                 </div>
 
