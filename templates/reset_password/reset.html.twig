@@ -1,0 +1,21 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Changer mon mot de passe{% endblock %}
+
+{% block body %}
+<div class=" login">
+    <div class="login_user">
+        <div class="logo_login">
+            <img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="">
+        </div>
+        <div class="form">
+            <h1>Modifier votre mot de passe</h1>
+
+            {{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            <button class="btn btn-primary">Changer mon mot de passe</button>
+            {{ form_end(resetForm) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
