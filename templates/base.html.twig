@@ -35,10 +35,13 @@
 <body class="base">
 	<div class="picture_menu">
 		<div class="icone">
+		{% if app.user %}
+		{% else %}
 			<a href="{{ path('app_login') }}">
 				<i class="fas fa-user"></i>
 				<div class="title">S'incrire ou s'identifier</div>
 			</a>
+		{% endif %}
 		</div>
 		<div class="picture">
 			<img class="img_nav" src="{{asset("uploads/pictures/helena1.jpg")}}" alt="un_chien_et_une_femme"

@@ -522,6 +522,28 @@ Main #partners .carousel .card .card-action a {
   text-transform: none;
 }
 
+Main .tool .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15vh;
+}
+
+Main .tool .title .title1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
 Main .tool .confirm1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -543,6 +565,30 @@ Main .tool .confirm1 .btn {
 Main .tool .confirm1 .btn img {
   width: 50px;
   height: 50px;
+}
+
+Main .tool .card {
+  height: 50vh;
+  margin-top: 80px;
+}
+
+Main .tool .card .card-image {
+  height: 55%;
+}
+
+Main .tool .card .card-image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+Main .tool .card .card-content {
+  height: 30%;
+  padding-bottom: 2px;
+}
+
+Main .tool .card .card-action {
+  height: 10%;
+  padding: 5px 24px;
 }
 
 Main .flyer {

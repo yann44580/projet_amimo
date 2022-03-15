@@ -452,6 +452,17 @@ Main {
         }
     }
     .tool{
+        .title{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 15vh;
+            .title1{
+                display:flex;
+                height: 100%;
+                align-items: flex-end;
+            }
+        }
         .confirm1{
             display: flex;
             justify-content: space-evenly;
@@ -464,6 +475,24 @@ Main {
                     width: 50px;
                     height: 50px;
                 }
+            }
+        }
+        .card{
+            height: 50vh;
+            margin-top: 80px;
+            .card-image{
+                height: 55%;
+                img{
+                    object-fit: cover;
+                }
+            }
+            .card-content{
+                height: 30%;
+                padding-bottom: 2px;
+            }
+            .card-action{
+                height: 10%;
+                padding: 5px 24px;
             }
         }
     }
