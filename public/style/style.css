@@ -567,26 +567,38 @@ Main .tool .confirm1 .btn img {
   height: 50px;
 }
 
-Main .tool .card {
+Main .tool .card_theme {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+Main .tool .card_theme .col {
+  width: 100%;
+  text-align: -webkit-center;
+}
+
+Main .tool .card_theme .col .card {
   height: 50vh;
+  width: 50%;
   margin-top: 80px;
 }
 
-Main .tool .card .card-image {
+Main .tool .card_theme .col .card .card-image {
   height: 55%;
 }
 
-Main .tool .card .card-image img {
+Main .tool .card_theme .col .card .card-image img {
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-Main .tool .card .card-content {
+Main .tool .card_theme .col .card .card-content {
   height: 30%;
   padding-bottom: 2px;
 }
 
-Main .tool .card .card-action {
+Main .tool .card_theme .col .card .card-action {
   height: 10%;
   padding: 5px 24px;
 }
@@ -717,5 +729,88 @@ Main .flyer .container #flyer:nth-child(n) {
 .asso .team_humans .humans .box:hover .picture:before {
   -webkit-transform: rotateX(90deg) translateY(50%);
           transform: rotateX(90deg) translateY(50%);
+}
+
+.presentation {
+  width: 60vw;
+  height: 60vh;
+  background-color: #a2c6df;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.presentation .section1 {
+  width: 50%;
+  padding: 2vw 5vh;
+  line-height: 1.5;
+}
+
+.presentation .section1 .section3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.presentation .section1 p:nth-child(1) {
+  font-size: 1.5rem;
+  width: 45%;
+  text-align: center;
+}
+
+.presentation .section1 p:nth-child(2) {
+  height: 5vh;
+  width: 50%;
+  border-bottom: 1px black solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.presentation .divider {
+  height: 90%;
+  width: 1px;
+  margin-top: 2vh;
+  background-color: black;
+}
+
+.presentation .section2 {
+  padding: 2vw 5vh;
+}
+
+.presentation .section2 .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 24vw;
+  height: 40vh;
+}
+
+.presentation .section2 .image img {
+  width: 40%;
+  height: 50%;
+}
+
+.presentation .section2 .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.presentation .section2 .button a {
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */

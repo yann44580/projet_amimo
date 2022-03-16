@@ -35,7 +35,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/index.html.twig', [
             'associations' => $associationsRepository->findAll(),
-            'partners' => $partnersRepository->findAll(),
+            'partners' => $partnersRepository->findAll()
         ]);
     }
 

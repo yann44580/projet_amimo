@@ -12,13 +12,36 @@
                     <h2>{{ tool.toolTitle }}</h2>
                     <div class="divider"></div>
                     <div class="row">
+                        <div class="col s4">
+                            <h5>Mon ou mes partenaire(s):</h5>
+                        </div>
+                        <div class="input-field col s4">
+                        {% set affich = null %}
+                        {% for animals in tool.animalcategory %}
+                        {% if affich is null %}
+                            {% set affich = animals.animalcategoryname %}  
+                        {% else %}
+                            {% set affich = affich ~ " / " ~ animals.animalcategoryname %}
+                        {% endif %}
+                        {% endfor %}
+                    <p>{{ affich }}</p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
                         <div class="col s3">
                             <h5>Public ciblé:</h5>
                         </div>
                         <div class="col s3">
-                            {% for publictype in tool.populationtype %}
-                            {{ publictype.populationtypename }} -
-                            {% endfor %}
+                        {% set affich = null %}
+                        {% for publictype in tool.populationtype %}
+                        {% if affich is null %}
+                            {% set affich = publictype.populationtypename %}
+                        {% else %}
+                            {% set affich = affich ~ " / " ~ publictype.populationtypename %}
+                        {% endif %}
+                        {% endfor %}
+                    <p>{{ affich }}</p>
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -37,7 +60,7 @@
                             {{ tool.toolcontent4|raw }}
                         </div>
                         <div class="col s12">
-                            <h5>Métériel nécessaire pour la réalisation</h5>
+                            <h5>Matériel nécessaire pour la réalisation</h5>
                             {{ tool.toolcontent|raw }}
                         </div>
                         <div class="col s12">
@@ -77,8 +100,8 @@
                             alt="fleche retour"></div>
                 </a>
 
-                {# <a href="{{ path('member_tools_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i
-                            class="fas fa-edit"></i></button></a> #}
+                <a href="{{ path('member_tools_creation_edit', {'id': tool.id}) }}"><button class="btn teal lighten-1"><i
+                            class="fas fa-edit"></i></button></a>
 
                 {{ include('member/tools/_delete_form.html.twig') }}
             </div>

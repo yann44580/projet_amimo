@@ -9,46 +9,40 @@
         <div class="card-panel green accent-3">{{message}}</div>
     {% endfor %}
 		<h1>Mon profil</h1>
-		
-
-		<table class="table">
-			<thead>
-				<tr>
-
-					<th>Email</th>
-					<th>Nom de famille</th>
-					<th>Prénom</th>
-					<th>Adresse</th>
-					<th>Ville</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<tr>
-
-					<td>{{ app.user.email }}</td>
-					<td>{{ app.user.lastname }}</td>
-					<td>{{ app.user.firstname }}</td>
-					<td>{{ app.user.address }}</td>
-					<td>{{ app.user.city }}</td>
-
-					<td>
-						<a href="{{ path('member_main_edit_pass', {'id': app.user.id}) }}">modifier le mot de passe</a>
-						<a href="{{ path('member_main_edit', {'id': app.user.id}) }}">Modifier le profil</a>
-					</td>
-				</tr>
-
-			</tbody>
-		</table>
-
-		<div class="tool">
-			<h1>Mes fiches</h1>
+		<div class="presentation">
+			<div class="section1">
+				<div class="section3">
+				<p>Nom de famille : </p>
+				<p> {{ app.user.lastname }} </p>
+				</div>
+				<div class="section3">
+				<p>Prénom : </p>
+				<p> {{ app.user.firstname }} </p>
+				</div>
+				<div class="section3">
+				<p>Adresse : </p>
+				<p> {{ app.user.address }} </p>
+				</div>
+				<div class="section3">
+				<p>Ville : </p>
+				<p>{{ app.user.city }}</p>
+				</div>
+				<div class="section3">
+				<p>Email : </p>
+				<p>{{ app.user.email }}</p>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div class="section2">
+				<p>Nombre de fiche crées : </p>
+				<div class="image">
+					<img src="{{asset('/uploads/icone/form.png')}}" alt="icone_form">
+				</div>
+				<div class="button">
+					<button class="btn"><a href="{{ path('member_main_edit_pass', {'id': app.user.id}) }}">modifier le mot de passe</a></button>
+					<button class="btn"><a href="{{ path('member_main_edit', {'id': app.user.id}) }}">Modifier le profil</a></button>
+				</div>
+			</div>
 		</div>
-		{# {% for tool in app.user.tools %}
-		<div>Titre :</div>
-		    <div>{{ toll.tooltitle }}</div>
-		    {% endfor %} #}
-
 	</div>
 {% endblock %}

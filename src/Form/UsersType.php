@@ -25,8 +25,8 @@ class UsersType extends AbstractType
                 'expanded' => false,
                 'multiple' => true,
                 'choices' => [
-                    'role_admin' => 'role admin',
-                    'role_user' => 'role user'
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_USER' => 'ROLE_USER'
                 ],
             ])
             ->add('lastname', TextType::class, [

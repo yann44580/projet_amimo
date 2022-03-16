@@ -7,85 +7,70 @@
     <div class="tool">
         <div class="container">
             <h1>Fiche séance</h1>
-            {% for tool in tools %}
-            <fielset>
-                <h2>{{ tool.toolTitle }}</h2>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="col s3">
-                        <h5>Type de séance:</h5>
-                    </div>
-                    <div class=" col s4">
-                        {{ tool.categorytool.toolcategoryname }}
-                    </div>
-                    <div class="col s4">
-                        {{ tool.sizegroup }}
-                    </div>
-                </div>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="col s3">
-                        <h5>Public ciblé:</h5>
-                    </div>
-                    <div class="col s3">
-                        {% for publictype in tool.populationtype %}
-                        {{ publictype.populationtypename }} -
-                        {% endfor %}
-                    </div>
-                    <div class="col s5">
-                        {% for public in tool.populations %}
-                        {{ public.populationname }} -
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="divider"></div>
-                <h5>Déroulé de la séance</h5>
-                <div class="row">
-                    <div class="col s12">
-                        <h5>1er contact</h5>
-                        {{ tool.toolcontent|raw }}
-                    </div>
-                    <div class="col s12">
-                        <h5>Plein contact</h5>
-                        {{ tool.toolcontent2|raw }}
-                    </div>
-                    <div class="col s12">
-                        <h5>Séparation</h5>
-                        {{ tool.toolcontent3|raw }}
-                    </div>
-                </div>
-                <div class="col s12">
-                    {% for image in tool.picturesTools %}
+            <div class="row card_theme">
+                {% for tool in tools %}
+                {% if tool.toolitem == 'session' %}
 
-                    <img src="{{ asset('/uploads/tools/'~image.picturetoolname) }}" alt="" width="150">
-                    {% endfor %}
-                </div>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="col s4">
-                        <h6>Auteur</h6>
-                        {{ tool.toolAuthor }}
-                    </div>
-                    <div class="col s4">
-                        <h6>Date de publication</h6>
-                        {{ tool.toolPublicationDate|date('Y-m-d') }}
-                    </div>
-                    <div class="col s4"><a href="{{ path('tools_session_data', {'id': tool.id }) }}">
-                            <div class="btn green lighten-3">Télécharger le doc</div>
-                        </a>
-                    </div>
-                </div>
+                <div class="col l3">
+                    <div class="card ">
+                        <div class="card-image waves-effect waves-block waves-light">
 
-            </fielset>
-            {% endfor %}
+                            {% for image in tool.picturesTools %}
+                            <img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="50">
+                            {% else %}
+                            <img src="{{asset('uploads/patte_chien.jpg')}}" alt="" width="50px" height="100%">
+                            {% endfor %}
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ tool.toolTitle }}<i class="material-icons right">more_vert</i></span>
+                            <p>Type de fiche:
+                                {{ tool.categorytool.toolcategoryname }}
+                            </p>
+                        
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{ tool.toolTitle }}<i class="material-icons right">close</i></span>
+                            <p>Mon ou mes partenaires:
+                                {% set affich = null %}
+                                {% for animals in tool.animalcategory %}
+								{% if affich is null %}
+                                	{% set affich = animals.animalcategoryname %}  
+								{% else %}
+									{% set affich = affich ~ " / " ~ animals.animalcategoryname %}
+								{% endif %}
+								{% endfor %}
+							<p>{{ affich }}</p>
+                            </p>
+                            <p>Public visé:
+                                {% set affich = null %}
+                                {% for publictype in tool.populationtype %}
+								{% if affich is null %}
+									{% set affich = publictype.populationtypename %}
+								{% else %}
+									{% set affich = affich ~ " / " ~ publictype.populationtypename %}
+								{% endif %}
+								{% endfor %}
+                            <p>{{ affich }}</p>
+                            </p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{{ path('tools_session_data', {'id': tool.id}) }}">
+                                <p>Voir la fiche</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
 
-        <div class="confirm1">
+        <!-- <div class="confirm1">
             <a href="{{ path('home') }}">
                 <div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}"
                         alt="fleche retour"></div>
             </a>
-        </div>
+        </div> -->
 
     </div>
 </main>

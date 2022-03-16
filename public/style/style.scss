@@ -439,9 +439,6 @@ Main {
                         max-height: 130px;
                     }
                 }
-                // .card-content{
-                //     height: 3vh;
-                // }
                 .card-action{
                     height: 3vh;
                     a{
@@ -477,22 +474,30 @@ Main {
                 }
             }
         }
-        .card{
-            height: 50vh;
-            margin-top: 80px;
-            .card-image{
-                height: 55%;
-                img{
-                    object-fit: cover;
+        .card_theme{
+            display: flex;
+            .col{
+                width: 100%;
+                text-align: -webkit-center;  
+                .card{
+                    height: 50vh;
+                    width: 50%;
+                    margin-top: 80px;
+                    .card-image{
+                        height: 55%;
+                        img{
+                            object-fit: cover;
+                        }
+                    }
+                    .card-content{
+                        height: 30%;
+                        padding-bottom: 2px;
+                    }
+                    .card-action{
+                        height: 10%;
+                        padding: 5px 24px;
+                    }
                 }
-            }
-            .card-content{
-                height: 30%;
-                padding-bottom: 2px;
-            }
-            .card-action{
-                height: 10%;
-                padding: 5px 24px;
             }
         }
     }
@@ -607,28 +612,71 @@ Main {
                     transform-origin: bottom;
                     transition: .5s;
                 }
-                // .picture:after{
-                //     content:'';
-                //     position: absolute;
-                //     top: 0;
-                //     right: 0;
-                //     width: 100%;
-                //     height: 100%;
-                //     background-color: yellow;
-                //     transform-origin: top;
-                //     transition: .5s;
-                //     background-position: 300px;
-                // }
+      
             }
             .box:hover .picture:before{
                 transform: rotateX(90deg) translateY(50%);
             }
-            // .box:hover .picture:after{
-            //     transform: rotateX(90deg) translateY(-50%);
-            // }
+    
         }
         
     }
 }
 
 // 8. MEDIATION ============================================================
+
+// 9.MEMBER ================================================================
+.presentation{
+    width: 60vw;
+    height: 60vh;
+    background-color: #a2c6df;;
+    border-radius: 20px;
+    display: flex;
+    .section1{
+        width: 50%;
+        padding: 2vw 5vh;
+        line-height: 1.5;
+        .section3{
+            display: flex;
+        }
+        p:nth-child(1){
+            font-size: 1.5rem;
+            width: 45%;
+            text-align: center;
+        }
+        p:nth-child(2){
+            height: 5vh;
+            width: 50%;
+            border-bottom: 1px black solid;
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+    .divider{
+        height: 90%;
+        width: 1px;
+        margin-top: 2vh;
+        background-color: black;
+    }
+    .section2{
+        padding: 2vw 5vh;
+        .image{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24vw;
+            height: 40vh;
+            img{
+                width: 40%;
+                height: 50%;
+            }
+        }
+        .button{
+            display: flex;
+            justify-content: space-evenly;
+            a{
+                color: black;
+            }
+        }
+    }
+}

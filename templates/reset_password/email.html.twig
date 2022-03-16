@@ -1,10 +1,5 @@
-{# <h1>Hi!</h1> #}
-<div class=" login">
-    <div class="login_user">
-        <div class="logo_login">
-            <img src="{{asset(" uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="">
-        </div>
-        <div class="form">
+ <h1>Bonjour </h1>
+
             <p>Pour changer votre mot de passe, suivez le lien envoyer</p>
 
             <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token:
@@ -12,8 +7,6 @@
 
             <p>Le lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData,
                 'ResetPasswordBundle') }}.</p>
-        </div>
-    </div>
-</div>
 
-{# <p>Cheers!</p> #}
+
+ <p>A bientôt</p> 

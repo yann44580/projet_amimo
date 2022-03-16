@@ -31,13 +31,13 @@ class ToolsType extends AbstractType
             ->add('tool_author', TextType::class, [
                 'label' => 'Auteur'
             ])
-            // ->add('animal_category', EntityType::class, [
-            //     'class' => AnimalsCategories::class,
-            //     'label' => "Catégorie de l'animal",
-            //     'choice_label' => 'animal_category_name',
-            //     'multiple' => true,
-            //     'expanded' => false
-            // ])
+            ->add('animal_category', EntityType::class, [
+                'class' => AnimalsCategories::class,
+                'label' => "Catégorie de l'animal",
+                'choice_label' => 'animal_category_name',
+                'multiple' => true,
+                'expanded' => false
+            ])
             // ->add('user')
             ->add('category_tool', EntityType::class, [
                 'class' => ToolCategories::class,
