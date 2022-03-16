@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $('#modalus').modal();
   $('.sidenav').sidenav();
   $(".dropdown-trigger").dropdown();
   $('.collapsible').collapsible();
@@ -38,5 +39,6 @@ $(document).ready(function () {
     });
 });
 });
+
 
 

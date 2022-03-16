@@ -17,7 +17,7 @@
             </div>
             <div class="input-field col s4">
             {% set affich = null %}
-            {% for animals in tool.animalcategory %}
+            {% for animals in tools.animalcategory %}
             {% if affich is null %}
                 {% set affich = animals.animalcategoryname %}  
             {% else %}
@@ -46,7 +46,7 @@
             </div>
             <div class="col s3">
             {% set affich = null %}
-            {% for publictype in tool.populationtype %}
+            {% for publictype in tools.populationtype %}
             {% if affich is null %}
                 {% set affich = publictype.populationtypename %}
             {% else %}
@@ -57,7 +57,7 @@
             </div>
             <div class="col s5">
             {% set affich = null %}
-            {% for public in tool.populations %}
+            {% for public in tools.populations %}
                 {% if affich is null %}
                     {% set affich = public.populationname %}
                 {% else %}

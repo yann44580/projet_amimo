@@ -49,6 +49,11 @@
   z-index: 1;
 }
 
+.base nav .nav-wrapper .empty {
+  display: inline-block;
+  width: 3vw;
+}
+
 .base nav .nav-wrapper .brand-logo {
   top: -17px;
 }
@@ -409,14 +414,30 @@ footer .copyright .img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 40%;
+  margin-top: 50px;
 }
 
 .login .login_user .form .button .btn {
   background-color: #019a93;
+  border-radius: 15px;
 }
 
 .login .login_user .form .button p {
   margin: 0;
+}
+
+.login .login_user .form .reset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+
+.login .login_user .form .reset .btn {
+  border-radius: 15px;
 }
 
 .login .register {

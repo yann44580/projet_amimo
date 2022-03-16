@@ -157,7 +157,15 @@
 	</ul>
 	<nav class="collapse-large">
 		<div class="nav-wrapper">
+		{% if app.user %}
+		{% if app.user.roles["0"] == "ROLE_ADMIN" %}
 			<a href="{{path('admin')}}" class="admin">Admin</a>
+			{% else %}
+		<a href="#" class="empty"></a>
+			{% endif %}
+			{% else %}
+		<a href="#" class="empty"></a>
+		{% endif %}
 			<a href="{{ path('home') }}" class="brand-logo">
 				{{ render(controller('App\\Controller\\MainController::menuhead'))}}</a>
 			<a href="#" class="sidenav-trigger" data-target="mobile-nav">
