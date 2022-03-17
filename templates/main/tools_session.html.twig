@@ -4,9 +4,10 @@
 
 {% block body %}
 <main>
+
     <div class="tool">
         <div class="container">
-            <h1>Fiche séance</h1>
+            <h1>Fiches séance</h1>
             <div class="row card_theme">
                 {% for tool in tools %}
                 {% if tool.toolitem == 'session' %}
@@ -15,63 +16,70 @@
                     <div class="card ">
                         <div class="card-image waves-effect waves-block waves-light">
 
-                            {% for image in tool.picturesTools %}
-                            <img src="{{ asset('/uploads/'~image.picturetoolname) }}" alt="" width="50">
+                            {% if tool.documenttool != NULL %}
+                            <img src="{{ asset('/uploads/tools/'~ tool.documenttool) }}" alt="" width="50">
                             {% else %}
                             <img src="{{asset('uploads/patte_chien.jpg')}}" alt="" width="50px" height="100%">
-                            {% endfor %}
+                            {% endif %}
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">{{ tool.toolTitle }}<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">{{ tool.toolTitle }}<i
+                                    class="material-icons right">more_vert</i></span>
                             <p>Type de fiche:
                                 {{ tool.categorytool.toolcategoryname }}
                             </p>
-                        
+
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ tool.toolTitle }}<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">{{ tool.toolTitle }}<i
+                                    class="material-icons right">close</i></span>
                             <p>Mon ou mes partenaires:
                                 {% set affich = null %}
                                 {% for animals in tool.animalcategory %}
-								{% if affich is null %}
-                                	{% set affich = animals.animalcategoryname %}  
-								{% else %}
-									{% set affich = affich ~ " / " ~ animals.animalcategoryname %}
-								{% endif %}
-								{% endfor %}
-							<p>{{ affich }}</p>
+                                {% if affich is null %}
+                                {% set affich = animals.animalcategoryname %}
+                                {% else %}
+                                {% set affich = affich ~ " / " ~ animals.animalcategoryname %}
+                                {% endif %}
+                                {% endfor %}
+                            <p>{{ affich }}</p>
                             </p>
                             <p>Public visé:
                                 {% set affich = null %}
                                 {% for publictype in tool.populationtype %}
-								{% if affich is null %}
-									{% set affich = publictype.populationtypename %}
-								{% else %}
-									{% set affich = affich ~ " / " ~ publictype.populationtypename %}
-								{% endif %}
-								{% endfor %}
+                                {% if affich is null %}
+                                {% set affich = publictype.populationtypename %}
+                                {% else %}
+                                {% set affich = affich ~ " / " ~ publictype.populationtypename %}
+                                {% endif %}
+                                {% endfor %}
                             <p>{{ affich }}</p>
                             </p>
                         </div>
                         <div class="card-action">
-                            <a href="{{ path('tools_session_data', {'id': tool.id}) }}">
-                                <p>Voir la fiche</p>
-                            </a>
-                        </div>
+                            {% if app.user %}
+                            <a href="{{ path('tools_session_data', {'id': tool.id}) }}"><p>Voir la fiche</p></a>
+                                {% else %}
+                                <a href="#modalus" class="modal-trigger"><p>Voir la fiche</p></a>
+                                    <div id="modalus" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Infos</h4>
+                                        <p>Pour accéder aux fiches, il suffit juste de s'inscrire. Vous pourrez télécharger les fiches et partager également les votres. </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{{path('app_login')}}" class="modal-close waves-effect waves-green btn-flat">Je m'inscris.</a>
+                                    </div>
+                                </div>
+                                {% endif %}    
+                                </div>
+
                     </div>
                 </div>
                 {% endif %}
                 {% endfor %}
             </div>
         </div>
-
-        <!-- <div class="confirm1">
-            <a href="{{ path('home') }}">
-                <div class="btn blue-grey return"><img src="{{ asset('/uploads/icone/fleche_retour.png') }}"
-                        alt="fleche retour"></div>
-            </a>
-        </div> -->
-
     </div>
+
 </main>
 {% endblock %}

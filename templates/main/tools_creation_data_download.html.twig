@@ -16,10 +16,15 @@
                 <h5>Mon ou mes partenaire(s):</h5>
             </div>
             <div class="input-field col s4">
+            {% set affich = null %}
             {% for animals in tools.animalcategory %}
-            {{ animals.animalcategoryname }}
-            -
-        {% endfor %}
+            {% if affich is null %}
+                {% set affich = animals.animalcategoryname %}  
+            {% else %}
+                {% set affich = affich ~ " / " ~ animals.animalcategoryname %}
+            {% endif %}
+            {% endfor %}
+        <p>{{ affich }}</p>
             </div>
         </div>
         <div class="divider"></div>
@@ -28,9 +33,15 @@
                 <h5>Public ciblé:</h5>
             </div>
             <div class="col s3">
-                {% for publictype in tools.populationtype %}
-                {{ publictype.populationtypename }} -
-                {% endfor %}
+            {% set affich = null %}
+            {% for publictype in tools.populationtype %}
+            {% if affich is null %}
+                {% set affich = publictype.populationtypename %}
+            {% else %}
+                {% set affich = affich ~ " / " ~ publictype.populationtypename %}
+            {% endif %}
+            {% endfor %}
+        <p>{{ affich }}</p>
             </div>
         </div>
         <div class="divider"></div>

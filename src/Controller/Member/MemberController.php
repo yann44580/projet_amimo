@@ -181,25 +181,25 @@ class MemberController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            // $picture = $form->get('document_tool')->getData();
-            // if ($picture) {
-            //     $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
-            //     // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
-            //     $safeFilename = $slugger->slug($originalFilename);
-            //     $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
-            //     // Déplacez le fichier dans le répertoire où les brochures sont stockées
-            //     try {
-            //         $picture->move(
-            //             $this->getParameter('images_directory_tools'),
-            //             $newFilename
-            //         );
-            //     } catch (FileException $e) {
-            //         // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
-            //     }
-            //     // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
-            //     // au lieu de son contenu
-            //     $tool->setDocumentTool($newFilename);
-            // }
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
 
             // On récupère les images transmises
             $picturesTools = $form->get('picturesTools')->getData();
@@ -239,13 +239,33 @@ class MemberController extends AbstractController
      /**
      * @Route("/tools/session/{id}/edit", name="tools_session_edit", methods={"GET", "POST"})
      */
-    public function edittool(Request $request, Tools $tool, EntityManagerInterface $entityManager): Response
+    public function edittool(Request $request, Tools $tool, EntityManagerInterface $entityManager,  SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ToolsType::class, $tool);
         $form->handleRequest($request);
         $date = new Datetime();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
              // On récupère les images transmises
              $picturesTools = $form->get('picturesTools')->getData();
 

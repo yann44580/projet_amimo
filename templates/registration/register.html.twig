@@ -58,6 +58,8 @@
 						<div class="input-field">
 							{{ form_label(registrationForm.plainPassword) }}
 							{{ form_widget(registrationForm.plainPassword) }}
+							{{ form_errors(registrationForm.plainPassword) }}
+
 						</div>
 						<div class="button">
 							<button type="submit" class="btn">Enregistrer</button>

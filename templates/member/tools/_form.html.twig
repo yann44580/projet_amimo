@@ -38,6 +38,17 @@
         </div>
     </div>
     <div class="divider"></div>
+    <h6>Document pdf ou photo de présentation</h6>
+    <div class="file-field input-field">
+        <div class="btn">
+            {{ form_label(form.document_tool) }}
+            {{ form_widget(form.document_tool) }}
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload file" />
+        </div>
+    </div>
+    <div class="divider"></div>
     <h5>Déroulé de la séance</h5>
     <div class="input-field">
         {{ form_row(form.tool_content) }}

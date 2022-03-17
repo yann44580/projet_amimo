@@ -63,6 +63,10 @@
 
 
         .nav-wrapper {
+            .empty{
+                display: inline-block;
+                width: 3vw;
+            }
             .brand-logo {
                 top: -17px;
             }
@@ -161,6 +165,10 @@ footer {
         background-color: #1A60A1;
 
         .nav-wrapper {
+            .empty{
+                display: inline-block;
+                width: 3vw;
+            }
             .brand-logo {
                 top: -17px;
             }
@@ -348,13 +356,23 @@ footer {
                 display: flex;
                 justify-content: space-between;
                 width: 40%;
+                margin-top: 50px;
 
                 .btn {
                     background-color: #019a93;
+                    border-radius: 15px;
                 }
 
                 p {
                     margin: 0;
+                }
+            }
+            .reset{
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                .btn{
+                    border-radius:15px ;
                 }
             }
         }
@@ -481,7 +499,8 @@ Main {
                 text-align: -webkit-center;  
                 .card{
                     height: 50vh;
-                    width: 50%;
+                    min-width: 25%;
+                    max-width: 19vw;
                     margin-top: 80px;
                     .card-image{
                         height: 55%;
@@ -626,57 +645,63 @@ Main {
 // 8. MEDIATION ============================================================
 
 // 9.MEMBER ================================================================
-.presentation{
-    width: 60vw;
-    height: 60vh;
-    background-color: #a2c6df;;
-    border-radius: 20px;
-    display: flex;
-    .section1{
-        width: 50%;
-        padding: 2vw 5vh;
-        line-height: 1.5;
-        .section3{
-            display: flex;
-        }
-        p:nth-child(1){
-            font-size: 1.5rem;
-            width: 45%;
-            text-align: center;
-        }
-        p:nth-child(2){
-            height: 5vh;
+.member{
+    .presentation{
+        width: 60vw;
+        height: 60vh;
+        background-color: #a2c6df;;
+        border-radius: 20px;
+        display: flex;
+        .section1{
             width: 50%;
-            border-bottom: 1px black solid;
-            display: flex;
-            align-items: flex-end;
-        }
-    }
-    .divider{
-        height: 90%;
-        width: 1px;
-        margin-top: 2vh;
-        background-color: black;
-    }
-    .section2{
-        padding: 2vw 5vh;
-        .image{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 24vw;
-            height: 40vh;
-            img{
-                width: 40%;
-                height: 50%;
+            padding: 2vw 5vh;
+            line-height: 1.5;
+            .section3{
+                display: flex;
+            }
+            p:nth-child(1){
+                font-size: 1.5rem;
+                width: 45%;
+                text-align: center;
+            }
+            p:nth-child(2){
+                height: 5vh;
+                width: 50%;
+                border-bottom: 1px black solid;
+                display: flex;
+                align-items: flex-end;
             }
         }
-        .button{
-            display: flex;
-            justify-content: space-evenly;
-            a{
-                color: black;
+        .divider{
+            height: 90%;
+            width: 1px;
+            margin-top: 2vh;
+            background-color: black;
+        }
+        .section2{
+            padding: 2vw 5vh;
+            .image{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 24vw;
+                height: 40vh;
+                img{
+                    width: 40%;
+                    height: 50%;
+                }
+            }
+            .button{
+                display: flex;
+                justify-content: space-evenly;
+                a{
+                    color: black;
+                }
             }
         }
+    }
+    .confirm{
+        display: flex;
+        justify-content: space-evenly;
     }
 }

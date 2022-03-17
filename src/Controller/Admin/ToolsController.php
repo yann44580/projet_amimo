@@ -229,7 +229,7 @@ class ToolsController extends AbstractController
     /**
      * @Route("/admin/tools/session/new", name="admin_tools_session_new", methods={"GET", "POST"})
      */
-    public function newtool(Request $request, EntityManagerInterface $entityManager): Response
+    public function newtool(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $tool = new Tools();
         $form = $this->createForm(ToolsType::class, $tool);
@@ -239,6 +239,26 @@ class ToolsController extends AbstractController
         $item = "session";
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
             // On récupère les images transmises
             $picturesTools = $form->get('picturesTools')->getData();
 
@@ -286,13 +306,33 @@ class ToolsController extends AbstractController
     /**
      * @Route("/admin/tools/session/{id}/edit", name="admin_tools_session_edit", methods={"GET", "POST"})
      */
-    public function edittool(Request $request, Tools $tool, EntityManagerInterface $entityManager): Response
+    public function edittool(Request $request, Tools $tool, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ToolsType::class, $tool);
         $form->handleRequest($request);
         $date = new Datetime();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $picture = $form->get('document_tool')->getData();
+            if ($picture) {
+                $originalFilename = pathinfo($picture->getClientOriginalName(), PATHINFO_FILENAME);
+                // ceci est nécessaire pour inclure en toute sécurité le nom de fichier dans l'URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $picture->guessExtension();
+                // Déplacez le fichier dans le répertoire où les brochures sont stockées
+                try {
+                    $picture->move(
+                        $this->getParameter('images_directory_tools'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... gérer l'exception si quelque chose se produit pendant le téléchargement du fichier
+                }
+                // met à jour la propriété 'document_tool' pour stocker le nom du fichier PDF
+                // au lieu de son contenu
+                $tool->setDocumentTool($newFilename);
+            }
              // On récupère les images transmises
              $picturesTools = $form->get('picturesTools')->getData();
 

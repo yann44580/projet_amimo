@@ -11,6 +11,7 @@ use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -79,6 +80,23 @@ class ToolsType extends AbstractType
             ])
             ->add('tool_content3', CKEditorType::class, [
                 'label' => 'Séparation'
+            ])
+            ->add('document_tool', FileType::class, [
+                'label' => 'Photos ou PDF présentant l\'outil',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/*',
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+
+                        'mimeTypesMessage' => 'Veuillez entrer un format de document valide',
+                    ])
+                ],
             ])
             ;
     }

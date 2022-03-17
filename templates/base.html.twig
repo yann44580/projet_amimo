@@ -130,7 +130,7 @@
 			<a href="{{ path('member_main_index') }}">Mes infos personnelles</a>
 		</li>
 		<li>
-			<a href="{{path('member_tools_index')}}">Mes fiches de session</a>
+			<a href="{{path('member_tools_index')}}">Mes fiches séances</a>
 		</li>
 		<li>
 		<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
@@ -145,7 +145,7 @@
 			<a href="{{ path('member_main_index') }}">Mes infos personnelles</a>
 		</li>
 		<li>
-			<a href="{{path('member_tools_index')}}">Mes fiches de session</a>
+			<a href="{{path('member_tools_index')}}">Mes fiches séances</a>
 		</li>
 		<li>
 		<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
@@ -157,7 +157,15 @@
 	</ul>
 	<nav class="collapse-large">
 		<div class="nav-wrapper">
+		{% if app.user %}
+		{% if app.user.roles["0"] == "ROLE_ADMIN" %}
 			<a href="{{path('admin')}}" class="admin">Admin</a>
+			{% else %}
+		<a href="#" class="empty"></a>
+			{% endif %}
+			{% else %}
+		<a href="#" class="empty"></a>
+		{% endif %}
 			<a href="{{ path('home') }}" class="brand-logo">
 				{{ render(controller('App\\Controller\\MainController::menuhead'))}}</a>
 			<a href="#" class="sidenav-trigger" data-target="mobile-nav">

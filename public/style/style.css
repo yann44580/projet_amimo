@@ -49,6 +49,11 @@
   z-index: 1;
 }
 
+.base nav .nav-wrapper .empty {
+  display: inline-block;
+  width: 3vw;
+}
+
 .base nav .nav-wrapper .brand-logo {
   top: -17px;
 }
@@ -156,6 +161,11 @@ footer .copyright .img {
   margin-top: 20px;
   height: 50px;
   background-color: #1A60A1;
+}
+
+.base1 nav .nav-wrapper .empty {
+  display: inline-block;
+  width: 3vw;
 }
 
 .base1 nav .nav-wrapper .brand-logo {
@@ -409,14 +419,30 @@ footer .copyright .img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 40%;
+  margin-top: 50px;
 }
 
 .login .login_user .form .button .btn {
   background-color: #019a93;
+  border-radius: 15px;
 }
 
 .login .login_user .form .button p {
   margin: 0;
+}
+
+.login .login_user .form .reset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+
+.login .login_user .form .reset .btn {
+  border-radius: 15px;
 }
 
 .login .register {
@@ -580,7 +606,8 @@ Main .tool .card_theme .col {
 
 Main .tool .card_theme .col .card {
   height: 50vh;
-  width: 50%;
+  min-width: 25%;
+  max-width: 19vw;
   margin-top: 80px;
 }
 
@@ -731,7 +758,7 @@ Main .flyer .container #flyer:nth-child(n) {
           transform: rotateX(90deg) translateY(50%);
 }
 
-.presentation {
+.member .presentation {
   width: 60vw;
   height: 60vh;
   background-color: #a2c6df;
@@ -741,25 +768,25 @@ Main .flyer .container #flyer:nth-child(n) {
   display: flex;
 }
 
-.presentation .section1 {
+.member .presentation .section1 {
   width: 50%;
   padding: 2vw 5vh;
   line-height: 1.5;
 }
 
-.presentation .section1 .section3 {
+.member .presentation .section1 .section3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.presentation .section1 p:nth-child(1) {
+.member .presentation .section1 p:nth-child(1) {
   font-size: 1.5rem;
   width: 45%;
   text-align: center;
 }
 
-.presentation .section1 p:nth-child(2) {
+.member .presentation .section1 p:nth-child(2) {
   height: 5vh;
   width: 50%;
   border-bottom: 1px black solid;
@@ -771,18 +798,18 @@ Main .flyer .container #flyer:nth-child(n) {
           align-items: flex-end;
 }
 
-.presentation .divider {
+.member .presentation .divider {
   height: 90%;
   width: 1px;
   margin-top: 2vh;
   background-color: black;
 }
 
-.presentation .section2 {
+.member .presentation .section2 {
   padding: 2vw 5vh;
 }
 
-.presentation .section2 .image {
+.member .presentation .section2 .image {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -796,12 +823,12 @@ Main .flyer .container #flyer:nth-child(n) {
   height: 40vh;
 }
 
-.presentation .section2 .image img {
+.member .presentation .section2 .image img {
   width: 40%;
   height: 50%;
 }
 
-.presentation .section2 .button {
+.member .presentation .section2 .button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -810,7 +837,16 @@ Main .flyer .container #flyer:nth-child(n) {
           justify-content: space-evenly;
 }
 
-.presentation .section2 .button a {
+.member .presentation .section2 .button a {
   color: black;
+}
+
+.member .confirm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 /*# sourceMappingURL=style.css.map */
