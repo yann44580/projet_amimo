@@ -63,10 +63,6 @@
 
 
         .nav-wrapper {
-            .empty{
-                display: inline-block;
-                width: 3vw;
-            }
             .brand-logo {
                 top: -17px;
             }
@@ -352,23 +348,13 @@ footer {
                 display: flex;
                 justify-content: space-between;
                 width: 40%;
-                margin-top: 50px;
 
                 .btn {
                     background-color: #019a93;
-                    border-radius: 15px;
                 }
 
                 p {
                     margin: 0;
-                }
-            }
-            .reset{
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                .btn{
-                    border-radius:15px ;
                 }
             }
         }

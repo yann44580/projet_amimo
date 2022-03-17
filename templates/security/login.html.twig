@@ -56,7 +56,7 @@
 
 								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 							</div>
-							
+							<a href="{{ path('app_forgot_password_request') }}">Mot de passe perdu</a>
 
 							{#
 							                    Uncomment this section and add a remember_me option below your firewall to activate remember me
@@ -76,9 +76,6 @@
 								<p>Je n'ai pas de compte
 									<a href="{{path('app_register')}}"><but class="btn">M'inscrire</but></a>
 								</p>
-							</div>
-							<div class="reset">
-								<a href="{{ path('app_forgot_password_request') }}"><button class="btn teal lighten-3">Mot de passe perdu</button></a>						
 							</div>
 						</form>
 					</div>
