@@ -22,6 +22,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 /**
  * @Route("/")
  */
@@ -150,6 +152,7 @@ class MainController extends AbstractController
 
     /**
      * @Route("/tools/session/data/{id}", name="tools_session_data", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function tool_pdf(Tools $tools): Response
     {
@@ -161,6 +164,7 @@ class MainController extends AbstractController
 
      /**
      * @Route("/tools/session/data/{id}/download", name="tools_session_data_download", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function tool_pdf_download(Tools $tools): Response
     {
@@ -222,6 +226,7 @@ class MainController extends AbstractController
 
     /**
      * @Route("/tools/creation/data/{id}", name="tools_creation_data", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function toolcreation_pdf(Tools $tools): Response
     {
@@ -233,6 +238,7 @@ class MainController extends AbstractController
 
      /**
      * @Route("/tools/creation/data/{id}/download", name="tools_creation_data_download", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function toolcreation_pdf_download(Tools $tools): Response
     {
