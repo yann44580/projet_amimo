@@ -42,8 +42,8 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<div>
-		{% do blogs.setPageRange(2) %}
+		<div class="pagination">
+		{% do blogs.setPageRange(3) %}
 		{{knp_pagination_render(blogs, 'admin/pagination.html.twig')}}
 		</div>
 

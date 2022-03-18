@@ -10,6 +10,10 @@ use App\Entity\PicturesTools;
 use App\Form\ToolcreationType;
 use App\Repository\ToolsRepository;
 use App\Repository\UsersRepository;
+use App\Repository\PopulationsRepository;
+use App\Repository\PopulationsTypeRepository;
+use App\Repository\ToolCategoriesRepository;
+use App\Repository\AnimalsCategoriesRepository;
 use App\Repository\AnimalsRepository;
 use App\Repository\PartnersRepository;
 use App\Repository\MediationsRepository;
@@ -21,7 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -143,10 +147,25 @@ class MainController extends AbstractController
     /**
      * @Route("/tools/session", name="tools_session", methods={"GET"})
      */
-    public function tool_session(ToolsRepository $toolsRepository): Response
+    public function tool_session(
+        PopulationsRepository $populationsRepository,
+        PopulationsTypeRepository $populationsTypeRepository,
+        ToolCategoriesRepository $toolCategoriesRepository,
+        AnimalsCategoriesRepository $animalsCategoriesRepository,
+        ToolsRepository $toolsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
     {
+        $data = $toolsRepository->findBysession('session');
+
+        $tools = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1),2 
+        );     
         return $this->render('main/tools_session.html.twig', [
-            'tools' => $toolsRepository->findBysession('session'),
+            'tools' => $tools,
+            'toolcategories' => $toolCategoriesRepository->findAll(),
         ]);
     }
 
@@ -217,10 +236,21 @@ class MainController extends AbstractController
      /**
      * @Route("/tools/creation", name="tools_creation", methods={"GET"})
      */
-    public function tool_creation(ToolsRepository $toolsRepository): Response
+    public function tool_creation(
+        ToolsRepository $toolsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
     {
+        $data = $toolsRepository->findBysession('creation');
+
+        $tools = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1),1 
+        ); 
+
         return $this->render('main/tools_creation.html.twig', [
-            'tools' => $toolsRepository->findBysession('creation'),
+            'tools' => $tools,
         ]);
     }
 

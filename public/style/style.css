@@ -630,6 +630,15 @@ Main .tool .card_theme .col .card .card-action {
   padding: 5px 24px;
 }
 
+Main .tool .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 Main .flyer {
   background-color: antiquewhite;
   min-height: 100vh;
@@ -683,6 +692,10 @@ Main .flyer .container #flyer:nth-child(n) {
 
 .contact a {
   float: right;
+}
+
+.contact .RGPD a {
+  margin-left: 0.5rem;
 }
 
 .asso .team_humans .humans {
@@ -807,6 +820,21 @@ Main .flyer .container #flyer:nth-child(n) {
 
 .member .presentation .section2 {
   padding: 2vw 5vh;
+}
+
+.member .presentation .section2 .tool_number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.member .presentation .section2 .tool_number span {
+  margin: 1em;
+}
+
+.member .presentation .section2 .tool_number p {
+  font-size: 1.5rem;
+  margin-top: 0.5em;
 }
 
 .member .presentation .section2 .image {

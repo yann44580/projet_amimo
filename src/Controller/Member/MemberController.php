@@ -22,6 +22,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 /**
  * @Route("/member", name="member_")
@@ -147,13 +149,23 @@ class MemberController extends AbstractController
     /**
      * @Route("/tools", name="tools_index", methods={"GET"})
      */
-    public function tools_members(ToolsRepository $ToolsRepository): Response
+    public function tools_members(
+        ToolsRepository $ToolsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
     {
         $userid = $this->getUser()->getId();
+        $data = $ToolsRepository->findByuser($userid);
+
+        $tools = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1),6
+        ); 
      
 
         return $this->render('member/tools/index.html.twig', [
-            'tools' => $ToolsRepository->findByuser($userid),
+            'tools' => $tools,
         ]);
     }
 
@@ -310,7 +322,7 @@ class MemberController extends AbstractController
         return $this->redirectToRoute('member_tools_index', [], Response::HTTP_SEE_OTHER);
     }
 
-        /**
+    /**
      * @Route("/tools/session/supprime/image/{id}", name="tools_session_delete_image", methods={"DELETE"})
      */
     public function deleteImage(EntityManagerInterface $entityManager, PicturesTools $picturesTools, Request $request)
@@ -340,13 +352,23 @@ class MemberController extends AbstractController
      /**
      * @Route("/tools/creation", name="tools_creation_index", methods={"GET"})
      */
-    public function tools_creation_members(ToolsRepository $ToolsRepository): Response
+    public function tools_creation_members(
+        ToolsRepository $ToolsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response
     {
         $userid = $this->getUser()->getId();
+        $data = $ToolsRepository->findByuser($userid);
+
+        $tools = $paginator->paginate(
+            $data, 
+            $request->query->getInt('page', 1),6
+        ); 
      
 
         return $this->render('member/tools/creation_index.html.twig', [
-            'tools' => $ToolsRepository->findByuser($userid),
+            'tools' => $tools, 
         ]);
     }
 

@@ -82,6 +82,10 @@
 
 
 		</div>
+		<div class="pagination">
+		{% do tools.setPageRange(2) %}
+		{{knp_pagination_render(tools, 'admin/pagination.html.twig')}}
+		</div>
 	</div>
 </main>
 {% endblock %}

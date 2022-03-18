@@ -12,6 +12,7 @@
 	<!--JavaScript-->
 	<script src="{{asset('js/script.js')}}" defer></script>
 	<script src="{{ asset('js/images.js') }}" defer></script>
+	<script src="{{asset('js/filters.js')}}" defer></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<!--Import Google Font-->
@@ -24,7 +25,49 @@
 
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="{{asset('tarteaucitron/tarteaucitron.js')}}"></script>
 
+	<script type="text/javascript">
+		tarteaucitron.init({
+			"privacyUrl": "", /* Privacy policy url */
+
+			"hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+			"cookieName": "tarteaucitron", /* Cookie name */
+
+			"orientation": "bottom", /* Banner position (top - bottom) */
+
+			"groupServices": false, /* Group services by category */
+
+			"showAlertSmall": false, /* Show the small banner on bottom right */
+			"cookieslist": true, /* Show the cookie list */
+
+			"closePopup": false, /* Show a close X on the banner */
+
+			"showIcon": true, /* Show cookie icon to manage cookies */
+			//"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+			"iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+			"adblocker": false, /* Show a Warning if an adblocker is detected */
+
+			"DenyAllCta": true, /* Show the deny all button */
+			"AcceptAllCta": true, /* Show the accept all button when highPrivacy on */
+			"highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+
+			"handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+			"removeCredit": false, /* Remove credit link */
+			"moreInfoLink": true, /* Show more info link */
+
+			"useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+			"useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+
+			//"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+
+			"readmoreLink": "", /* Change the default readmore link */
+
+			"mandatory": true, /* Show a message about mandatory cookies */
+		});
+	</script>
 	<title>
 		{% block title %}Welcome!
 		{% endblock %}
@@ -35,16 +78,16 @@
 <body class="base">
 	<div class="picture_menu">
 		<div class="icone">
-		{% if app.user %}
-		{% else %}
+			{% if app.user %}
+			{% else %}
 			<a href="{{ path('app_login') }}">
 				<i class="fas fa-user"></i>
 				<div class="title">S'incrire ou s'identifier</div>
 			</a>
-		{% endif %}
+			{% endif %}
 		</div>
 		<div class="picture">
-			<img class="img_nav" src="{{asset("uploads/pictures/helena1.jpg")}}" alt="un_chien_et_une_femme"
+			<img class="img_nav" src="{{asset('uploads/pictures/helena1.jpg')}}" alt="un_chien_et_une_femme"
 				id="presentation_picture">
 		</div>
 	</div>
@@ -133,7 +176,7 @@
 			<a href="{{path('member_tools_index')}}">Mes fiches séances</a>
 		</li>
 		<li>
-		<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
+			<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
 		</li>
 		<li class="divider"></li>
 		<li>
@@ -148,7 +191,7 @@
 			<a href="{{path('member_tools_index')}}">Mes fiches séances</a>
 		</li>
 		<li>
-		<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
+			<a href="{{path('member_tools_creation_index')}}">Mes fiches créatives</a>
 		</li>
 		<li class="divider"></li>
 		<li>
@@ -157,15 +200,15 @@
 	</ul>
 	<nav class="collapse-large">
 		<div class="nav-wrapper">
-		{% if app.user %}
-		{% if app.user.roles["0"] == "ROLE_ADMIN" %}
+			{% if app.user %}
+			{% if app.user.roles["0"] == "ROLE_ADMIN" %}
 			<a href="{{path('admin')}}" class="admin">Admin</a>
 			{% else %}
-		<a href="#" class="empty"></a>
+			<a href="#" class="empty"></a>
 			{% endif %}
 			{% else %}
-		<a href="#" class="empty"></a>
-		{% endif %}
+			<a href="#" class="empty"></a>
+			{% endif %}
 			<a href="{{ path('home') }}" class="brand-logo">
 				{{ render(controller('App\\Controller\\MainController::menuhead'))}}</a>
 			<a href="#" class="sidenav-trigger" data-target="mobile-nav">
@@ -212,7 +255,7 @@
 	</nav>
 </body>
 
-</html>
+
 <ul class="sidenav" id="mobile-nav">
 	<li>
 		<a class="dropdown-trigger" href="#!" data-target="dropdown2">Mediation animale<i
@@ -253,7 +296,7 @@
 <footer>
 	<div class="contact">
 		<div class="contact1">
-	<i class="fas fa-map-marker-alt"></i>
+			<i class="fas fa-map-marker-alt"></i>
 			<div class="contact2">
 				<h4>Adresse</h4>
 				<p>44580 Villeneuve en Retz</p>
@@ -277,27 +320,34 @@
 		</div>
 	</div>
 	<div class="partner">
-	<div class="partner1">
-<h4>Nous aimons aussi...</h4>
-	<ul>
-	<li><a href="https://www.association-sixieme-sens.fr/" target="_blank">Sixième sens</a></li>
-	<li><a href="https://www.animenvie.com/" target="_blank">Anim envie</a></li>
-	<li><a href="https://www.chauve.fr/liane/" target="_blank">Association Liane</a></li>
-	<li><a href="http://www.lapetitefermedheidi.fr/" target="_blank">La petite ferme heidi</a></li>
-	</ul>
-</div>
-<a href="#" class="logo">
-	{{ render(controller('App\\Controller\\MainController::menuhead'))}}</a>
+		<div class="partner1">
+			<h4>Nous aimons aussi...</h4>
+			<ul>
+				<li><a href="https://www.association-sixieme-sens.fr/" target="_blank">Sixième sens</a></li>
+				<li><a href="https://www.animenvie.com/" target="_blank">Anim envie</a></li>
+				<li><a href="https://www.chauve.fr/liane/" target="_blank">Association Liane</a></li>
+				<li><a href="http://www.lapetitefermedheidi.fr/" target="_blank">La petite ferme heidi</a></li>
+			</ul>
+		</div>
+		<a href="#" class="logo">
+			{{ render(controller('App\\Controller\\MainController::menuhead'))}}</a>
 	</div>
 	<div class="copyright">
 		<img src="{{asset('uploads/icone/copyright.png')}}" alt="copyright" class="img">
 		Copyright 2022 Amimo. Tous droits réservés |
-		<a href="{{path('mentions_legales')}}">Mentions Légales</a> | <a href="{{path('rgpd')}}">Conditions d'utilisation et RGPD</a>
+		<a href="{{path('mentions_legales')}}">Mentions Légales</a> | <a href="{{path('rgpd')}}">Conditions
+			d'utilisation et RGPD</a>
 	</div>
 </footer>
 <!--JavaScript at end of body for optimized loading-->
 <script src="{{asset('js/js/materialize.js')}}"></script>
+<script type="text/javascript">
+	tarteaucitron.user.gtagUa = 'UA-XXXXXXXX-X';
+	tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */
+	};
+	(tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+</script>
 </body>
-</body>
+
 
 </html>

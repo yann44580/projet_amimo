@@ -523,6 +523,10 @@ Main {
                 }
             }
         }
+        .pagination{
+            display: flex;
+            justify-content: center;
+        }
     }
     .flyer {
         background-color: antiquewhite;
@@ -579,6 +583,11 @@ Main {
 
     a {
         float: right;
+    }
+    .RGPD{
+        a{
+            margin-left: 0.5rem;
+        }
     }
 }
 
@@ -684,6 +693,16 @@ Main {
         }
         .section2{
             padding: 2vw 5vh;
+            .tool_number{
+                display: flex;
+                span{
+                    margin: 1em;
+                }
+                p{
+                    font-size: 1.5rem;
+                    margin-top: 0.5em;
+                }
+            }
             .image{
                 display: flex;
                 justify-content: center;

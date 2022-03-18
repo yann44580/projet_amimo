@@ -8,6 +8,16 @@
     <div class="tool">
         <div class="container">
             <h1>Fiches séance</h1>
+            <div class="filter">
+                <p>flitrer</p>
+                <form id="filters">
+                    {% for toolcat in toolcategories %}
+                        <p><label for="cat{{toolcat.id}}"><input type="checkbox" class="toto" name="toolcategories[]" id="cat{{toolcat.id}}" value ="{{toolcat.id}}" ><span>{{toolcat.toolcategoryname}}</span>
+                        </label></p>
+                    {% endfor %}
+                    {# <input type="hidden"name="page" > #}
+                </form>
+            </div>
             <div class="row card_theme">
                 {% for tool in tools %}
                 {% if tool.toolitem == 'session' %}
@@ -78,8 +88,13 @@
                 {% endif %}
                 {% endfor %}
             </div>
+            <div class="pagination">
+                {% do tools.setPageRange(2) %}
+                {{knp_pagination_render(tools, 'admin/pagination.html.twig')}}
+                </div>
         </div>
     </div>
 
 </main>
+
 {% endblock %}

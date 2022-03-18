@@ -34,7 +34,9 @@
 			</div>
 			<div class="divider"></div>
 			<div class="section2">
-				<p>Nombre de fiche crées : </p>
+				<div class="tool_number">
+				<span>Nombre de fiche(s) crée(s) : </span><p>{{ app.user.tools|length }}</p>
+				</div>
 				<div class="image">
 					<img src="{{asset('/uploads/icone/form.png')}}" alt="icone_form">
 				</div>

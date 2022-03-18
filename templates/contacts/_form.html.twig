@@ -20,6 +20,13 @@
 	{{ form_widget(form.contact_content) }}
 </div>
 <div class="button">
+<div class="RGPD">
+<label>
+	{# {{ form_label(form.agreeTerms) }} #}
+	{{ form_widget(form.agreeTerms) }}
+	<span>Je suis d'accord avec <a href="{{path('rgpd')}}"> la politique de confidentialité.</a></span>
+</label>
+</div>
 	<button class="btn">{{ button_label|default('Envoyer') }}</button>
 </div>
 {{ form_end(form) }}
