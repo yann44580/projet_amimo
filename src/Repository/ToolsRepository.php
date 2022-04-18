@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Tools;
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,16 +21,30 @@ class ToolsRepository extends ServiceEntityRepository
         parent::__construct($registry, Tools::class);
     }
 
+    // $query->Join('t.category_tool', 'tc');
+    // $query->andWhere('tc.tool_category_name = :category_tool')
 
-    public function findBysession($item)
+    public function findBysession($item, $filters = null)
     {
-        return $this->createQueryBuilder('t')
+        $query = $this->createQueryBuilder('t')
             ->setParameter('session', $item)
-            ->andWhere('t.tool_item = :session')
-            ->orderBy('t.id', 'ASC')
+            ->Where('t.tool_item = :session')
+            ->orderBy('t.id', 'ASC');
+           
+            if($filters != null){
+                 $query ->join('populationstype', 'po')
+                    ->where('id = :po.id')
+                    ->setParameter(':po.id', array_values($filters));
+            //   die('ouf');
+            // $rawSql = "SELECT t0.id AS id_1, t0.population_type_name AS population_type_name_2 FROM populations_type t0 INNER JOIN tools_populations_type ON t0.id = tools_populations_type.populations_type_id WHERE
+            // tools_populations_type.tools_id = ? ";
+            }
+           
+            $query 
             ->getQuery()
             ->getResult()
         ;
+        return $query->getQuery()->getResult();
     }
 
     public function findByuser($userid)
@@ -44,6 +59,15 @@ class ToolsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function findByfilter($filters)
+    {
+        $query = $this->createQueryBuilder('t')
+        // ->select('t',)
+        ->join('t.population_type', 'population_type')
+        ->where('population_type.id = :id')
+        ->setParameter(':id', array_values($filters));
     }
 
 

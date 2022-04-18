@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PartnersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PartnersRepository::class)
@@ -39,6 +40,7 @@ class Partners
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex("/0[1-9]\d{8}/")
      */
     private $partner_phone;
 
@@ -175,3 +177,4 @@ class Partners
         return $this;
     }
 }
+

@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+<div class="administration">
+	<fieldset class="container">
 		<h1>Type de public</h1>
 		<a href="{{ path('admin_populations_new') }}">Rentrer un nouveau public</a>
 
@@ -34,6 +35,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
-	</div>
+	</fieldset>
+</div>
 {% endblock %}

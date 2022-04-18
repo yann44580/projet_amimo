@@ -49,6 +49,10 @@
   z-index: 1;
 }
 
+.base nav .nav-wrapper .burger-menu {
+  height: 100%;
+}
+
 .base nav .nav-wrapper .empty {
   display: inline-block;
   width: 3vw;
@@ -78,10 +82,6 @@
 
 .base nav .nav-wrapper .menu li .top {
   top: -58px;
-}
-
-footer {
-  margin-top: 50px;
 }
 
 footer .contact {
@@ -163,6 +163,10 @@ footer .copyright .img {
   background-color: #1A60A1;
 }
 
+.base1 nav .nav-wrapper .burger-menu {
+  height: 100%;
+}
+
 .base1 nav .nav-wrapper .empty {
   display: inline-block;
   width: 3vw;
@@ -196,6 +200,12 @@ footer .copyright .img {
 
 .base1 .body {
   min-height: 90vh;
+}
+
+.admin .administration {
+  background-color: #dbc9c0;
+  min-height: 95vh;
+  padding-top: 2px;
 }
 
 .admin nav {
@@ -309,7 +319,7 @@ footer .copyright .img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 10vh;
+  height: 100%;
 }
 
 .admin .confirm p {
@@ -452,6 +462,7 @@ footer .copyright .img {
 Main .citation {
   background-color: antiquewhite;
   height: 40vh;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -465,6 +476,7 @@ Main .citation {
 
 Main .citation .container {
   height: 35vh;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -477,13 +489,23 @@ Main .citation .container {
   position: relative;
 }
 
-Main .citation .container .citation1 {
-  position: absolute;
+Main .citation .container .row {
   width: 100%;
+  height: 100%;
+}
+
+Main .citation .container .row .citation1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
   z-index: 1;
 }
 
-Main .citation .container .citation1 p {
+Main .citation .container .row .citation1 p {
   display: block;
   border: #eeaf90 solid 2.5px;
   width: 50vw;
@@ -492,11 +514,17 @@ Main .citation .container .citation1 p {
   text-align: center;
 }
 
-Main .citation .container .citation_img {
-  padding-left: 70%;
+Main .citation .container .row .citation_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
 }
 
-Main .citation .container .citation_img img {
+Main .citation .container .row .citation_img img {
   display: block;
   width: 21vw;
   height: 18vh;
@@ -698,14 +726,29 @@ Main .flyer .container #flyer:nth-child(n) {
   margin-left: 0.5rem;
 }
 
-.asso .team_humans .humans {
-  background: linear-gradient(135deg, #19E5DB 5%, white 50%);
-  padding: 50px;
-  margin-top: 50px;
-  border-radius: 15px;
+.asso {
+  min-height: 100vh;
+  background-color: #a7c8bd;
+  padding: 10px;
 }
 
-.asso .team_humans .humans .picture {
+.asso .team {
+  border-radius: 15px;
+  padding: 0;
+}
+
+.asso .team .humans {
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.asso .team .humans .card1 {
+  width: 50%;
+}
+
+.asso .team .humans .card2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -713,62 +756,17 @@ Main .flyer .container #flyer:nth-child(n) {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  max-width: 50%;
 }
 
-.asso .team_humans .humans .picture img {
-  float: left;
-  margin-right: 30px;
-  border-radius: 50px;
+.asso .team .humans .card2 p {
+  font-size: 1.5rem;
+  margin: 0.5rem;
 }
 
-.asso .team_humans .humans .box {
-  position: relative;
-  top: 25vh;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 72%;
-  height: 400px;
-  background-color: black;
-}
-
-.asso .team_humans .humans .box .about {
-  padding: 40px;
-  text-align: center;
-  color: #C1C4C6;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-.asso .team_humans .humans .box .picture {
-  width: 100%;
-  height: 100%;
-}
-
-.asso .team_humans .humans .box .picture:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("../uploads/pictures/team.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: -100px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-
-.asso .team_humans .humans .box:hover .picture:before {
-  -webkit-transform: rotateX(90deg) translateY(50%);
-          transform: rotateX(90deg) translateY(50%);
+.asso .team .humans .card2 span {
+  padding-top: 2rem;
+  font-style: italic;
 }
 
 .member .presentation {

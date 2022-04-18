@@ -3,42 +3,39 @@
 {% block title %}Animals index{% endblock %}
 
 {% block body %}
-<div class="container">
-<h1>Nos animaux</h1>
+<div class="administration">
+    <fieldset class="container">
+        <h1>Nos animaux</h1>
     
-<a href="{{ path('admin_animals_new') }}">Un nouveau animal</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Photo</th>
-                <th>Présentation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for animal in animals %}
-            <tr>
-                <td>{{ animal.id }}</td>
-                <td>{{ animal.animalName }}</td>
-                <td><img src="{{asset ('/uploads/' ~ animal.animalpicture)}}" alt="chien_bambou" width="120px"></td>
-                <td>{{ animal.animalContent|length > 100 ? animal.animalContent|slice(0,100)|raw : animal.animalContent|raw }}
-                    {{ animal.animalContent|length > 100 ? '...' : '' }}
-                </td>
-                <td class="confirm">
-                    {# <a href="{{ path('admin_animals_show', {'id': animal.id}) }}">Voir</a> #}
-                    <a href="{{ path('admin_animals_edit', {'id': animal.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
-                    {{ include('admin/animals/_delete_form.html.twig') }}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+        <a href="{{ path('admin_animals_new') }}">Un nouveau animal</a>
+        <table class="responsive-table striped highlight">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Présentation</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <td>{{ animal.animalName }}</td>
+                    <td>{{ animal.animalContent|length > 100 ? animal.animalContent|slice(0,100)|raw : animal.animalContent|raw }}
+                        {{ animal.animalContent|length > 100 ? '...' : '' }}
+                    </td>
+                    <td class="confirm">
+                        <a href="{{ path('admin_animals_show', {'id': animal.id}) }}"><button class="btn  blue-grey darken-1"><i class="fas fa-eye"></i></button></a>
+                        <a href="{{ path('admin_animals_edit', {'id': animal.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+                        {{ include('admin/animals/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
 </div>
 {% endblock %}

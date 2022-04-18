@@ -23,12 +23,9 @@ class ContactsType extends AbstractType
                 'attr' => ['class' => 'test']
             ])
             ->add('contact_subject', TextType::class, [
-                'label' => 'sujet'
+                'label' => 'sujet', 
+                'required' => true
             ])
-            // ->add('contact_date', DateType::class, [
-            //     'widget' => 'single_text',
-            //     ''
-            // ])
             ->add('contact_email', EmailType::class, [
                 'label' => 'Email'
             ])

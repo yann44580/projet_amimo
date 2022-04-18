@@ -11,10 +11,15 @@
             <h5>Mon ou mes partenaire(s):</h5>
         </div>
         <div class="input-field col s4">
+            {% set affich = null %}
             {% for animals in tools.animalcategory %}
-            {{ animals.animalcategoryname }}
-            -
+            {% if affich is null %}
+                {% set affich = animals.animalcategoryname %}  
+            {% else %}
+                {% set affich = affich ~ " / " ~ animals.animalcategoryname %}
+            {% endif %}
             {% endfor %}
+            <p>{{ affich }}</p>
         </div>
     </div>
     <div class="divider"></div>
@@ -35,14 +40,26 @@
             <h5>Public ciblé:</h5>
         </div>
         <div class="col s3">
-            {% for publictype in tools.populationtype %}
-            {{ publictype.populationtypename }} -
-            {% endfor %}
+                {% set affich = null %}
+                {% for publictype in tools.populationtype %}
+                {% if affich is null %}
+                    {% set affich = publictype.populationtypename %}
+                {% else %}
+                    {% set affich = affich ~ " / " ~ publictype.populationtypename %}
+                {% endif %}
+                {% endfor %}
+            <p>{{ affich }}</p>
         </div>
         <div class="col s5">
+            {% set affich = null %}
             {% for public in tools.populations %}
-            {{ public.populationname }} -
+            {% if affich is null %}
+                {% set affich = public.populationname %}
+            {% else %}
+                {% set affich = affich ~ " / " ~ public.populationname %}
+            {% endif %}
             {% endfor %}
+                <p>{{ affich }}</p>
         </div>
     </div>
     <div class="divider"></div>
@@ -64,7 +81,7 @@
     <div class="col s12">
         {% for image in tools.picturesTools %}
 
-        <img src="{{url}}/uploads/tools/{{image.picturetoolname}}" alt="" width="150">
+        <img src="{{picturePath}}/uploads/tools/{{image.picturetoolname}}" alt="" width="150">
         {% endfor %}
     </div>
     <div class="divider"></div>

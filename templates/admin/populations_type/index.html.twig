@@ -3,36 +3,36 @@
 {% block title %}PopulationsType index{% endblock %}
 
 {% block body %}
-<div class="container">
-<h1>PopulationsType index</h1>
+<div class="administration">
+    <fieldset class="container">
+    <h1>PopulationsType index</h1>
     
-<a href="{{ path('admin_populations_type_new') }}">Create new</a> 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Population_type_name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for populations_type in populations_types %}
-            <tr>
-                <td>{{ populations_type.id }}</td>
-                <td>{{ populations_type.populationTypeName }}</td>
-                <td class="confirm">
-                   
-                    <a href="{{ path('admin_populations_type_edit', {'id': populations_type.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
-                    {{ include('admin/populations_type/_delete_form.html.twig') }}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    <a href="{{ path('admin_populations_type_new') }}">Create new</a> 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Population_type_name</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for populations_type in populations_types %}
+                <tr>
+                    <td>{{ populations_type.id }}</td>
+                    <td>{{ populations_type.populationTypeName }}</td>
+                    <td class="confirm">
+                        <a href="{{ path('admin_populations_type_edit', {'id': populations_type.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+                        {{ include('admin/populations_type/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
 </div> 
 {% endblock %}

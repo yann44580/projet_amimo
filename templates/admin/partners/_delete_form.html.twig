@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('admin_partners_delete', {'id': partner.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+<form method="post" action="{{ path('admin_partners_delete', {'id': partner.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer ce partenaire?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
 <a href=""><p>Supprimer</p><button class="btn red darken-3"><i class="far fa-trash-alt"></i></button></a>
 </div>

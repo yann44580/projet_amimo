@@ -31,6 +31,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\Email(
+     *     message = "Le Courriel '{{ value }}' n'est pas un courriel valide."
+     * )
      */
     private $roles = [];
 

@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+<div class="administration">
+	<fieldset class="container">
 		<h1>Fiche séance</h1>
 
 		<a href="{{ path('admin_tools_session_new') }}">Nouvelle fiche</a>
@@ -52,6 +53,6 @@
 				{% endfor %}
 			</tbody>
 		</table>
-
-	</div>
+	</fieldset>
+</div>
 {% endblock %}

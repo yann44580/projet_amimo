@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+<div class="administration">
+	<fieldset class="container">
 		<h1>Associations</h1>
 
 		<table class="table">
@@ -57,5 +58,6 @@
 		<a href="{{ path('admin_associations_edit', {'id': association.id}) }}"><p>Modification</p><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
 
 		{{ include('admin/associations/_delete_form.html.twig') }}
-	</div>
+	</fieldset>
+</div>
 {% endblock %}

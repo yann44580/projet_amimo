@@ -6,30 +6,56 @@
 {% block body %}
 
 <div class="asso">
-	<div class="team_humans">
-	
+	<div class="container">
+		<h1>L'équipe</h1>
 			{% for user in users %}
-			<div class="row humans">
-				<div class="col s1 picture"><img src="{{ asset('/uploads/users/'~ user.picture) }}" alt="" width="150">
-					<p>{{user.firstname}}</p>
-					<p>{{user.lastname}}</p>
+				{% if user.roles["0"] == "ROLE_ADMIN" %}
+			<div class="row">
+			<div class="col s6 offset-s3">	
+				<ul class="team collapsible">
+				<li>
+				  <div class="humans collapsible-header">
+					<div class="card1">
+					<i class="material-icons">filter_drama</i><img src="{{ asset('/uploads/users/'~ user.picture) }}" alt="" width="150">
+					</div>
+					<div class="card2">
+						<p>{{user.firstname}}</p>
+						<p>{{user.lastname}}</p>
+							<span>En savoir plus</span>
+					</div>	
 				</div>
-				<div class="col s8 box">
-					<div class="about">
-						<p>{{user.presentation|raw}}</p>
-					</div>
-					<div class="picture">
-
-					</div>
+				  <div class="collapsible-body"><span><p>{{user.presentation|raw}}</p></span></div>
+				</li>
+				</ul>
 				</div>
 			</div>
+				{% else %}
+			
+				{% endif %}
 			{% endfor %}
 	</div>
 	<div class="container team_animals">
+	<h2>Les animaux</h2>
 		{% for animal in animals %}
-		<div class="animals">
-			<img src="{{ asset('/uploads/animals/'~ animal.animalpicture) }}" alt="" width="150">
-			<p>{{animal.animalcontent|raw}}</p>
+		<pre>
+			{{ dump(animal) }}
+		</pre>
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<ul class="team collapsible">
+				<li>
+				  <div class="humauns collapsible-header">
+					<div class="card1">	
+					<i class="material-icons">filter_drama</i><img src="{{ asset('/uploads/animals/'~ animal.animalpicture) }}" alt="" width="150"></div>
+					<div class="card2">
+					<p></p>
+					</div>	
+				</div>
+
+				<div class="collapsible-body"><span><p>{{animal.animalcontent|raw}}</p></span></div>
+				</li>
+				</ul>
+			</div>
 		</div>
 		{% endfor %}
 	</div>
@@ -37,3 +63,5 @@
 </div>
 
 {% endblock %}
+
+-> composer require symfony/validator doctrine/annotations            

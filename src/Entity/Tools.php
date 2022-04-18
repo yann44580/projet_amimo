@@ -57,9 +57,9 @@ class Tools
     private $category_tool;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Populations::class, inversedBy="tools")
+     * @ORM\ManyToMany(targetEntity=Populations::class, inversedBy="tool")
      */
-    private $populations;
+    private $population;
 
     /**
      * @ORM\OneToMany(targetEntity=PicturesTools::class, mappedBy="tool",cascade={"persist"}, orphanRemoval=true)
@@ -109,7 +109,7 @@ class Tools
     public function __construct()
     {
         $this->animal_category = new ArrayCollection();
-        $this->populations = new ArrayCollection();
+        $this->population = new ArrayCollection();
         $this->picturesTools = new ArrayCollection();
         $this->population_type = new ArrayCollection();
     }
@@ -218,17 +218,13 @@ class Tools
         return $this;
     }
 
-    // public function __toString()
-    // {
-    //     return $this->getCategoryTool();
-    // }
 
     /**
      * @return Collection<int, Populations>
      */
     public function getPopulations(): Collection
     {
-        return $this->populations;
+        return $this->population;
     }
 
     public function addPopulation(Populations $population): self

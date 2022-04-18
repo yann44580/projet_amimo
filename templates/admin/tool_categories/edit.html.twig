@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+<div class="administration">
+	<fieldset class="container">
 		<h1>Modifier la catégorie</h1>
 
 		{{ include('admin/tool_categories/_form.html.twig', {'button_label': 'Update'}) }}
@@ -13,5 +14,6 @@
 
 		{{ include('admin/tool_categories/_delete_form.html.twig') }}
 	</div>
-	</div>
+	</fieldset>
+</div>
 {% endblock %}

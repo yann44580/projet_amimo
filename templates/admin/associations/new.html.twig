@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+<div class="administration">
+	<fieldset class="container">
 		<h1>Création d'une nouvelle association</h1>
 
 		{{ include('admin/associations/_form.html.twig') }}
@@ -12,5 +13,6 @@
 	
 
 		{# <a href="{{ path('admin_associations_index') }}">revenir à la liste</a> #}
-	</div>
+	</fieldset>
+</div>
 {% endblock %}

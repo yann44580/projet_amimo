@@ -3,58 +3,59 @@
 {% block title %}La médiation animale{% endblock %}
 
 {% block body %}
-<div class="container">
-<h1>La médiation animale</h1>
+<div class="administration">
+    <fieldset class="container">
+        <h1>La médiation animale</h1>
     
-<a href="{{ path('admin_mediations_new') }}">Create new</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>L'histoire</th>
-                <th>Pedagogie Montessori</th>
-                <th>Biographie Montessori</th>
-                <th>Définition</th>
-                <th>Les objectifs</th>
-                <th>Les méthodes</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mediation in mediations %}
-            <tr>
-                <td>{{ mediation.id }}</td>
-                <td>{{ mediation.mediationHistory| length > 100 ? mediation.mediationHistory|slice(0,100)|raw : mediation.mediationHistory|raw }}
-                    {{ mediation.mediationHistory| length > 100 ? '...' : '' }}
-                </td>
-                <td>{{ mediation.mediationPedagogy| length > 100 ? mediation.mediationPedagogy|slice(0,100)|raw : mediation.mediationPedagogy|raw }}
-                    {{ mediation.mediationPedagogy| length > 100 ? '...' : '' }}
-                </td> 
-                <td>{{ mediation.mediationBiography| length > 100 ? mediation.mediationBiography|slice(0,100)|raw : mediation.mediationBiography|raw }}
-                    {{ mediation.mediationBiography| length > 100 ? '...' : '' }}
-                </td>
-                <td>{{ mediation.mediationDefinition| length > 100 ? mediation.mediationDefinition|slice(0,100)|raw : mediation.mediationDefinition|raw }}
-                    {{ mediation.mediationDefinition| length > 100 ? '...' : '' }}
-                </td>
-                <td>{{ mediation.mediationObjectif| length > 100 ? mediation.mediationObjectif|slice(0,100)|raw : mediation.mediationObjectif|raw }}
-                    {{ mediation.mediationObjectif| length > 100 ? '...' : '' }}
-                </td>
-                <td>{{ mediation.mediationMethods| length > 100 ? mediation.mediationMethods|slice(0,100)|raw : mediation.mediationMethods|raw }}
-                    {{ mediation.mediationMethods| length > 100 ? '...' : '' }}
-                </td>
-                <td class="confirm">
-                    {# <a href="{{ path('admin_mediations_show', {'id': mediation.id}) }}">show</a> #}
-                    <a href="{{ path('admin_mediations_edit', {'id': mediation.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
-                    {# {{ include('admin/mediations/_delete_form.html.twig') }} #}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+        <a href="{{ path('admin_mediations_new') }}">Create new</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>L'histoire</th>
+                        <th>Pedagogie Montessori</th>
+                        <th>Biographie Montessori</th>
+                        <th>Définition</th>
+                        <th>Les objectifs</th>
+                        <th>Les méthodes</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for mediation in mediations %}
+                    <tr>
+                        <td>{{ mediation.id }}</td>
+                        <td>{{ mediation.mediationHistory| length > 100 ? mediation.mediationHistory|slice(0,100)|raw : mediation.mediationHistory|raw }}
+                            {{ mediation.mediationHistory| length > 100 ? '...' : '' }}
+                        </td>
+                        <td>{{ mediation.mediationPedagogy| length > 100 ? mediation.mediationPedagogy|slice(0,100)|raw : mediation.mediationPedagogy|raw }}
+                            {{ mediation.mediationPedagogy| length > 100 ? '...' : '' }}
+                        </td> 
+                        <td>{{ mediation.mediationBiography| length > 100 ? mediation.mediationBiography|slice(0,100)|raw : mediation.mediationBiography|raw }}
+                            {{ mediation.mediationBiography| length > 100 ? '...' : '' }}
+                        </td>
+                        <td>{{ mediation.mediationDefinition| length > 100 ? mediation.mediationDefinition|slice(0,100)|raw : mediation.mediationDefinition|raw }}
+                            {{ mediation.mediationDefinition| length > 100 ? '...' : '' }}
+                        </td>
+                        <td>{{ mediation.mediationObjectif| length > 100 ? mediation.mediationObjectif|slice(0,100)|raw : mediation.mediationObjectif|raw }}
+                            {{ mediation.mediationObjectif| length > 100 ? '...' : '' }}
+                        </td>
+                        <td>{{ mediation.mediationMethods| length > 100 ? mediation.mediationMethods|slice(0,100)|raw : mediation.mediationMethods|raw }}
+                            {{ mediation.mediationMethods| length > 100 ? '...' : '' }}
+                        </td>
+                        <td class="confirm">
+                            {# <a href="{{ path('admin_mediations_show', {'id': mediation.id}) }}">show</a> #}
+                            <a href="{{ path('admin_mediations_edit', {'id': mediation.id}) }}"><button class="btn teal lighten-1"><i class="fas fa-edit"></i></button></a>
+                            {# {{ include('admin/mediations/_delete_form.html.twig') }} #}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    </fieldset>
 </div>
 {% endblock %}

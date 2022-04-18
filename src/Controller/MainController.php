@@ -27,6 +27,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @Route("/")
@@ -157,15 +158,31 @@ class MainController extends AbstractController
         Request $request
         ): Response
     {
-        $data = $toolsRepository->findBysession('session');
+        // On récupére les filtres
+        $filters = $request->get("populationstype");
+
+        $data = $toolsRepository->findBysession('session', $filters);
 
         $tools = $paginator->paginate(
             $data, 
             $request->query->getInt('page', 1),2 
-        );     
+        );
+      
+        // On vérifie si on a une requete ajax
+        if($request->get("ajax")){
+            return new JsonResponse([
+                'content' => $this->renderView('main/content_tool_session.html.twig', [
+                    'tools' => $tools,
+                    'toolcategories' => $toolCategoriesRepository->findAll(),
+                    'populationstype' => $populationsTypeRepository->findAll(),
+                ])
+            ]);
+        }
+
         return $this->render('main/tools_session.html.twig', [
             'tools' => $tools,
             'toolcategories' => $toolCategoriesRepository->findAll(),
+            'populationstype' => $populationsTypeRepository->findAll(),
         ]);
     }
 
@@ -212,14 +229,14 @@ class MainController extends AbstractController
         // On génére le HTML
         $html = $this->renderView('main/tools_session_data_download.html.twig', [
             'tools' => $tools,
-            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+            'picturePath' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
         ]);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4','portrait');
         $dompdf->render();
 
         // On génére un nom de fichier
-        $fichier = 'fiche-data.pdf';
+        $fichier = 'fiche ' .$tools->getToolTitle(). '.pdf';
 
         // on envoie le pdf au navigateur
         $dompdf->stream($fichier, [
@@ -297,14 +314,14 @@ class MainController extends AbstractController
         // On génére le HTML
         $html = $this->renderView('main/tools_creation_data_download.html.twig', [
             'tools' => $tools,
-            'url' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+            'picturePath' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
         ]);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4','portrait');
         $dompdf->render();
 
         // On génére un nom de fichier
-        $fichier = 'fiche-data.pdf';
+        $fichier =  'fiche ' .$tools->getToolTitle(). '.pdf';
 
         // on envoie le pdf au navigateur
         $dompdf->stream($fichier, [

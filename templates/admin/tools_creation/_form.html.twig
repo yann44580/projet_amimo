@@ -48,13 +48,17 @@
             <input class="file-path validate" type="text" placeholder="Upload file" />
         </div>
     </div>
-    {# Si la route est "annonces_edit on affiche les images #}
-    {# {% if app.request.attributes.get('_route') == 'admin_tools_creation_edit' %}
-    <h2>Images</h2>
+    {# Si la route est "annonces_edit on affiche le lien #}
+    {% if app.request.attributes.get('_route') == 'admin_tools_creation_edit' %}
+    <h6>lien du document</h>
     <div>
-        <img src="{{ asset('/uploads/tools/'~image.documenttool) }}" alt="" width="150">
+        {% if '.pdf' in tool.documenttool %}
+                <a href="{{ asset('/uploads/tools/'~ tool.documenttool) }}" target="_blank">lien pour visualiser pdf</a>
+              {% else %}
+                <img src="{{ asset('uploads/tools/' ~ tool.documenttool) }}" alt="" width="80">
+            {% endif %}
     </div>
-    {% endif %} #}
+    {% endif %} 
     <div class="input-field">
         {{ form_row(form.tool_content4) }}
     </div>

@@ -3,12 +3,14 @@
 {% block title %}Modifications{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h1>Modifications</h1>
+<div class="administration">
+    <fieldset class="container">
+        <h1>Modifications</h1>
 
-    {{ include('admin/animals/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('admin/animals/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('admin/animals/_delete_form.html.twig') }}
+        {{ include('admin/animals/_delete_form.html.twig') }}
     </div>
+    </fieldset>
 </div>
 {% endblock %}
