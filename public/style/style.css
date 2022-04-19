@@ -84,12 +84,21 @@
   top: -58px;
 }
 
+footer {
+  margin: 0;
+}
+
 footer .contact {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   width: 100%;
   background-color: #C1C4C6;
+  margin: 0;
 }
 
 footer .contact .contact1 {
@@ -155,6 +164,33 @@ footer .copyright .img {
   width: 15px;
   height: 15px;
   margin-top: 5px;
+}
+
+@media screen and (max-width: 1160px) {
+  .base nav ul li:nth-child(6) {
+    display: none;
+  }
+  .base nav ul a {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  footer .contact {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  footer .contact .contact1 {
+    width: 100%;
+  }
+  footer .contact .divider {
+    display: none;
+  }
+  footer .partner .logo {
+    display: none;
+  }
 }
 
 .base1 nav {
@@ -461,7 +497,7 @@ footer .copyright .img {
 
 Main .citation {
   background-color: antiquewhite;
-  height: 40vh;
+  height: 48vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -533,6 +569,11 @@ Main .citation .container .row .citation_img img {
 
 Main .blog {
   min-height: 100vh;
+  text-align: center;
+}
+
+Main .blog p {
+  font-size: 2rem;
 }
 
 Main #partners {
@@ -696,12 +737,36 @@ Main .flyer .container #flyer:nth-child(n) {
   margin: 50px;
 }
 
-@media screen and (max-width: 1160px) {
-  .base nav ul li:nth-child(6) {
+@media screen and (max-width: 1200px) {
+  main .citation .container .row .citation1 p {
+    font-size: 2rem;
+  }
+  main #partners .carousel .card {
+    width: 25vw;
+    height: 40vh;
+  }
+  main #partners .carousel .card .card-image {
+    height: 30vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main .citation .container .row .citation1 p {
+    width: 100%;
+  }
+  main .citation .container .row .citation_img {
     display: none;
   }
-  .base nav ul a {
-    padding: 0;
+  main .blog img {
+    width: 400px;
+    padding-right: 50px;
+  }
+  main #partners .carousel .card {
+    width: 40vw;
+    height: 33vh;
+  }
+  main #partners .carousel .card .card-image {
+    height: 24vh;
   }
 }
 

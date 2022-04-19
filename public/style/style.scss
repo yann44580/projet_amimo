@@ -96,11 +96,13 @@
 }
 
 footer {
-    // margin-top: 50px;
+    margin: 0;
     .contact {
         display: flex;
+        flex-direction: row;
         width: 100%;
         background-color: #C1C4C6;
+        margin: 0;
 
         .contact1 {
             width: 33%;
@@ -155,6 +157,40 @@ footer {
             width: 15px;
             height: 15px;
             margin-top: 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 1160px) {
+    .base {
+        nav {
+            ul {
+                li:nth-child(6) {
+                    display: none;
+                }
+
+                a {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 600px){
+    footer{
+        .contact{
+            flex-direction: column;
+            .contact1{
+                width: 100%;
+            }
+            .divider{
+                display: none;
+            }
+        }
+        .partner{
+            .logo{
+                display: none;
+            }
         }
     }
 }
@@ -399,7 +435,7 @@ footer {
 Main {
     .citation {
         background-color: antiquewhite;
-        height: 40vh;
+        height: 48vh;
         width: 100%;
         display: flex;
         align-items: center;
@@ -452,6 +488,10 @@ Main {
     }
     .blog{
         min-height: 100vh;
+        text-align: center;
+        p{
+            font-size: 2rem;
+        }
     }
 
     #partners {
@@ -565,21 +605,69 @@ Main {
     }
 }
 
-@media screen and (max-width: 1160px) {
-    .base {
-        nav {
-            ul {
-                li:nth-child(6) {
-                    display: none;
-                }
-
-                a {
-                    padding: 0;
+@media screen and (max-width: 1200px) {
+main{
+    .citation{
+        .container{
+            .row{
+                .citation1{
+                    p{
+                        font-size: 2rem;
+                    }
                 }
             }
         }
     }
+    #partners{
+        .carousel{
+            .card{
+                width: 25vw;
+                height: 40vh;
+                .card-image{
+                    height: 30vh;
+                }
+            }
+        }
+    }
+} 
 }
+
+@media screen and (max-width: 600px) {
+    main{
+        .citation{
+            .container{
+                .row{
+                    .citation1{
+                        p{
+                            width: 100%;
+                        }
+                    }
+                    .citation_img{
+                        display: none;
+                    }
+                }
+            }
+        }
+        .blog{
+            img{
+                width: 400px;
+                padding-right: 50px;
+            }
+        }
+        #partners{
+            .carousel{
+                .card{
+                    width: 40vw;
+                    height: 33vh;
+                    .card-image{
+                        height: 24vh;
+                    }
+                }
+            }
+        }
+    } 
+}
+
 
 // 6. CONTACT ===============================================================================
 
