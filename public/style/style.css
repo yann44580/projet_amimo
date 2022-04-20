@@ -196,7 +196,7 @@ footer .copyright .img {
 .base1 nav {
   margin-top: 20px;
   height: 50px;
-  background-color: #1A60A1;
+  background-color: #fb8128;
 }
 
 .base1 nav .nav-wrapper .burger-menu {
@@ -436,10 +436,13 @@ footer .copyright .img {
           justify-content: center;
 }
 
-.login .login_user .logo_login img {
+.login .login_user .logo_login a {
+  z-index: 1;
+}
+
+.login .login_user .logo_login a img {
   width: 80px;
   height: 80px;
-  z-index: 1;
   border-radius: 15px;
 }
 
@@ -461,11 +464,12 @@ footer .copyright .img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 40%;
-  margin-top: 50px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .login .login_user .form .button .btn {
@@ -473,26 +477,60 @@ footer .copyright .img {
   border-radius: 15px;
 }
 
-.login .login_user .form .button p {
-  margin: 0;
-}
-
 .login .login_user .form .reset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.login .login_user .form .reset .btn {
+.login .login_user .form .reset .password_forget {
+  color: #fb8128;
+  margin-top: 15px;
+}
+
+.login .login_user .back {
+  position: absolute;
+  bottom: 45px;
+}
+
+.login .login_user .back button {
+  background-color: #019a93;
   border-radius: 15px;
 }
 
 .login .register {
   height: 90vh;
+}
+
+@media screen and (max-width: 600px) {
+  .login .login_user {
+    height: 80vh;
+    width: 80vw;
+  }
+  .login .login_user .form h1 {
+    font-size: 2rem;
+  }
+  .login .login_user .form .button {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-right: 20px;
+  }
+  .login .login_user .form .button .inscrire {
+    width: 80%;
+  }
+  .login .login_user .form .reset {
+    width: 80%;
+    padding-bottom: 15px;
+  }
+  .login .register {
+    height: 95vh;
+  }
 }
 
 Main .citation {

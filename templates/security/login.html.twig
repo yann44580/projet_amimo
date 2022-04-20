@@ -29,7 +29,7 @@
 			<div class=" login">
 				<div class="login_user">
 					<div class="logo_login">
-						<img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="">
+						<a href="{{path('home')}}"><img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="logo de l'association"></a>
 					</div>
 					<div class="form">
 						<form method="post">
@@ -70,15 +70,11 @@
 							                    </div>
 							                    #}
 							<div class="button">
-								<button class="btn btn-lg btn-primary" type="submit">
-									Entrer
-								</button>
-								<p>Je n'ai pas de compte
-									<a href="{{path('app_register')}}"><but class="btn">M'inscrire</but></a>
-								</p>
-							</div>
-							<div class="reset">
-								<a href="{{ path('app_forgot_password_request') }}"><button class="btn teal lighten-3">Mot de passe perdu</button></a>						
+								<div class="reset">
+									<button class="btn btn-lg btn-primary" type="submit">Entrer</button>
+									<a  class="password_forget" href="{{ path('app_forgot_password_request') }}">Mot de passe perdu</a>						
+								</div>
+								<a href="{{path('app_register')}}"><button class="btn inscrire btn-lg btn-primary">M'inscrire</button></a>
 							</div>
 						</form>
 					</div>

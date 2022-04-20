@@ -29,7 +29,7 @@
 			<div class="login">
 				<div class="login_user register">
 					<div class="logo_login">
-						<img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="">
+						<a href="{{path('home')}}"><img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt=""></a>
 					</div>
 					<div class="form">
 						<h1>Nouvel adhérent</h1>
@@ -62,13 +62,17 @@
 
 						</div>
 						<div class="button">
-							<button type="submit" class="btn">Enregistrer</button>
+							<div class="reset">
+								<button type="submit" class="btn">Enregistrer</button>
+							</div>
+							{{ form_end(registrationForm) }}
+						</div>
+					</div>
+						<div class="back">
 							<a href="{{path('home')}}">
-								<but class="btn">Retour au site</but>
+								<button class="btn inscrire btn-lg btn-primary">Retour au site</button>
 							</a>
 						</div>
-						{{ form_end(registrationForm) }}
-					</div>
 				</div>
 			</div>
 		{% endblock %}
