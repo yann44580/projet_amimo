@@ -6,7 +6,7 @@
 <div class=" login">
     <div class="login_user">
         <div class="logo_login">
-            <img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt="">
+        <a href="{{path('home')}}"><img src="{{asset("uploads/Logo-AMIMO-62285fcb0ff53.jpg")}}" alt=""></a>
         </div>
         <div class="form">
             {% for flash_error in app.flashes('reset_password_error') %}

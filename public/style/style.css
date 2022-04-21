@@ -456,6 +456,10 @@ footer .copyright .img {
   padding: 20px 20px;
 }
 
+.login .login_user .form p {
+  margin-top: 70px;
+}
+
 .login .login_user .form label {
   color: black;
 }
