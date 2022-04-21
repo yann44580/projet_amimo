@@ -250,6 +250,16 @@ footer {
     nav {
         background-color: #1767ff;
         .nav-wrapper {
+            display: flex;
+            flex-direction: row;
+            .title{
+                width: 80vw;
+                h3{
+                    margin: 0;
+                    text-align: center;
+                }
+            }
+
             a {
                 display: block;
             }
@@ -351,6 +361,14 @@ footer {
         }
     }
 }
+.example-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+}
+
 
 // 4.LOGIN/REGISTER ========================================================================
 .login {

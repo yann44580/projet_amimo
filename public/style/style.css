@@ -248,6 +248,25 @@ footer .copyright .img {
   background-color: #1767ff;
 }
 
+.admin nav .nav-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.admin nav .nav-wrapper .title {
+  width: 80vw;
+}
+
+.admin nav .nav-wrapper .title h3 {
+  margin: 0;
+  text-align: center;
+}
+
 .admin nav .nav-wrapper a {
   display: block;
 }
@@ -392,6 +411,20 @@ footer .copyright .img {
 .admin .confirm1 .btn img {
   width: 50px;
   height: 50px;
+}
+
+.example-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 90vh;
+  width: 100vw;
 }
 
 .login {

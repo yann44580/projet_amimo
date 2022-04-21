@@ -68,11 +68,31 @@
 			"mandatory": true, /* Show a message about mandatory cookies */
 		});
 	</script>
+	<!-- Google Analytic -->
+	<script src="https://www.google.com/recaptcha/api.js?render=6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M"></script>
+	<script>
+	function onClick(e) {
+	e.preventDefault();
+	grecaptcha.ready(function() {
+	grecaptcha.execute('6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M', {action: 'submit'}).then(function(token) {
+	console.log('captacha');
+	});
+	});
+	}
+   </script>
 	<title>
-		{% block title %}Welcome!
+		{% block title %}Site Amimo
 		{% endblock %}
 	</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-959E3NLWHP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-959E3NLWHP');
+</script>
 </head>
 
 <body class="base">

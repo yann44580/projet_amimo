@@ -192,6 +192,7 @@ class MainController extends AbstractController
      */
     public function tool_pdf(Tools $tools): Response
     {
+        // dd($_SERVER);
         return $this->render('main/tools_session_data.html.twig', [
             'tools' => $tools,
             
@@ -229,7 +230,8 @@ class MainController extends AbstractController
         // On génére le HTML
         $html = $this->renderView('main/tools_session_data_download.html.twig', [
             'tools' => $tools,
-            'picturePath' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+            'picturePath' => $_SERVER["DOCUMENT_ROOT"],
+            
         ]);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4','portrait');
@@ -277,6 +279,7 @@ class MainController extends AbstractController
      */
     public function toolcreation_pdf(Tools $tools): Response
     {
+        // dd($_SERVER);
         return $this->render('main/tools_creation_data.html.twig', [
             'tools' => $tools,
             
@@ -316,6 +319,8 @@ class MainController extends AbstractController
             'tools' => $tools,
             'picturePath' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
         ]);
+
+ 
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4','portrait');
         $dompdf->render();
