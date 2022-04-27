@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 	<head>
 		<meta
@@ -9,6 +9,8 @@
 		rel="stylesheet" href="{{asset('style/style.css')}}">
 		<!--icone-->
 		<script src="https://kit.fontawesome.com/4d2daebcf2.js" crossorigin="anonymous"></script>
+		<!--favicone-->
+		<link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/Logo-AMIMO-62285fcb0ff53.jpg')}}" />
 		<!-- Jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--JavaScript-->
@@ -18,22 +20,12 @@
 		<link
 		href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<!-- Compiled and minified CSS -->
-		<link
-		rel="stylesheet" href="{{asset('style/materialize.css')}}" type="text/css" media="screen,projection">
+		<link rel="stylesheet" href="{{asset('style/materialize.css')}}" type="text/css" >
 
 		<!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<script src="https://www.google.com/recaptcha/api.js?render=6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M"></script>
-	<script>
-	function onClick(e) {
-	e.preventDefault();
-	grecaptcha.ready(function() {
-	grecaptcha.execute('6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M', {action: 'submit'}).then(function(token) {
-	console.log('captacha');
-	});
-	});
-	}
-   </script>
+
+		<meta name="description" content="Le site Amimo est un site de partage d'outils sur la médiation animale, découverte de cette pratique où l'animale est au coeur de la relation."/>
 		<title>
 			{% block title %}Admin
 			{% endblock %}
@@ -105,6 +97,7 @@
 			<li>
 				<div class="user-view identification_admin">
 					{% if app.user %}
+
 						<img src="{{ asset('/uploads/users/'~app.user.picture) }}" alt="photo_user" width="120">
 						<p>Bonjour</p>
 						<p>{{ app.user.firstname }}</p>	

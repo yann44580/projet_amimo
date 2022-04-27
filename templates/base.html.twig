@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
 	<meta charset="UTF-8">
@@ -7,24 +7,29 @@
 	<link rel="stylesheet" href="{{asset('style/style.css')}}">
 	<!--icone-->
 	<script src="https://kit.fontawesome.com/f005db1984.js" crossorigin="anonymous"></script>
+	<!--favicone-->
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/Logo-AMIMO-62285fcb0ff53.jpg')}}" />
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!--JavaScript-->
 	<script src="{{asset('js/script.js')}}" defer></script>
 	<script src="{{ asset('js/images.js') }}" defer></script>
 	<script src="{{asset('js/filters.js')}}" defer></script>
+	<!--Import Google Font-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<!--Import Google Font-->
-	<link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=family=Josefin+Slab:wght@600&family=Roboto:ital,wght@0,400;1,100&display=swap" rel="stylesheet">
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 	<!--Import materialize.css-->
-	<link rel="stylesheet" href="{{asset('style/materialize.css')}}" type="text/css" media="screen,projection">
+	<link rel="stylesheet" href="{{asset('style/materialize.css')}}" type="text/css" >
 
 
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="description" content="Le site Amimo est un site de partage d'outils sur la médiation animale, découverte de cette pratique où l'animale est au coeur de la relation."/>
 	<script src="{{asset('tarteaucitron/tarteaucitron.js')}}"></script>
 
 	<script type="text/javascript">
@@ -69,30 +74,50 @@
 		});
 	</script>
 	<!-- Google Analytic -->
+
 	<script src="https://www.google.com/recaptcha/api.js?render=6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M"></script>
+
 	<script>
+
 	function onClick(e) {
+
 	e.preventDefault();
+
 	grecaptcha.ready(function() {
+
 	grecaptcha.execute('6LeQ740fAAAAAFIA5VCeb2kgjulT8OcNJmaRj31M', {action: 'submit'}).then(function(token) {
+
 	console.log('captacha');
+
 	});
+
 	});
+
 	}
-   </script>
+
+	</script>
+
 	<title>
 		{% block title %}Site Amimo
 		{% endblock %}
 	</title>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-959E3NLWHP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 
-  gtag('config', 'G-959E3NLWHP');
-</script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-959E3NLWHP"></script>
+
+	<script>
+
+  	window.dataLayer = window.dataLayer || [];
+
+  	function gtag(){dataLayer.push(arguments);}
+
+  	gtag('js', new Date());
+
+  	gtag('config', 'G-959E3NLWHP');
+
+	</script>
+
+
 </head>
 
 <body class="base">
@@ -273,45 +298,45 @@
 			</ul>
 		</div>
 	</nav>
+	<ul class="sidenav" id="mobile-nav">
+		<li>
+			<a class="dropdown-trigger" href="#!" data-target="dropdown2">Mediation animale<i
+					class="material-icons right">arrow_drop_down</i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-trigger" href="#!" data-target="dropdown4">AMIMO<i
+					class="material-icons right">arrow_drop_down</i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-trigger" href="#!" data-target="dropdown6">Méthodes<i
+					class="material-icons right">arrow_drop_down</i>
+			</a>
+		</li>
+		<li>
+			<a class="dropdown-trigger" href="#" data-target="dropdown8">Outils<i
+					class="material-icons right">arrow_drop_down</i>
+			</a>
+		</li>
+		<li>
+			<a href="#partners">Partenaires</a>
+		</li>
+		<li>
+			<a href="{{path('asso_flyer')}}">Brochures</a>
+		</li>
+		<li>
+			{% if app.user %}
+			<a class="dropdown-trigger" href="#!" data-target="dropdown10">Mon compte<i
+					class="material-icons right">arrow_drop_down</i></a>
+			{% else %}
+			<a href="badges.html">Contact</a>
+			{% endif %}
+		</li>
+	</ul>
 </body>
 
 
-<ul class="sidenav" id="mobile-nav">
-	<li>
-		<a class="dropdown-trigger" href="#!" data-target="dropdown2">Mediation animale<i
-				class="material-icons right">arrow_drop_down</i>
-		</a>
-	</li>
-	<li>
-		<a class="dropdown-trigger" href="#!" data-target="dropdown4">AMIMO<i
-				class="material-icons right">arrow_drop_down</i>
-		</a>
-	</li>
-	<li>
-		<a class="dropdown-trigger" href="#!" data-target="dropdown6">Méthodes<i
-				class="material-icons right">arrow_drop_down</i>
-		</a>
-	</li>
-	<li>
-		<a class="dropdown-trigger" href="#" data-target="dropdown8">Outils<i
-				class="material-icons right">arrow_drop_down</i>
-		</a>
-	</li>
-	<li>
-		<a href="#partners">Partenaires</a>
-	</li>
-	<li>
-		<a href="{{path('asso_flyer')}}">Brochures</a>
-	</li>
-	<li>
-		{% if app.user %}
-		<a class="dropdown-trigger" href="#!" data-target="dropdown10">Mon compte<i
-				class="material-icons right">arrow_drop_down</i></a>
-		{% else %}
-		<a href="badges.html">Contact</a>
-		{% endif %}
-	</li>
-</ul>
 {% block body %}{% endblock %}
 <footer>
 	<div class="row contact">

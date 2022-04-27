@@ -8,6 +8,13 @@
 // 8. MEDIATION
 // 9. MEMBER
 
+body {
+    font-family: 'Josefin Slab', 'Roboto', sans-serif;
+}
+h1, h2{
+    font-family: 'Josefin Slab';
+}
+
 // 1. BASE ============================================
 .base {
     .picture_menu {
@@ -240,6 +247,13 @@ footer {
     }
 }
 
+@media screen and (max-width: 992px) {
+    nav a.sidenav-trigger {
+        height: 50px;
+        line-height: 50px;
+}
+}
+
 // 3.ADMIN =================================================================================
 .admin {
     .administration{
@@ -247,8 +261,11 @@ footer {
         min-height: 95vh;
         padding-top: 2px;
     }
+
     nav {
         background-color: #1767ff;
+      
+        
         .nav-wrapper {
             display: flex;
             flex-direction: row;
@@ -368,6 +385,7 @@ footer {
     height: 90vh;
     width: 100vw;
 }
+
 
 
 // 4.LOGIN/REGISTER ========================================================================
@@ -491,6 +509,7 @@ footer {
 // 5.MAIN =================================================================================
 
 Main {
+    width: 100vw;
     .citation {
         background-color: antiquewhite;
         height: 48vh;
@@ -516,21 +535,23 @@ Main {
                     position: absolute;
                     // width: 100%;
                     z-index: 1;
-    
-                    p {
-    
-                        // z-index: 1;
-                        display: block;
+                    .border{
                         border: #eeaf90 solid 2.5px;
-                        width: 50vw;
-                        font-family: 'Clicker Script', cursive;
-                        font-size: 3rem;
-                        text-align: center;
+                        p {
+                            // z-index: 1;
+                            display: block;
+                            width: 50vw;
+                            font-family: 'Josefin Slab', cursive;
+                            font-size: 2.3rem;
+                            text-align: center;
+                        }
                     }
+    
                 }
     
                 .citation_img {
                     display: flex;
+                    justify-content: center;
                     align-items: center;
                     height: 100%;
                     img {
@@ -547,6 +568,9 @@ Main {
     .blog{
         min-height: 100vh;
         text-align: center;
+        img{
+            width: 50%;
+        }
         p{
             font-size: 2rem;
         }
@@ -569,7 +593,7 @@ Main {
                     height: 20vh;
                     display: flex;
                     align-items: center;
-                    img {
+                    img{
                         max-height: 130px;
                     }
                 }
@@ -645,6 +669,7 @@ Main {
         }
     }
     .flyer {
+        width: 100vw;
         background-color: antiquewhite;
         min-height: 100vh;
         display: flex;
@@ -669,11 +694,22 @@ main{
         .container{
             .row{
                 .citation1{
-                    p{
-                        font-size: 2rem;
+                    .border{
+                        p{
+                            font-size: 1.5rem;
+                            width: 100%;
+                        }
                     }
                 }
+                .citation_img{
+                    justify-content: flex-start;
+                }
             }
+        }
+    }
+    .blog{
+        p{
+            font-size: 1.5rem;
         }
     }
     #partners{
@@ -687,6 +723,15 @@ main{
             }
         }
     }
+    .tool{
+        .card_theme{
+            .col{
+                .card{
+                    max-width: 70vw;
+                }
+            }
+        }
+    }
 } 
 }
 
@@ -696,8 +741,11 @@ main{
             .container{
                 .row{
                     .citation1{
-                        p{
-                            width: 100%;
+                        .border{
+                            p{
+                                width: 100%;
+                                font-size: 1rem;
+                            }
                         }
                     }
                     .citation_img{
@@ -708,8 +756,11 @@ main{
         }
         .blog{
             img{
-                width: 400px;
+                width: 80%;
                 padding-right: 50px;
+            }
+            p{
+                font-size: 1rem;
             }
         }
         #partners{
@@ -719,6 +770,16 @@ main{
                     height: 33vh;
                     .card-image{
                         height: 24vh;
+                    }
+                }
+            }
+        }
+        .tool{
+            .card_theme{
+                flex-direction: column;
+                .col{
+                    .card{
+                        max-width: 70vw;
                     }
                 }
             }

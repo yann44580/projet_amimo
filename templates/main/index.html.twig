@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association AMIMO{% endblock %}
+{% block title %}Site amimo{% endblock %}
 
 {% block body %}
 
@@ -9,10 +9,13 @@
         <div class="container">
             <div class="row">
                 <div class="col l8 m8 s12 citation1">
-                    <p>- Qu'est ce que signifie << apprivoiser>> ? </br> - C'est une chose trop oubliée, </br> dit le
-                        renard. Ca signifie << créer des liens>>.</p>
+                    <div class="border">
+                        <p>- Qu'est ce que signifie &lt;&lt; apprivoiser &gt;&gt; ? </p> 
+                        <p>- C'est une chose trop oubliée, </p> 
+                        <p> dit le renard. Ca signifie &lt;&lt; créer des liens &gt;&gt;.</p>
+                    </div>
                 </div>
-                <div class="col xl6 offset-xl7 l6 offset-l8 m6 offset-m8 s6 offset-s8 citation_img"><img src="{{asset("uploads/pictures/petit_prince.png")}}"
+                <div class="col xl6 offset-xl7 l4 offset-l6 m4 offset-m8 citation_img"><img src="{{asset("uploads/pictures/petit_prince.png")}}"
                     alt="renard et petit prince">
                 </div>    
             </div>
@@ -20,7 +23,7 @@
     </section>
     <section class="blog">
         <h2>Bientôt</h2>
-            <img src="{{asset('uploads/en cours.png')}}" alt="someone_work">
+            <img src="{{asset('uploads/attente.png')}}" alt="someone_work" loading="lazy">
             <p>De nombreux articles sur vos sujets préférés.</p>
     </section>
     <section id="partners">
@@ -32,7 +35,7 @@
             <div class="carousel-item">
                 <div class="card sticky-action">
                     <div class="card-image">
-                        <img src="{{ asset('uploads/partners/' ~ partner.partnerpicture) }}">
+                        <img src="{{ asset('uploads/partners/' ~ partner.partnerpicture) }}" alt="image_des_partenaires" loading="lazy">
                     </div>
                     {# <div class="card-content">
                         <p>{{ partner.partnerContent|length > 30 ? partner.partnerContent|slice(0,30)|raw :

@@ -54,9 +54,26 @@
                             </p>
                         </div>
                         <div class="card-action">
-                            <a href="{{ path('tools_creation_data', {'id': tool.id}) }}">
-                                <p>Voir la fiche</p>
-                            </a>
+                            {% if app.user %}
+                                <a href="{{ path('tools_creation_data', {'id': tool.id}) }}">
+                                    <p>Voir la fiche</p>
+                                </a>
+                            {% else %}
+                                <a href="#modalus" class="modal-trigger">
+                                    <p>Voir la fiche</p>
+                                </a>
+                            <div id="modalus" class="modal">
+                                <div class="modal-content">
+                                <h4>Infos</h4>
+                                <p>Pour accéder aux fiches, il suffit juste de s'inscrire. Vous pourrez télécharger les fiches
+                                et partager également les votres. </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{{path('app_register')}}" class="modal-close waves-effect waves-green btn-flat">Je
+                                    m'inscris.</a>
+                                </div>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,11 @@
+body {
+  font-family: 'Josefin Slab', 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Josefin Slab';
+}
+
 .base .picture_menu {
   position: relative;
   height: 60vh;
@@ -236,6 +244,13 @@ footer .copyright .img {
 
 .base1 .body {
   min-height: 90vh;
+}
+
+@media screen and (max-width: 992px) {
+  nav a.sidenav-trigger {
+    height: 50px;
+    line-height: 50px;
+  }
 }
 
 .admin .administration {
@@ -570,6 +585,10 @@ footer .copyright .img {
   }
 }
 
+Main {
+  width: 100vw;
+}
+
 Main .citation {
   background-color: antiquewhite;
   height: 48vh;
@@ -616,12 +635,15 @@ Main .citation .container .row .citation1 {
   z-index: 1;
 }
 
-Main .citation .container .row .citation1 p {
-  display: block;
+Main .citation .container .row .citation1 .border {
   border: #eeaf90 solid 2.5px;
+}
+
+Main .citation .container .row .citation1 .border p {
+  display: block;
   width: 50vw;
-  font-family: 'Clicker Script', cursive;
-  font-size: 3rem;
+  font-family: 'Josefin Slab', cursive;
+  font-size: 2.3rem;
   text-align: center;
 }
 
@@ -629,6 +651,9 @@ Main .citation .container .row .citation_img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -645,6 +670,10 @@ Main .citation .container .row .citation_img img {
 Main .blog {
   min-height: 100vh;
   text-align: center;
+}
+
+Main .blog img {
+  width: 50%;
 }
 
 Main .blog p {
@@ -784,6 +813,7 @@ Main .tool .pagination {
 }
 
 Main .flyer {
+  width: 100vw;
   background-color: antiquewhite;
   min-height: 100vh;
   display: -webkit-box;
@@ -813,8 +843,17 @@ Main .flyer .container #flyer:nth-child(n) {
 }
 
 @media screen and (max-width: 1200px) {
-  main .citation .container .row .citation1 p {
-    font-size: 2rem;
+  main .citation .container .row .citation1 .border p {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  main .citation .container .row .citation_img {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  main .blog p {
+    font-size: 1.5rem;
   }
   main #partners .carousel .card {
     width: 25vw;
@@ -823,18 +862,25 @@ Main .flyer .container #flyer:nth-child(n) {
   main #partners .carousel .card .card-image {
     height: 30vh;
   }
+  main .tool .card_theme .col .card {
+    max-width: 70vw;
+  }
 }
 
 @media screen and (max-width: 600px) {
-  main .citation .container .row .citation1 p {
+  main .citation .container .row .citation1 .border p {
     width: 100%;
+    font-size: 1rem;
   }
   main .citation .container .row .citation_img {
     display: none;
   }
   main .blog img {
-    width: 400px;
+    width: 80%;
     padding-right: 50px;
+  }
+  main .blog p {
+    font-size: 1rem;
   }
   main #partners .carousel .card {
     width: 40vw;
@@ -842,6 +888,15 @@ Main .flyer .container #flyer:nth-child(n) {
   }
   main #partners .carousel .card .card-image {
     height: 24vh;
+  }
+  main .tool .card_theme {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main .tool .card_theme .col .card {
+    max-width: 70vw;
   }
 }
 

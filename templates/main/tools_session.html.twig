@@ -12,12 +12,16 @@
                 {% for tool in tools %}
                 {% if tool.toolitem == 'session' %}
 
-                <div class="col l3">
+                <div class="col l3 s8">
                     <div class="card ">
                         <div class="card-image waves-effect waves-block waves-light">
 
-                        {% if tool.documenttool != NULL %}
-                            <img src="{{ asset('/uploads/tools/'~ tool.documenttool) }}" alt="" width="50">
+                        {% if tool.picturesTools != NULL %}
+                                {% set break = false %}
+                                {% for image in tool.picturesTools %}
+                                    <img src="{{ asset('/uploads/tools/'~image.picturetoolname) }}" alt="" width="150">
+                                {% set break = true %}
+                                {% endfor %}
                         {% else %}
                             <img src="{{asset('uploads/patte_chien.jpg')}}" alt="" width="50px" height="100%">
                         {% endif %}
@@ -67,7 +71,7 @@
                                 et partager également les votres. </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{{path('app_login')}}" class="modal-close waves-effect waves-green btn-flat">Je
+                                    <a href="{{path('app_register')}}" class="modal-close waves-effect waves-green btn-flat">Je
                                     m'inscris.</a>
                                 </div>
                             </div>
@@ -80,7 +84,7 @@
             </div>
             <div class="pagination">
                 {% do tools.setPageRange(2) %}
-                {{knp_pagination_render(tools, 'admin/pagination.html.twig')}}
+                {{knp_pagination_render(tools, 'pagination.html.twig')}}
             </div> 
         </div>
     </div>

@@ -44,7 +44,7 @@ class ContactsController extends AbstractController
 
             $message = (new Email())
                 ->from($contact_data->getContactEmail())
-                ->to('test@gmail.com')
+                ->to('yann.fiolleau@gmail.com')
                 ->subject('vous avez reçu un email')
                 ->html($contact_data->getContactContent());
 

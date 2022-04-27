@@ -39,7 +39,7 @@ class ContactsType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter les politiques de confidentialité.',
                     ]),
                 ],
             ])

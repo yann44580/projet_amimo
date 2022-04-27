@@ -51,7 +51,7 @@
             {% if '.pdf' in tools.documenttool %}
                 <a href="{{absolute_url(asset('/uploads/tools/'~ tools.documenttool)) }}" target="_blank">lien pour visualiser pdf</a>
                 {% else %}
-                <img src="https://{{picturePath}}uploads/tools/{{tools.documenttool}}" alt="" width="80">
+                <img src="https://{{picturePath}}/uploads/tools/{{tools.documenttool}}" alt="" width="80">
                 {%  endif  %}
             </div>
             <div class="col s12">
@@ -71,6 +71,7 @@
 
             {% for image in tools.picturesTools %}
             <img src="https://{{picturePath}}/uploads/tools/{{image.picturetoolname}}" alt="" width="150">
+
             {% endfor %}
         </div>
         <div class="divider"></div>

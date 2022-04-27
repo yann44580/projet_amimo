@@ -230,7 +230,7 @@ class MainController extends AbstractController
         // On génére le HTML
         $html = $this->renderView('main/tools_session_data_download.html.twig', [
             'tools' => $tools,
-            'picturePath' => $_SERVER["DOCUMENT_ROOT"],
+            'picturePath' => $_SERVER["SERVER_NAME"],
             
         ]);
         $dompdf->loadHtml($html);
@@ -265,7 +265,7 @@ class MainController extends AbstractController
 
         $tools = $paginator->paginate(
             $data, 
-            $request->query->getInt('page', 1),1 
+            $request->query->getInt('page', 1),2 
         ); 
 
         return $this->render('main/tools_creation.html.twig', [
@@ -317,7 +317,7 @@ class MainController extends AbstractController
         // On génére le HTML
         $html = $this->renderView('main/tools_creation_data_download.html.twig', [
             'tools' => $tools,
-            'picturePath' => $_SERVER["SYMFONY_APPLICATION_DEFAULT_ROUTE_URL"],
+            'picturePath' => $_SERVER["SERVER_NAME"],
         ]);
 
  
